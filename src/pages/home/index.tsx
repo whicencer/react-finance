@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import Flex from '../../components/Flex';
-import Header from '../../components/Header';
 import Button from '../../components/ui/Button';
 
 const titleAnimate = keyframes`
@@ -34,10 +33,14 @@ const StyledImg = styled.img`
 const Home = () => {
   return (
     <>
-      <Header />
+      <Flex justifyContent="center" padding="10px 0">
+        <h2 style={{ fontFamily: 'Archivo', fontWeight: '400' }}>
+          REACT FINANCE
+        </h2>
+      </Flex>
       <Flex justifyContent="space-around" alignItems="center">
         <Flex
-          style={{ height: '70vh' }}
+          style={{ height: '90vh' }}
           direction="column"
           justifyContent="center"
           padding="0 30px"
@@ -47,7 +50,7 @@ const Home = () => {
           </HomeTitle>
           <Button style={{ marginTop: '20px' }}>Get Started</Button>
         </Flex>
-        <StyledImg src={require('../../assets/home.gif')} alt='shape' />
+        <StyledImg src={require('../../assets/home.gif')} alt="shape" />
       </Flex>
     </>
   );
