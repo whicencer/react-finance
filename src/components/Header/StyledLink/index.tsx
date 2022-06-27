@@ -7,12 +7,13 @@ const StyledLink = styled(NavLink)`
   color: #d0d0da;
   margin: 0 14px;
   transition: 0.2s;
-
+  
   &.active {
     color: ${(props) => props.theme.colors.azureColor};
-  }
-  &:hover {
-    color: #70707c;
+    
+    &:hover {
+      text-shadow: 0 0 10px ${(props) => props.theme.colors.azureColor};
+    }
   }
 `;
 

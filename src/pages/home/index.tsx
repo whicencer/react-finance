@@ -6,7 +6,7 @@ import Button from '../../components/ui/Button';
 
 const titleAnimate = keyframes`
   from {
-    transform: translateY(-40px);
+    transform: translateY(-30px);
     opacity: 0;
   }
   to {
