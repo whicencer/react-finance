@@ -1,6 +1,8 @@
-import Home from '../home';
-import NotFound from '../notFound';
+import { lazy } from 'react';
 import { RouteComponent } from './types';
+
+const Home = lazy(() => import('../home'));
+const NotFound = lazy(() => import('../notFound'));
 
 export const publicRoutes: RouteComponent[] = [
   {
