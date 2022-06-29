@@ -10,7 +10,7 @@ const titleAnimate = keyframes`
     opacity: 1;
   }
 `;
-export const HomeTitle = styled.h1`
+export const WelcomeTitle = styled.h1`
   font-size: 55px;
   animation: ${titleAnimate} 1s linear;
 
