@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loader from '../../components/ui/Loader';
-import PrivateRoutes from './PrivateRoutes';
-import PublicRoutes from './PublicRoutes';
+import NotFound from '../notFound';
+import PrivateRoutes from './lib/PrivateRoutes';
+import PublicRoutes from './lib/PublicRoutes';
 import { privateRoutes, publicRoutes } from './routes';
 
 const Routing = () => {
@@ -26,6 +27,7 @@ const Routing = () => {
         <Route element={<PrivateRoutes />}>
           {mappedPrivate}
         </Route>
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Suspense>
   );

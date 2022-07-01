@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../../components/Header';
 
 const NotFoundComponent = styled.section`
   display: flex;
@@ -15,13 +14,10 @@ const NotFoundText = styled.h1`
 
 const NotFound = () => {
   return (
-    <>
-      <Header />
-      <NotFoundComponent>
-        <NotFoundText>404</NotFoundText>
-        <h2>PAGE NOT FOUND</h2>
-      </NotFoundComponent>
-    </>
+    <NotFoundComponent>
+      <NotFoundText>404</NotFoundText>
+      <h2>PAGE NOT FOUND</h2>
+    </NotFoundComponent>
   );
 };
 

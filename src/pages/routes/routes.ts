@@ -2,8 +2,7 @@ import { lazy } from 'react';
 import { RouteComponent } from './types';
 
 const Welcome = lazy(() => import('../welcome'));
-const NotFound = lazy(() => import('../notFound'));
-const Home = lazy(() => import('../home'));
+const Dashboard = lazy(() => import('../dashboard'));
 
 export const publicRoutes: RouteComponent[] = [
   {
@@ -11,17 +10,12 @@ export const publicRoutes: RouteComponent[] = [
     component: Welcome,
     key: 'welcome',
   },
-  {
-    path: '*',
-    component: NotFound,
-    key: '404',
-  },
 ];
 
 export const privateRoutes: RouteComponent[] = [
   {
-    path: '/home',
-    component: Home,
-    key: 'home',
+    path: '/dashboard',
+    component: Dashboard,
+    key: 'dashboard',
   },
 ];
