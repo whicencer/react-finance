@@ -14,7 +14,6 @@ const Button = styled.button`
   
   &:hover {
     box-shadow: 0 0 30px ${(props) => props.theme.colors.azureColor};
-    transform: translateX(20px)
   }
 `;
 
