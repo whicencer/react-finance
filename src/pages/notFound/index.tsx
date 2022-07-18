@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router';
 
 const NotFoundComponent = styled.section`
   display: flex;
@@ -13,10 +14,23 @@ const NotFoundText = styled.h1`
 `;
 
 const NotFound = () => {
+  const [timer, setTimer] = useState(5);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimer(timer-1);
+      if (timer === 1) {
+        navigate('/dashboard');
+      }
+    }, 1000);
+  });
+
   return (
     <NotFoundComponent>
       <NotFoundText>404</NotFoundText>
       <h2>PAGE NOT FOUND</h2>
+      Redirect in {timer}
     </NotFoundComponent>
   );
 };

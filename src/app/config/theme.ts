@@ -60,6 +60,7 @@ const theme: DefaultTheme = {
     azureColor: '#0062ff',
     amberColor: '#fe7e07',
     greenColor: '#15ffab',
+    gray9: '#1E1E24',
   },
 };
 

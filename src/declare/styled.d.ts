@@ -61,6 +61,7 @@ declare module 'styled-components' {
       azureColor: string;
       amberColor: string;
       greenColor: string;
+      gray9: string;
     };
   }
 }
