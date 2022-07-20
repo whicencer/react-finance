@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-export const DropdownStyles = styled.div<{popupActive: boolean}>`
+export const DropdownStyles = styled.div<{isActive: boolean}>`
   background-color: ${(props) => props.theme.colors.secondaryColor};
-  display: inline-block;
-  visibility: ${(props) => props.popupActive ? 'visible' : 'hidden'};
-  opacity: ${(props) => props.popupActive ? 1 : 0};
+  display: ${(props) => props.isActive ? 'inline-block' : 'none'};
+  opacity: ${(props) => props.isActive ? 1 : 0};
   transition: .1s;
   width: 200px;
   padding: 4px;
