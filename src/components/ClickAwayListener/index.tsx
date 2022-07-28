@@ -18,6 +18,7 @@ const ClickAwayListener: React.FC<Props> = ({ children, onClickHandler, buttonRe
 
     return () => document.removeEventListener('click', awayClickHandler);
   }, [currentStatus]);
+  
   return (
     <>
       { children }

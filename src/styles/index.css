@@ -4,3 +4,22 @@ html, body {
   background-color: #000;
   color: #fff;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5b5b5b;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #424242;
+}

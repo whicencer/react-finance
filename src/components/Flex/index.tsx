@@ -19,7 +19,7 @@ const Flex = styled.div<IFlexProps>`
   justify-content: ${(props) => props.justifyContent || 'flex-start'};
   align-items: ${(props) => props.alignItems || 'flex-start'};
   margin: ${(props) => props.margin || '0'};
-  padding: ${props => props.padding || '0'}
+  padding: ${props => props.padding || '0'};
 `;
 
 export default Flex;

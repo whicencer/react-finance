@@ -9,6 +9,7 @@ import LogoLink from './LogoLink';
 import StyledLink from './StyledLink';
 import Dropdown from '../ui/Dropdown';
 import ClickAwayListener from '../ClickAwayListener';
+import { dropdownButtonStyles } from './header.styles';
 
 const HeaderComponent = styled.header`
   display: flex;
@@ -49,9 +50,9 @@ const Header = () => {
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/about'}>About</StyledLink>
       </nav>
-      <button ref={dropdownButton} style={{ cursor: 'pointer' }} onClick={() => setDropdownOpen(prev=>!prev)}>
+      <span ref={dropdownButton} style={dropdownButtonStyles} onClick={() => setDropdownOpen(prev=>!prev)}>
         {user.displayName}
-      </button>
+      </span>
       <ClickAwayListener currentStatus={isDropdownOpen} buttonRef={dropdownButton} onClickHandler={ () => setDropdownOpen(false) }>
         <Dropdown
           dropdownList={
