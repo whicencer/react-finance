@@ -1,30 +1,13 @@
 import React from 'react';
+
+import { DashboardContent } from './dashboard.styles';
+import { AddCreditCard } from './dashboard.styles';
+
 import Header from '../../components/Header';
-import styled from 'styled-components';
 import CreditCard from '../../components/CreditCard';
 import Flex from '../../components/Flex';
-
-const DashboardContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-`;
-const AddCreditCard = styled.button`
-  border: 2px solid #1e1e24;
-  border-radius: 6px;
-  outline: none;
-  padding: 7px;
-  background-color: transparent;
-  color: #fff;
-  font-weight: 700;
-  font-size: 13px;
-  cursor: pointer;
-  transition: .2s;
-  
-  &:hover {border-color: blue;}
-`;
+import { Separator } from '../../components/Separator/Separator';
+import LineChart from '../../components/LineChart';
 
 const Dashboard = () => {
   return (
@@ -32,7 +15,7 @@ const Dashboard = () => {
       <Header />
       <DashboardContent>
         <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
-          <h1>Dashboard</h1>
+          <h2>Dashboard</h2>
           <AddCreditCard>Add Credit Card</AddCreditCard>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
@@ -40,6 +23,9 @@ const Dashboard = () => {
           <CreditCard />
           <CreditCard />
         </Flex>
+        <Separator />
+        <h2>Statistic</h2>
+        <LineChart />
       </DashboardContent>
     </div>
   );

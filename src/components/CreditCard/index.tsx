@@ -20,7 +20,7 @@ const CreditCard = () => {
     <Card>
       <Flex direction={'column'} justifyContent={'space-around'}>
         <h2>$1,234,320</h2>
-        <h4>Credit limit: $10,000</h4>
+        <h4>Card Name: General</h4>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={{ position: 'absolute', top: '0', right: '0' }}>
         <img style={{ width: '50px' }} src="https://cutewallpaper.org/24/visa-logo-png/23-visa-logo-transparent-logo-icon-source.png"

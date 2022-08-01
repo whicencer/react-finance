@@ -48,7 +48,7 @@ const Header = () => {
       <nav>
         <StyledLink to={'/'}>Home</StyledLink>
         <StyledLink to={'/investments'}>Investments</StyledLink>
-        <StyledLink to={'/about'}>About</StyledLink>
+        <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
       <span ref={dropdownButton} style={dropdownButtonStyles} onClick={() => setDropdownOpen(prev=>!prev)}>
         {user.displayName}
