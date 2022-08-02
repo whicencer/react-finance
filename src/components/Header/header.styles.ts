@@ -4,15 +4,6 @@ export const dropdownButtonStyles = {
   cursor: 'pointer'
 };
 
-export const burgerButton = {
-  display: 'block',
-  width: '25px',
-  height: '2px',
-  backgroundColor: '#fff',
-  margin: '6px 0',
-  transition: '0.4s',
-};
-
 export const HeaderComponent = styled.header`
   display: flex;
   justify-content: space-around;

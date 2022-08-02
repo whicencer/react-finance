@@ -1,24 +1,29 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../../app/hooks/useAuth';
 import LogoLink from './LogoLink';
-import StyledLink from './StyledLink';
+import StyledLink from '../StyledLink';
 import Dropdown from '../ui/Dropdown';
 import ClickAwayListener from '../ClickAwayListener';
-import { burgerButton, dropdownButtonStyles, HeaderComponent } from './header.styles';
+import { dropdownButtonStyles, HeaderComponent } from './header.styles';
 import { useLogout } from '../../app/hooks/useLogout';
+import MobileMenu from '../MobileMenu';
+
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Header = () => {
-  const [ isDropdownOpen, setDropdownOpen ] = useState(false);
-  const [ isMenuActive, setIsMenuActive ] = useState(false);
   const dropdownButton = useRef<HTMLButtonElement>(null);
+
+  const [ isDropdownOpen, setDropdownOpen ] = useState(false);
+  const [isBurgerOpen, setBurgerOpen] = useState(false);
+
   const { user } = useAuth();
   const [ logout ] = useLogout();
   
   return (
     <HeaderComponent>
-      <LogoLink to={'/'}>REACT FINANCE</LogoLink>
+      <LogoLink to={'/dashboard'}>REACT FINANCE</LogoLink>
       <nav>
-        <StyledLink to={'/'}>Home</StyledLink>
+        <StyledLink to={'/dashboard'}>Home</StyledLink>
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
@@ -35,30 +40,10 @@ const Header = () => {
           isActive={isDropdownOpen}
         />
       </ClickAwayListener>
-      <button onClick={() => setIsMenuActive(!isMenuActive)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
-        <span style={burgerButton}></span>
-        <span style={burgerButton}></span>
-        <span style={burgerButton}></span>
+      <button onClick={() => setBurgerOpen(!isBurgerOpen)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+        <GiHamburgerMenu size={30} color={'#fff'} />
       </button>
-      <div style={{
-        transform: `${isMenuActive ? 'translateX(0)' : 'translateX(-400px)'}`,
-        transition: '.3s',
-        position: 'absolute',
-        top: '8%',
-        backgroundColor: '#0F0F13',
-        opacity: `${isMenuActive ? '1' : '0'}`,
-        width: '100%',
-        height: '20%',
-        zIndex: 100,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        paddingTop: '20px',
-      }}>
-        <a href='#'>Home</a>
-        <a href='#'>Investments</a>
-        <a href='#'>Transactions</a>
-      </div>
+      <MobileMenu isBurgerOpen={isBurgerOpen} />
     </HeaderComponent>
   );
 };
