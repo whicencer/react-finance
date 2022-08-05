@@ -13,7 +13,7 @@ const Button = styled.button`
   transition: .5s;
   
   &:hover {
-    box-shadow: 0 0 30px ${(props) => props.theme.colors.azureColor};
+    box-shadow: 0 0 15px ${(props) => props.theme.colors.azureColor};
   }
 `;
 

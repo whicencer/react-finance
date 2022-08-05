@@ -1,26 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 import Flex from '../Flex';
+import { Card } from './creditCard.styles';
 
-const Card = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(21deg, #dd03e4, #5611ec);
-  border-radius: 20px;
-  padding: 10px 25px;
-  margin: 0 10px;
-  max-width: 225px;
-  height: 150px;
-  min-width: 250px;
-`;
+interface Props {
+  cardName: string;
+  balance: number;
+}
 
-const CreditCard = () => {
+const CreditCard: React.FC<Props> = ({ cardName, balance }) => {
   return (
     <Card>
       <Flex direction={'column'} justifyContent={'space-around'}>
-        <h2>$1,234,320</h2>
-        <h4>Card Name: General</h4>
+        <h2>${balance}</h2>
+        <h4>Card Name: {cardName}</h4>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={{ position: 'absolute', top: '0', right: '0' }}>
         <img style={{ width: '50px' }} src="https://cutewallpaper.org/24/visa-logo-png/23-visa-logo-transparent-logo-icon-source.png"
