@@ -34,7 +34,7 @@ const Header = () => {
         <Dropdown
           dropdownList={
             [
-              { text: 'Logout', onClick: logout },
+              { text: 'Logout', onClick: logout }
             ]
           }
           isActive={isDropdownOpen}

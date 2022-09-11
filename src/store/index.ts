@@ -9,3 +9,5 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
+
+export type AppDispatch = typeof store.dispatch

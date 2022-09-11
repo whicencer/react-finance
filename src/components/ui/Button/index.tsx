@@ -5,7 +5,7 @@ const Button = styled.button`
   color: #fff;
   border-radius: 6px;
   border: none;
-  padding: 15px 40px;
+  padding: 10px 35px;
   font-family: ${(props) => props.theme.defaultFontFamily};
   font-size: 16px;
   font-weight: 600;
