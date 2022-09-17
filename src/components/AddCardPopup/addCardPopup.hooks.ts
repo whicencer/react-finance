@@ -11,6 +11,6 @@ export const useAddCard = () => {
 
   return async (data: ICardData) => {
     dispatch(addCard(data));
-    await setDoc(doc(firestore, `user_${currentUser?.uid}`, `book_${data.id}`), data);
+    await setDoc(doc(firestore, `user_${currentUser?.uid}`, `card_${data.id}`), data);
   };
 };

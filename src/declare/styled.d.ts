@@ -55,6 +55,8 @@ declare module 'styled-components' {
     };
     defaultFontFamily: string;
     colors: {
+      gradient1: string;
+      gradient2: string;
       primaryColor: string;
       whiteColor: string;
       secondaryColor: string;

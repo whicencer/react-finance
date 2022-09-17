@@ -12,7 +12,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance }) => {
     <Card>
       <Flex direction={'column'} justifyContent={'space-around'}>
         <h2>${balance}</h2>
-        <h4>Card Name: {cardName}</h4>
+        <p>{cardName}</p>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={{ position: 'absolute', top: '0', right: '0' }}>
         <img style={{ width: '50px' }} src="https://cutewallpaper.org/24/visa-logo-png/23-visa-logo-transparent-logo-icon-source.png"

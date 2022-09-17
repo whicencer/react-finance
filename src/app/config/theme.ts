@@ -54,6 +54,8 @@ const theme: DefaultTheme = {
   },
   defaultFontFamily: 'Inter',
   colors: {
+    gradient1: 'linear-gradient(180deg, #23379a,#09133c)',
+    gradient2: 'linear-gradient(21deg, #dd03e4, #5611ec)',
     whiteColor: '#fff',
     primaryColor: '#000',
     secondaryColor: '#0F0F13',
