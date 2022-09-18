@@ -54,8 +54,9 @@ const theme: DefaultTheme = {
   },
   defaultFontFamily: 'Inter',
   colors: {
-    gradient1: 'linear-gradient(180deg, #23379a,#09133c)',
-    gradient2: 'linear-gradient(21deg, #dd03e4, #5611ec)',
+    cardBackground1: 'linear-gradient(180deg, #23379a,#09133c)',
+    cardBackground2: 'linear-gradient(21deg, #dd03e4, #5611ec)',
+    cardBackground3: 'https://weva.pro/storage/user/8042/20220303-210744-63_m.jpg?1653786001',
     whiteColor: '#fff',
     primaryColor: '#000',
     secondaryColor: '#0F0F13',

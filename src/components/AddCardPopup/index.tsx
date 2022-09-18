@@ -5,10 +5,11 @@ import Flex from "../Flex";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import Popup from "../ui/Popup";
-import { IAddCardPopup } from './addCardPopup.types';
+import { IPopupStates } from '../../app/typings/IPopupStates';
 import { generateObjectId } from '../../utils/generateObjectId';
+import { checkLength } from './addCardPopup.utils';
 
-const AddCardPopup: React.FC<IAddCardPopup> = ({ isActive, setActive }) => {
+const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const id = generateObjectId();
 
   const [cardName, setCardName] = useState('');
@@ -16,6 +17,11 @@ const AddCardPopup: React.FC<IAddCardPopup> = ({ isActive, setActive }) => {
   const addNewCard = useAddCard();
   
   const data = { balance: Number(balance), cardName, id };
+
+  const addCard = () => {
+    const lengthIsOk = checkLength(cardName, Number(balance));
+    lengthIsOk ? addNewCard(data) : alert('Please, be sure that your card name is less than 20 and balance is not more than 999.999.999');
+  };
 
   return (
     <Popup isActive={isActive} setActive={setActive}>
@@ -34,7 +40,7 @@ const AddCardPopup: React.FC<IAddCardPopup> = ({ isActive, setActive }) => {
           onChange={(e) => setBalance(e.target.value)}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />
-        <Button style={{ width: '60%' }} onClick={() => addNewCard(data)}>Add card</Button>
+        <Button style={{ width: '60%' }} onClick={addCard}>Add card</Button>
       </Flex>
     </Popup>
   );

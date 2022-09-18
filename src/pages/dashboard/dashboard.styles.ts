@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const DashboardContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
+display: flex;
+flex-direction: column;
+padding: 20px;
+max-width: 960px;
+margin: 0 auto;
 `;
 
 export const AddCreditCard = styled.button`
