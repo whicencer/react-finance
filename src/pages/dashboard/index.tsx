@@ -20,6 +20,8 @@ const Dashboard = () => {
   const [isAddCardActive, setAddCardActive] = useState(false);
   const [isCardThemeActive, setCardThemeActive] = useState(false);
 
+  const [currentCardId, setCurrentCardId] = useState('');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,8 +32,13 @@ const Dashboard = () => {
     });
   }, []);
 
-  const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance }, key) => {
-    return <CreditCard onClick={() => setCardThemeActive(true)} cardName={cardName} balance={balance} key={key} />;
+  const changeThemePopup = (cardId: string) => {
+    setCardThemeActive(true);
+    setCurrentCardId(cardId);
+  };
+
+  const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
+    return <CreditCard themeId={themeId} onClick={() => changeThemePopup(id)} cardName={cardName} balance={balance} key={id} />;
   });
 
   return (
@@ -47,7 +54,7 @@ const Dashboard = () => {
         </Flex>
       </DashboardContent>
       <AddCardPopup isActive={isAddCardActive} setActive={setAddCardActive} />
-      <CardThemePopup isActive={isCardThemeActive} setActive={setCardThemeActive} />
+      <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={currentCardId} />
     </div>
   );
 };

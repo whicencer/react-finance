@@ -5,12 +5,13 @@ import { Card } from './creditCard.styles';
 interface Props {
   cardName: string;
   balance: number;
+  themeId: number;
   onClick?: () => void;
 }
 
-const CreditCard: React.FC<Props> = ({ cardName, balance, onClick }) => {
+const CreditCard: React.FC<Props> = ({ cardName, balance, onClick, themeId }) => {
   return (
-    <Card onClick={onClick}>
+    <Card themeId={themeId} onClick={onClick}>
       <Flex direction={'column'} justifyContent={'space-around'}>
         <h2>${balance}</h2>
         <p>{cardName}</p>

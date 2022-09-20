@@ -16,7 +16,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const [balance, setBalance] = useState('');
   const addNewCard = useAddCard();
   
-  const data = { balance: Number(balance), cardName, id };
+  const data = { balance: Number(balance), cardName, id, themeId: 2 };
 
   const addCard = () => {
     const lengthIsOk = checkLength(cardName, Number(balance));
