@@ -57,7 +57,7 @@ const theme: DefaultTheme = {
     cardBackground: {
       1: 'linear-gradient(180deg, #23379a,#09133c)',
       2: 'linear-gradient(21deg, #dd03e4, #5611ec)',
-      3: `url('https://weva.pro/storage/user/8042/20220303-210744-63_m.jpg?1653786001')`,
+      3: `url('https://mobimg.b-cdn.net/v3/fetch/f1/f13ed1fab96f1dcf5c3afcdbc7159fd0.jpeg')`,
     },
     whiteColor: '#fff',
     primaryColor: '#000',

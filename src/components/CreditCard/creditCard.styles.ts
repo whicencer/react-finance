@@ -4,7 +4,13 @@ export const Card = styled.div<{themeId: number}>`
   position: relative;
   display: flex;
   justify-content: space-between;
-  background: ${props => props.themeId === 1 ? props.theme.colors.cardBackground[1] : props.theme.colors.cardBackground[2]};
+  background: ${props => {
+    switch(props.themeId) {
+      case 1: return props.theme.colors.cardBackground[1];
+      case 2: return props.theme.colors.cardBackground[2];
+      case 3: return props.theme.colors.cardBackground[3];
+    }
+  }};
   background-size: cover;
   border-radius: 20px;
   padding: 10px 25px;
