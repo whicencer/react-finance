@@ -12,7 +12,7 @@ import AddCardPopup from '../../components/AddCardPopup';
 import { getCardFromDB } from './dashboard.service';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store/slices/creditCards';
-import CardThemePopup from '../../components/CardThemePopup';
+import { CardThemePopup } from '../../components/CardThemePopup';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
