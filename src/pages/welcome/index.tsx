@@ -42,7 +42,7 @@ const Welcome = () => {
       </Flex>
       <Flex justifyContent="space-around" alignItems="center">
         <Flex
-          style={{ height: '90vh' }}
+          style={{ height: '90vh', zIndex: 2 }}
           direction="column"
           justifyContent="center"
           padding="0 30px"

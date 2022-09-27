@@ -1,19 +1,20 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../app/hooks/useAuth';
 import LogoLink from './LogoLink';
 import StyledLink from '../StyledLink';
 import Dropdown from '../ui/Dropdown';
-import ClickAwayListener from '../ClickAwayListener';
 import { dropdownButtonStyles, HeaderComponent } from './header.styles';
 import { useLogout } from '../../app/hooks/useLogout';
 import MobileMenu from '../MobileMenu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { useAwayClick } from '../../app/hooks/useAwayClick';
 
 const Header = () => {
-  const dropdownButton = useRef<HTMLButtonElement>(null);
-
+  // Dropdown
   const [ isDropdownOpen, setDropdownOpen ] = useState(false);
+  useAwayClick(() => setDropdownOpen(false));
+
   const [isBurgerOpen, setBurgerOpen] = useState(false);
 
   const { user } = useAuth();
@@ -27,19 +28,20 @@ const Header = () => {
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
-      <span ref={dropdownButton} style={dropdownButtonStyles} onClick={() => setDropdownOpen(prev=>!prev)}>
+      <span style={dropdownButtonStyles} onClick={(e) => {
+        e.stopPropagation();
+        setDropdownOpen(prev=>!prev);
+      }}>
         {user.displayName}
       </span>
-      <ClickAwayListener currentStatus={isDropdownOpen} buttonRef={dropdownButton} onClickHandler={ () => setDropdownOpen(false) }>
-        <Dropdown
-          dropdownList={
-            [
-              { text: 'Logout', onClick: logout }
-            ]
-          }
-          isActive={isDropdownOpen}
-        />
-      </ClickAwayListener>
+      <Dropdown
+        dropdownList={
+          [
+            { text: 'Logout', onClick: logout }
+          ]
+        }
+        isActive={isDropdownOpen}
+      />
       <button onClick={() => setBurgerOpen(!isBurgerOpen)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
         <GiHamburgerMenu size={30} color={'#fff'} />
       </button>

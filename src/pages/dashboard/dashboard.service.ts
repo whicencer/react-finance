@@ -1,5 +1,6 @@
 import { getAuth } from '@firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
+import { Dispatch, SetStateAction } from 'react';
 import { db } from '../../app/config/firebase';
 
 export const getCardFromDB = async () => {
@@ -9,4 +10,13 @@ export const getCardFromDB = async () => {
   const cardsList = cardSnapshot.docs.map(doc => doc.data());
 
   return cardsList;
+};
+
+export const changeThemePopup = (
+    cardId: string,
+    setCardThemeActive: Dispatch<SetStateAction<boolean>>,
+    setCurrentCardId: Dispatch<SetStateAction<string>>
+  ) => {
+  setCardThemeActive(true);
+  setCurrentCardId(cardId);
 };

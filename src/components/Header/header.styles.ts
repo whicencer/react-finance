@@ -18,9 +18,6 @@ export const HeaderComponent = styled.header`
     &>nav {
       display: none;
     }
-    &>span {
-      display: none;
-    }
     &>button {
       display: inline-block;
     }

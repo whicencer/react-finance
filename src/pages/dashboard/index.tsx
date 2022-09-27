@@ -9,14 +9,16 @@ import Flex from '../../components/Flex';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import AddCardPopup from '../../components/AddCardPopup';
 
-import { getCardFromDB } from './dashboard.service';
+import { changeThemePopup, getCardFromDB } from './dashboard.service';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/CardThemePopup';
+import { LastTransactions } from '../../components/LastTransactions';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
 
+  // popups state
   const [isAddCardActive, setAddCardActive] = useState(false);
   const [isCardThemeActive, setCardThemeActive] = useState(false);
 
@@ -25,20 +27,13 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getCardFromDB().then(data => {
-      data.forEach(card => {
-        dispatch(addCard(card));
-      });
-    });
+    getCardFromDB().then(data => data.forEach(card => {
+      dispatch(addCard(card));
+    }));
   }, []);
 
-  const changeThemePopup = (cardId: string) => {
-    setCardThemeActive(true);
-    setCurrentCardId(cardId);
-  };
-
   const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
-    return <CreditCard themeId={themeId} onClick={() => changeThemePopup(id)} cardName={cardName} balance={balance} key={id} />;
+    return <CreditCard themeId={themeId} onClick={() => changeThemePopup(id, setCardThemeActive, setCurrentCardId)} cardName={cardName} balance={balance} key={id} />;
   });
 
   return (
@@ -52,7 +47,10 @@ const Dashboard = () => {
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }
         </Flex>
+        <LastTransactions />
       </DashboardContent>
+      
+      {/* Popups */}
       <AddCardPopup isActive={isAddCardActive} setActive={setAddCardActive} />
       <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={currentCardId} />
     </div>

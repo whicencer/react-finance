@@ -7,8 +7,8 @@ const Button = styled.button`
   border: none;
   padding: 10px 35px;
   font-family: ${(props) => props.theme.defaultFontFamily};
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   cursor: pointer;
   transition: .5s;
   
