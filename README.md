@@ -1,2 +1,2 @@
 ## React Finance
-![image](https://github.com/whicencer/vk-mutli-bot/raw/main/images/Screenshot_2.png)
+![image](https://github.com/whicencer/react-finance/blob/master/screens/react-finance.svg)
