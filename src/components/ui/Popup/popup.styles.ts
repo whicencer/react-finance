@@ -11,6 +11,9 @@ export const PopupContainer = styled.div<IPopupStyledProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: .5s;
+  transition-timing-function: cubic-bezier(.2,0,.2,.1);
   
   background-color: rgba(0, 0, 0, 0.4);
   opacity: ${(props) => props.isActive ? '1' : '0'};
