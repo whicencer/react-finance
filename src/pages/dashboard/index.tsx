@@ -11,7 +11,7 @@ import AddCardPopup from '../../components/AddCardPopup';
 
 import { changeThemePopup, getCardFromDB } from './dashboard.service';
 import { useDispatch } from 'react-redux';
-import { addCard } from '../../store/slices/creditCards';
+import { setCards } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/CardThemePopup';
 
 const Dashboard = () => {
@@ -25,12 +25,10 @@ const Dashboard = () => {
   const [currentCardId, setCurrentCardId] = useState('');
 
   useEffect(() => {
-    getCardFromDB().then(data => data.forEach(card => {
-      dispatch(addCard(card));
-    }));
+    getCardFromDB().then(data => dispatch(setCards(data)));
   }, []);
 
-  const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
+  const cards = !creditCards.cards.length ? `You haven't made any cards yet` : creditCards.cards.map(({ cardName, balance, themeId, id }) => {
     return <CreditCard themeId={themeId} id={id} openPopup={() => changeThemePopup(id, setCardThemeActive, setCurrentCardId)} cardName={cardName} balance={balance} key={id} />;
   });
 
@@ -54,4 +52,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default React.memo(Dashboard);

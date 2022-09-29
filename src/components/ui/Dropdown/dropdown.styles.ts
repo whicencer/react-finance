@@ -16,6 +16,8 @@ export const DropdownButton = styled.li`
   padding: 10px 15px;
   border-radius: 4px;
   margin: 2px 0;
+
+  cursor: pointer;
   
   &:hover {
     background-color: #1E1E24;
