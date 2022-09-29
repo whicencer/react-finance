@@ -18,8 +18,12 @@ const creditCardsSlice = createSlice({
         card.themeId = action.payload.themeId;
       }
     },
+    deleteCard: (state, action) => {
+      const idInState = state.findIndex(el => el.id === action.payload);
+      state.splice(idInState, 1);
+    },
   },
 });
 
-export const { addCard, changeCardTheme } = creditCardsSlice.actions;
+export const { addCard, changeCardTheme, deleteCard } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;

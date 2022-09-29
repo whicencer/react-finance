@@ -13,18 +13,16 @@ import { changeThemePopup, getCardFromDB } from './dashboard.service';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/CardThemePopup';
-import { LastTransactions } from '../../components/LastTransactions';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
+  const dispatch = useDispatch();
 
   // popups state
   const [isAddCardActive, setAddCardActive] = useState(false);
   const [isCardThemeActive, setCardThemeActive] = useState(false);
 
   const [currentCardId, setCurrentCardId] = useState('');
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getCardFromDB().then(data => data.forEach(card => {
@@ -33,7 +31,7 @@ const Dashboard = () => {
   }, []);
 
   const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
-    return <CreditCard themeId={themeId} onClick={() => changeThemePopup(id, setCardThemeActive, setCurrentCardId)} cardName={cardName} balance={balance} key={id} />;
+    return <CreditCard themeId={themeId} id={id} openPopup={() => changeThemePopup(id, setCardThemeActive, setCurrentCardId)} cardName={cardName} balance={balance} key={id} />;
   });
 
   return (
@@ -47,7 +45,6 @@ const Dashboard = () => {
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }
         </Flex>
-        <LastTransactions />
       </DashboardContent>
       
       {/* Popups */}
