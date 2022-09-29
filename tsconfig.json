@@ -22,11 +22,5 @@
   },
   "include": [
     "src"
-  ],
-  "paths": {
-    "@/components/*":["src/components/*"],
-    "@/assets/*":["src/assets/*"],
-    "@/store/*":["src/store/*"],
-    "@/hooks/*":["src/app/hooks/*"]
-  }
+  ]
 }
