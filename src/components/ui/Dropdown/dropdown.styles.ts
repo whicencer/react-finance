@@ -10,8 +10,8 @@ export const DropdownStyles = styled.div<{isActive: boolean}>`
   border-radius: 8px;
   position: absolute;
 
-  top: 50px;
-  right: 60px;
+  top: 9%;
+  right: 5%;
 `;
 
 export const DropdownButton = styled.li`

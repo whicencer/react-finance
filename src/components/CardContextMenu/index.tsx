@@ -25,27 +25,7 @@ export const CardContextMenu = (props: {id: string, openPopup: any, x: number, y
           { text: 'Change theme', onClick: (e) => {
             e.stopPropagation();
             props.openPopup();
-          } },
-          { text: 'Change theme', onClick: (e) => {
-            e.stopPropagation();
-            props.openPopup();
-          } },
-          { text: 'Change theme', onClick: (e) => {
-            e.stopPropagation();
-            props.openPopup();
-          } },
-          { text: 'Change theme', onClick: (e) => {
-            e.stopPropagation();
-            props.openPopup();
-          } },
-          { text: 'Change theme', onClick: (e) => {
-            e.stopPropagation();
-            props.openPopup();
-          } },
-          { text: 'Change theme', onClick: (e) => {
-            e.stopPropagation();
-            props.openPopup();
-          } },
+          } }
         ]
       }
       isActive={true}
