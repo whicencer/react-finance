@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useAuth } from '../../app/hooks/useAuth';
 import LogoLink from './LogoLink';
 import StyledLink from '../StyledLink';
-import Dropdown from '../ui/Dropdown';
 import { dropdownButtonStyles, HeaderComponent } from './header.styles';
 import { useLogout } from '../../app/hooks/useLogout';
 import MobileMenu from '../MobileMenu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
+import Droplist from '../ui/Dropdown/Droplist';
 
 const Header = () => {
   // Dropdown
@@ -34,7 +34,7 @@ const Header = () => {
       }}>
         {user.displayName}
       </span>
-      <Dropdown
+      <Droplist
         dropdownList={
           [
             { text: 'Logout', onClick: logout }

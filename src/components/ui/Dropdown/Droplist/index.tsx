@@ -1,8 +1,8 @@
 import React from 'react';
-import { DropdownButton, DropdownStyles } from './dropdown.styles';
-import { DropdownPropsType } from './dropdown.types';
+import { DropdownButton, DropdownStyles } from '../dropdown.styles';
+import { DropListPropsType } from './droplist.types';
 
-const Dropdown: React.FC<DropdownPropsType> = ({ dropdownList, isActive }) => {
+const Droplist: React.FC<DropListPropsType> = ({ dropdownList, isActive }) => {
   return (
     <DropdownStyles isActive={isActive}>
       {
@@ -14,4 +14,4 @@ const Dropdown: React.FC<DropdownPropsType> = ({ dropdownList, isActive }) => {
   );
 };
 
-export default Dropdown;
+export default Droplist;

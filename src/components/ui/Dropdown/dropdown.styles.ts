@@ -9,9 +9,11 @@ export const DropdownStyles = styled.div<{isActive: boolean}>`
   padding: 4px;
   border-radius: 8px;
   position: absolute;
-  top: 60px;
-  right: 50px;
+
+  top: 50px;
+  right: 60px;
 `;
+
 export const DropdownButton = styled.li`
   padding: 10px 15px;
   border-radius: 4px;

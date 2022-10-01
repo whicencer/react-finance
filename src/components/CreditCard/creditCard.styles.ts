@@ -1,7 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
 export const Card = styled.div<{themeId: number}>`
-  position: relative;
   display: flex;
   justify-content: space-between;
   background: ${props => {
@@ -19,3 +19,5 @@ export const Card = styled.div<{themeId: number}>`
   height: 150px;
   min-width: 250px;
 `;
+
+export const cardSecondSection: React.CSSProperties = { position: 'relative', top: '-10px', right: '-20px' };
