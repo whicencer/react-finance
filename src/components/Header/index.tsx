@@ -28,20 +28,21 @@ const Header = () => {
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
-      <span style={dropdownButtonStyles} onClick={(e) => {
+      <div onClick={(e) => {
         e.stopPropagation();
         setDropdownOpen(prev=>!prev);
       }}>
-        {user.displayName}
-      </span>
-      <Droplist
-        dropdownList={
-          [
-            { text: 'Logout', onClick: logout }
-          ]
-        }
-        isActive={isDropdownOpen}
-      />
+        <p style={dropdownButtonStyles}>{user.displayName}</p>
+
+        <Droplist
+          dropdownList={
+            [
+              { text: 'Logout', onClick: logout }
+            ]
+          }
+          isActive={isDropdownOpen}
+        />
+      </div>
       <button onClick={() => setBurgerOpen(!isBurgerOpen)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
         <GiHamburgerMenu size={30} color={'#fff'} />
       </button>

@@ -5,26 +5,27 @@ import ContextMenu from '../ui/Dropdown/ContextMenu';
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../app/config/firebase';
 import { useAuth } from '../../app/hooks/useAuth';
+import { ICardContextMenuProps } from './cardContextMenu.types';
 
-export const CardContextMenu = (props: {id: string, openPopup: any, x: number, y: number}) => {
+export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup, x, y}) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
   return (
     <ContextMenu
-      x={props.x}
-      y={props.y}
+      x={x}
+      y={y}
       dropdownList={
         [
           { text: 'Delete card', onClick: async (e) => {
             e.stopPropagation();
-            dispatch(deleteCard(props.id));
+            dispatch(deleteCard(id));
 
-            await deleteDoc(doc(db, `user_${user.uid}`, `card_${props.id}`));
+            await deleteDoc(doc(db, `user_${user.uid}`, `card_${id}`));
           } },
           { text: 'Change theme', onClick: (e) => {
             e.stopPropagation();
-            props.openPopup();
+            openPopup();
           } }
         ]
       }

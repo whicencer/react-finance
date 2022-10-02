@@ -2,7 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICardData } from '../../../app/typings/ICardData';
 
 const initialState:{cards: ICardData[]}  = {
-  cards: []
+  cards: [
+    {
+      cardName: 'Credit',
+      balance: 10000,
+      id: '123321',
+      themeId: 1
+    }
+  ]
 };
 
 
