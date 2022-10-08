@@ -12,7 +12,6 @@ export const DropdownStyles = styled.div<{isActive: boolean}>`
   border: 1px solid #8f8f8f;
 
   margin-top: 20px;
-  right: 30px;
 `;
 
 export const DropdownButton = styled.li`
