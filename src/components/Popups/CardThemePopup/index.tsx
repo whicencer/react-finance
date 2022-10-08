@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { IPopupStates } from '../../../app/typings/IPopupStates';
 import Flex from '../../Flex';
-import { InvisibleButton, Preview } from './cardThemePopup.styles';
+import { InvisibleButton, Preview, Image } from './cardThemePopup.styles';
 import Popup from '../../ui/Popup';
-import { Image } from './cardThemePopup.styles';
 import Button from '../../ui/Button';
 
 import { useDispatch } from 'react-redux';
