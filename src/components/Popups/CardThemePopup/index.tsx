@@ -19,7 +19,7 @@ export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = 
     changeTheme(id, themeId).then(() => {
       dispatch(changeCardTheme({ id, themeId }));
       popupState.setActive(false);
-    });``
+    });
   };
 
   return (
