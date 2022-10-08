@@ -18,8 +18,8 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
   useAwayClick(() => setContext(false));
 
   return (
-    <Card themeId={themeId} onContextMenu={e => {
-      e.preventDefault();
+    <Card themeId={themeId} onClick={e => {
+      e.stopPropagation();
       setContext(true);
       setCoords({x: e.pageX, y: e.pageY});
     }}>
