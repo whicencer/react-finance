@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AddTransactionPopup } from '../popups/AddTransactionPopup';
+import { AddTransactionPopup } from '../Popups/AddTransactionPopup';
 
 import Flex from '../Flex';
 import { TransactionItem } from '../TransactionItem';
