@@ -23,3 +23,7 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #424242;
 }
+
+label {
+  font-size: 12px;
+}

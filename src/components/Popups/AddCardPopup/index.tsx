@@ -48,6 +48,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
     <Popup isActive={isActive} setActive={setActive}>
       <Flex direction='column' alignItems='center'>
         <AddCardPopupTitle>Add credit card</AddCardPopupTitle>
+        <label style={{ color: 'red', display: errorVisible ? 'block' : 'none' }}>{errorMessage}</label>
         <Input
           placeholder='Card Name'
           value={cardName}
@@ -55,7 +56,6 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
           onBlur={handleBlur}
           style={{ margin: '10px', width: '80%' }}
         />
-        <p style={{ color: 'red', display: errorVisible ? 'block' : 'none' }}>{errorMessage}</p>
         <Input
           type={'number'}
           placeholder='Balance'
