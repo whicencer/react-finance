@@ -7,12 +7,12 @@ import Header from '../../components/Header';
 import CreditCard from '../../components/CreditCard';
 import Flex from '../../components/Flex';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import AddCardPopup from '../../components/popups/AddCardPopup';
+import AddCardPopup from '../../components/Popups/AddCardPopup';
 
 import { changeThemePopup, getCardFromDB } from './dashboard.service';
 import { useDispatch } from 'react-redux';
 import { setCards } from '../../store/slices/creditCards';
-import { CardThemePopup } from '../../components/popups/CardThemePopup';
+import { CardThemePopup } from '../../components/Popups/CardThemePopup';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
