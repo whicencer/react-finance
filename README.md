@@ -2,7 +2,7 @@
 ![Banner](https://github.com/whicencer/react-finance/blob/master/screens/react-finance.svg)
 
 ## Demo
-(https://react-finance.vercel.app)
+https://react-finance.vercel.app
 
 ## Todo
 #### Done
