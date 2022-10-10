@@ -9,12 +9,8 @@ https://react-finance.vercel.app
 #### Done
 - [x] - Validating input on adding cards  
 
-#### Message Popup
-- [] - Create popup message for changing theme  
-- [] - Create popup message for adding card  
-- [] - Create UI message popup  
-
 #### Transactions
+- [] - Transactions page
 - [] - Adding transactions to store
 - [] - Adding transactions to DB
 - [] - Getting transactions from DB
