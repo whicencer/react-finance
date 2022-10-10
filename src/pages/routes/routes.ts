@@ -3,6 +3,7 @@ import { RouteComponent } from './types';
 
 const Welcome = lazy(() => import('../welcome'));
 const Dashboard = lazy(() => import('../dashboard'));
+const Transactions = lazy(() => import('../transactions'));
 
 export const publicRoutes: RouteComponent[] = [
   {
@@ -17,5 +18,10 @@ export const privateRoutes: RouteComponent[] = [
     path: '/dashboard',
     component: Dashboard,
     key: 'dashboard',
+  },
+  {
+    path: '/transactions',
+    component: Transactions,
+    key: 'transactions',
   },
 ];

@@ -11,7 +11,7 @@ const MobileMenu: React.FC<Props> = ({ isBurgerOpen }) => {
     <MobileMenuStyled isBurgerOpen={isBurgerOpen}>
       <StyledLink to={'/dashboard'}>Home</StyledLink>
       <StyledLink to={'/investments'}>Investments</StyledLink>
-      <StyledLink to={'/transaction'}>Transaction</StyledLink>
+      <StyledLink to={'/transactions'}>Transactions</StyledLink>
     </MobileMenuStyled>
   );
 };
