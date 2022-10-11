@@ -9,9 +9,10 @@ https://react-finance.vercel.app
 #### Done
 - [x] - Validating input on adding cards  
 - [x] - Transactions page
+- [x] - Transaction component
 
 #### Transactions
-- [] - Transaction component
+- [] - Making redesign of TransactionItem component (IMPORTANT)
 - [] - Adding transactions to store
 - [] - Adding transactions to DB
 - [] - Getting transactions from DB

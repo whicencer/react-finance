@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
+import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
 import { TransactionsList } from './transactions.styles';
 
@@ -10,10 +11,9 @@ const Transactions = () => {
       <PageContent>
         <h2>Transactions</h2>
         <TransactionsList>
-          <div>Transaction #1</div>
-          <div>Transaction #2</div>
-          <div>Transaction #3</div>
-          <div>Transaction #4</div>
+          <TransactionItem />
+          <TransactionItem />
+          <TransactionItem />
         </TransactionsList>
       </PageContent>
     </div>
