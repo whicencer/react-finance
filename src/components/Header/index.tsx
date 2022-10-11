@@ -8,7 +8,7 @@ import MobileMenu from '../MobileMenu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
-import Droplist from '../ui/Dropdown/Droplist';
+import Droplist from '../../shared/ui/Dropdown/Droplist';
 
 const Header = () => {
   // Dropdown

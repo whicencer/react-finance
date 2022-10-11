@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../store/slices/creditCards';
-import ContextMenu from '../ui/Dropdown/ContextMenu';
+import ContextMenu from '../../shared/ui/Dropdown/ContextMenu';
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../app/config/firebase';
 import { useAuth } from '../../app/hooks/useAuth';

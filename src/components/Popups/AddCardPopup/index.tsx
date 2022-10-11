@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useAddCard } from './addCardPopup.hooks';
 import { AddCardPopupTitle } from "../../../pages/dashboard/dashboard.styles";
 import Flex from "../../Flex";
-import Button from "../../ui/Button";
-import Input from "../../ui/Input";
-import Popup from "../../ui/Popup";
+import Button from "../../../shared/ui/Button";
+import Input from "../../../shared/ui/Input";
+import Popup from "../../../shared/ui/Popup";
 import { IPopupStates } from '../../../app/typings/IPopupStates';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { checkLength } from './addCardPopup.utils';

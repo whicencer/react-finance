@@ -6,7 +6,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../app/config/firebase';
 
 import Flex from '../../components/Flex';
-import Button from '../../components/ui/Button';
+import Button from '../../shared/ui/Button';
 
 import { WelcomeTitle, StyledImg } from './welcome.styles';
 

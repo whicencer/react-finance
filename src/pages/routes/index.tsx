@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Loader from '../../components/ui/Loader';
+import Loader from '../../shared/ui/Loader';
 import NotFound from '../notFound';
 import PrivateRoutes from './lib/PrivateRoutes';
 import PublicRoutes from './lib/PublicRoutes';

@@ -3,7 +3,7 @@ import { AddTransactionPopup } from '../Popups/AddTransactionsPopup';
 
 import Flex from '../Flex';
 import { TransactionItem } from '../TransactionItem';
-import Button from '../ui/Button';
+import Button from '../../shared/ui/Button';
 
 export const LastTransactions = () => {
   const [isAddTransactionActive, setIsAddTransactionActive] = useState(true);
