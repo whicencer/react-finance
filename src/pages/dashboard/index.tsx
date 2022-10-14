@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { AddCreditCard } from './dashboard.styles';
-
 import Header from '../../components/Header';
 import CreditCard from '../../components/CreditCard';
 import Flex from '../../components/Flex';
@@ -13,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setCards } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/Popups/CardThemePopup';
 import { PageContent } from '../../shared/components/PageContent';
+import { OpenPopupButton } from '../../shared/ui/OpenPopupButton';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
@@ -38,7 +37,7 @@ const Dashboard = () => {
       <PageContent>
         <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
           <h2>Dashboard</h2>
-          <AddCreditCard onClick={() => setAddCardActive(true)}>Add Credit Card</AddCreditCard>
+          <OpenPopupButton onClick={() => setAddCardActive(true)}>Add Credit Card</OpenPopupButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }
