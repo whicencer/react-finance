@@ -5,31 +5,17 @@ import { CustomSelect } from '../../../shared/ui/CustomSelect';
 import Input from '../../../shared/ui/Input';
 import Button from '../../../shared/ui/Button';
 import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-
-const options = [
-  { value: 'expense', label: 'Expense' },
-  { value: 'income', label: 'Income' }
-];
-const options3 = [
-  { value: 'entertainments', label: 'Entertainments' },
-  { value: 'beauty', label: 'Beauty' },
-  { value: 'health', label: 'Health' },
-  { value: 'food', label: 'Food' },
-  { value: 'tech', label: 'Tech' },
-  { value: 'education', label: 'Education' },
-  { value: 'investments', label: 'Investments' },
-  { value: 'traveling', label: 'Traveling' },
-];
+import { categoriesSelect, statusSelect } from './selectOptions';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
-  const [status, setStatus] = useState<'income' | 'expense'>('income');
+  const [status, setStatus] = useState<'income' | 'expense'>('expense');
   const [balance, setBalance] = useState(null);
   const [sum, setSum] = useState(0);
-  const [category, setCategory] = useState('Entertainments');
+  const [category, setCategory] = useState(null);
 
   const cards = useTypedSelector(state => state.creditCards.cards);
 
-  const options2 = cards.map(card => {
+  const balances = cards.map(card => {
     return {value: card.id, label: card.cardName};
   });
 
@@ -37,7 +23,7 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
     <Popup isActive={isActive} setActive={setActive}>
       <div>
         <label>Income / Expense</label>
-        <CustomSelect setAction={setStatus} options={options} />
+        <CustomSelect setAction={setStatus} options={statusSelect} />
         <br />
         
         <label>Sum</label>
@@ -45,11 +31,11 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
         <br />
 
         <label>Balance</label>
-        <CustomSelect setAction={setBalance} options={options2} />
+        <CustomSelect setAction={setBalance} options={balances} />
         <br />
         
         <label>Category</label>
-        <CustomSelect disabled={status === 'income'} setAction={setCategory} options={options3} />
+        <CustomSelect disabled={status === 'income'} setAction={setCategory} options={categoriesSelect} />
         <br />
 
         <Button onClick={() => console.log({status, balance, category, sum})}>Add transaction</Button>

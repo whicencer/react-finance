@@ -12,9 +12,10 @@ https://react-finance.vercel.app
 - [x] - Transaction component
 - [x] - Making redesign of TransactionItem component (IMPORTANT)
 - [x] - Popup for making transactions
+- [x] - Refactor AddTransactionPopup if it's posibble
 
 #### Transactions
-- [] - Refactor AddTransactionPopup if it's posibble
+- [] - Add field for notes in AddTransactionPopup
 - [] - Adding transactions to store
 - [] - Adding transactions to DB
 - [] - Getting transactions from DB

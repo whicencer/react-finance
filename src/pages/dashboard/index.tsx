@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setCards } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/Popups/CardThemePopup';
 import { PageContent } from '../../shared/components/PageContent';
-import { OpenPopupButton } from '../../shared/ui/OpenPopupButton';
+import { OpenPopupButton } from '../../shared/ui/PageButton';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
