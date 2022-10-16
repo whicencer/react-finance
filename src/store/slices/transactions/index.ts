@@ -1,17 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ITransaction } from "../../../app/typings/ITransaction";
 import { ITransactionsState } from "./transactions.typings";
 
 const initialState: ITransactionsState = {
-  transactions: [
-    {balance: 'Card1', category: 'Entertainments', status: 'expense', sum: 100, note: 'Купил подписку на ютуб Банана'}
-  ]
+  transactions: []
 };
 
 const transactionsSlice = createSlice({
   name: 'transactionsSlice',
   initialState,
   reducers: {
-    addTransaction: (state, action) => {
+    addTransaction: (state, action: PayloadAction<ITransaction>) => {
       state.transactions.push(action.payload);
     },
   },

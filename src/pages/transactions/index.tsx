@@ -23,7 +23,7 @@ const Transactions = () => {
         </Flex>
         <TransactionsList>
           {
-            transactions.map((transaction, key) => {
+            transactions.length === 0 ? `You haven't created any transactions yet` : transactions.map((transaction, key) => {
               return <TransactionItem transaction={transaction} key={key} />;
             })
           }

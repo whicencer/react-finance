@@ -3,5 +3,5 @@ export interface ITransaction {
   sum: number,
   balance: string,
   category: string,
-  note: string,
+  note: string
 }
