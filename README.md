@@ -13,11 +13,12 @@ https://react-finance.vercel.app
 - [x] - Making redesign of TransactionItem component (IMPORTANT)
 - [x] - Popup for making transactions
 - [x] - Refactor AddTransactionPopup if it's posibble
-- [x] - Add field for notes in AddTransactionPopup
-- [x] - Adding transactions to store
-- [x] - Types for payload
+- [x] - Add field for notes in AddTransactionPopup (16/10/2022)
+- [x] - Adding transactions to store (16/10/2022)
+- [x] - Types for payload (16/10/2022)
 
 #### Transactions
+- [] - Taking money from choosed card (for transaction)
 - [] - Refactor TransactionItem component about displaying data from store
 - [] - Refactor AddTransactionPopup component
 - [] - Validation for AddTransactionPopup fields
