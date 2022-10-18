@@ -8,5 +8,5 @@ export const getTransactionsFromDB = async () => {
   const transactionSnapshot = await getDocs(userFromDB);
   const transactionsList = transactionSnapshot.docs.map(doc => doc.data());
 
-  return transactionsList.filter(el => el.id.split('_')[0] === 'transactions');
+  return transactionsList.filter(el => el.id.split('_')[0] === 'transaction');
 };
