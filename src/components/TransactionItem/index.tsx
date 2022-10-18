@@ -4,17 +4,19 @@ import Flex from '../Flex';
 import { StyledTransactionItem } from './transactionItem.styles';
 
 export const TransactionItem: React.FC<{ transaction?: ITransaction }> = ({ transaction }) => {
+  const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
+  const transactionSum = transaction?.status === 'expense' ? `- $${transaction?.sum}` : `+ $${transaction?.sum}`;
   return (
     <StyledTransactionItem>
       <Flex alignItems='center'>
-          <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transaction?.category?transaction.category.toLowerCase() : 'income'}.png`)} alt="alt" />
+          <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.png`)} alt="alt" />
         <Flex direction='column'>
           <h3>{transaction?.note}</h3>
-          {/* <p>{`${transaction?.date.getDate()}.${transaction?.date.getMonth()&&transaction?.date.getMonth()+1}.${transaction?.date.getFullYear()}`}</p> */}
+          <p>{transaction?.date}</p>
         </Flex>
       </Flex>
       <Flex>
-        <h3>{transaction?.status === 'expense' ? `- $${transaction?.sum}` : `+ $${transaction?.sum}`}</h3>
+        <h3>{transactionSum}</h3>
       </Flex>
     </StyledTransactionItem>
   );

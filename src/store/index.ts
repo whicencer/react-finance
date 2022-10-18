@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './slices/userSlice';
 import creditCards from './slices/creditCards';
-import transactionsSlice from './slices/transactions';
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
     creditCards: creditCards,
-    transactions: transactionsSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

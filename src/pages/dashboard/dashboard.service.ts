@@ -9,7 +9,7 @@ export const getCardFromDB = async () => {
   const cardSnapshot = await getDocs(userFromDB);
   const cardsList = cardSnapshot.docs.map(doc => doc.data());
 
-  return cardsList;
+  return cardsList.filter(el => el.id.split('_')[0] === 'card');
 };
 
 export const changeThemePopup = (

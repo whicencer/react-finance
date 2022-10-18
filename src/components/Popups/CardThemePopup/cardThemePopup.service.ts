@@ -6,7 +6,7 @@ export const changeTheme = async (cardId: string, themeId: number) => {
   const user = getAuth();
   const cardFromDB = collection(db, `user_${user.currentUser?.uid}`);
 
-  await setDoc(doc(cardFromDB, `card_${cardId}`), { themeId }, { merge: true });
+  await setDoc(doc(cardFromDB, `cards_${cardId}`), { themeId }, { merge: true });
 
   setTimeout(() => {
     alert('Card theme was successfully changed');

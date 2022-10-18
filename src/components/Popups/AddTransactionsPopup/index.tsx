@@ -7,7 +7,10 @@ import Button from '../../../shared/ui/Button';
 import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
 import { categoriesSelect, statusSelect } from './selectOptions';
 import { useDispatch } from 'react-redux';
-import { addTransaction } from '../../../store/slices/transactions';
+import { addTransactionDB } from './addTransaction.service';
+import { addTransaction } from '../../../store/slices/creditCards';
+import { getCurrentDate } from '../../../utils/getCurrentDate';
+import { generateObjectId } from '../../../utils/generateObjectId';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
@@ -30,10 +33,20 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
       balance,
       sum,
       category,
-      note
+      note,
+      date: getCurrentDate(),
+      id: `transaction_${generateObjectId()}`
     };
-
-    dispatch(addTransaction(data));
+    const currentBalance = cards[cards.findIndex(card => card.id === data.balance)].balance;
+    
+    try {
+      addTransactionDB(data, currentBalance);
+      dispatch(addTransaction(data));
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    }
   };
 
   return (

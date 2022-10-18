@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICardData } from '../../../app/typings/ICardData';
+import { ITransaction } from '../../../app/typings/ITransaction';
+import { ICardsState } from './creditCards.typings';
 
-const initialState:{cards: ICardData[]}  = {
-  cards: []
+const initialState: ICardsState  = {
+  cards: [],
+  transactions: []
 };
 
 
@@ -27,8 +29,14 @@ const creditCardsSlice = createSlice({
       const idInState = state.cards.findIndex(el => el.id === action.payload);
       state.cards.splice(idInState, 1);
     },
+    addTransaction: (state, action: PayloadAction<ITransaction>) => {
+      state.transactions.push(action.payload);
+    },
+    setTransactions: (state, action) => {
+      state.transactions = [...action.payload];
+    }
   },
 });
 
-export const { addCard, changeCardTheme, deleteCard, setCards } = creditCardsSlice.actions;
+export const { addCard, changeCardTheme, deleteCard, setCards, addTransaction, setTransactions } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;

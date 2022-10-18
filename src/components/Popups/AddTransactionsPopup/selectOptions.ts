@@ -12,4 +12,5 @@ export const categoriesSelect = [
   { value: 'education', label: 'Education' },
   { value: 'investments', label: 'Investments' },
   { value: 'traveling', label: 'Traveling' },
+  { value: 'transport', label: 'Transport' },
 ];
