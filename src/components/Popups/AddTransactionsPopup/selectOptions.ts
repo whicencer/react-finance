@@ -1,6 +1,6 @@
 export const statusSelect = [
   { value: 'expense', label: 'Expense' },
-  { value: 'income', label: 'Income' }
+  { value: 'income', label: 'Income' },
 ];
 
 export const categoriesSelect = [
@@ -13,4 +13,9 @@ export const categoriesSelect = [
   { value: 'investments', label: 'Investments' },
   { value: 'traveling', label: 'Traveling' },
   { value: 'transport', label: 'Transport' },
+];
+
+export const categoriesIncomeSelect = [
+  { value: 'income', label: 'Salary' },
+  { value: 'income', label: 'Other' }
 ];

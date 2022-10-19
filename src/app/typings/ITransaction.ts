@@ -1,5 +1,5 @@
 export interface ITransaction {
-  status: 'income' | 'expense',
+  status: string,
   sum: number,
   balance: string,
   category: string,

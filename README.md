@@ -22,9 +22,9 @@ https://react-finance.vercel.app
 - [x] - Refactor AddTransactionPopup component (17/10/2022)
 - [x] - Adding transactions to DB (18/10/2022)
 - [x] - Getting transactions from DB (18/10/2022)
+- [x] - Validation for AddTransactionPopup fields
 
 #### Transactions
-- [] - Validation for AddTransactionPopup fields
 - [] - Deleting transactions with return money on balance
 
 

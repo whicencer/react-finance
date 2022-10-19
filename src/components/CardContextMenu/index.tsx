@@ -21,7 +21,7 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup,
             e.stopPropagation();
             dispatch(deleteCard(id));
 
-            await deleteDoc(doc(db, `user_${user.uid}`, `card_${id}`));
+            await deleteDoc(doc(db, `user_${user.uid}`, `cards_${id}`));
           } },
           { text: 'Change theme', onClick: (e) => {
             e.stopPropagation();

@@ -5,12 +5,13 @@ import { CustomSelect } from '../../../shared/ui/CustomSelect';
 import Input from '../../../shared/ui/Input';
 import Button from '../../../shared/ui/Button';
 import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import { categoriesSelect, statusSelect } from './selectOptions';
+import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './selectOptions';
 import { useDispatch } from 'react-redux';
 import { addTransactionDB } from './addTransaction.service';
 import { addTransaction } from '../../../store/slices/creditCards';
 import { getCurrentDate } from '../../../utils/getCurrentDate';
 import { generateObjectId } from '../../../utils/generateObjectId';
+import { validateFields } from './addTransactions.utils';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
@@ -69,10 +70,14 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
         <br />
         
         <label>Category</label>
-        <CustomSelect disabled={status === 'income'} setAction={setCategory} options={categoriesSelect} />
+        {
+          status === 'expense'
+            ? <CustomSelect setAction={setCategory} options={categoriesSelect} />
+            : <CustomSelect setAction={setCategory} options={categoriesIncomeSelect} />
+        }
         <br />
 
-        <Button onClick={addTransactionHandler}>Add transaction</Button>
+        <Button onClick={() => validateFields(addTransactionHandler, sum, note, balance, category, status)}>Add transaction</Button>
       </div>
     </Popup>
   );

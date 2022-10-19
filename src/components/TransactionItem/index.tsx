@@ -11,7 +11,7 @@ export const TransactionItem: React.FC<{ transaction?: ITransaction }> = ({ tran
       <Flex alignItems='center'>
           <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.png`)} alt="alt" />
         <Flex direction='column'>
-          <h3>{transaction?.note}</h3>
+          <h3>{transaction?.note || transaction?.category.toUpperCase()}</h3>
           <p>{transaction?.date}</p>
         </Flex>
       </Flex>
