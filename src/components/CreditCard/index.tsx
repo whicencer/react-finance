@@ -24,7 +24,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
       setCoords({x: e.pageX, y: e.pageY});
     }}>
       <Flex direction={'column'} justifyContent={'space-around'}>
-        <h2>${balance}</h2>
+        <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>${balance.toFixed(2)}</h2>
         <p>{cardName}</p>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={cardSecondSection}>

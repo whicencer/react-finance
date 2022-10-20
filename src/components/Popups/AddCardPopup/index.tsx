@@ -22,7 +22,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const data = { balance, cardName, id, themeId: 2 };
 
   const addCard = () => {
-    cardName.length !== 0 && balance <= 999999999 ? addNewCard(data).then(() => setActive(false)) : alert('Error');
+    cardName.length !== 0 && cardName.length <= 20 && balance <= 999999999 && balance >= 0 ? addNewCard(data).then(() => setActive(false)) : alert('Error');
   };
 
   const handleChange = (event: any) => {

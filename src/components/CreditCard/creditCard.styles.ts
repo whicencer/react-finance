@@ -20,4 +20,4 @@ export const Card = styled.div<{themeId: number}>`
   min-width: 250px;
 `;
 
-export const cardSecondSection: React.CSSProperties = { position: 'relative', top: '-10px', right: '-20px' };
+export const cardSecondSection: React.CSSProperties = { position: 'relative', top: '-10px', right: '-5%' };

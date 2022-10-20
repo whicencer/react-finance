@@ -25,6 +25,7 @@ https://react-finance.vercel.app
 - [x] - Validation for AddTransactionPopup fields
 
 #### Transactions
+- [] - Responsive long note
 - [] - Deleting transactions with return money on balance
 
 

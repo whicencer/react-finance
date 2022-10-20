@@ -5,7 +5,7 @@ import { StyledTransactionItem } from './transactionItem.styles';
 
 export const TransactionItem: React.FC<{ transaction?: ITransaction }> = ({ transaction }) => {
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
-  const transactionSum = transaction?.status === 'expense' ? `- $${transaction?.sum}` : `+ $${transaction?.sum}`;
+  const transactionSum = transaction?.status === 'expense' ? `- $${transaction?.sum.toFixed(2)}` : `+ $${transaction?.sum.toFixed(2)}`;
   return (
     <StyledTransactionItem>
       <Flex alignItems='center'>
