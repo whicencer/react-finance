@@ -43,6 +43,8 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
     try {
       addTransactionDB(data, currentBalance);
       dispatch(addTransaction(data));
+      alert('Transaction was successfully added');
+      setActive(false);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);

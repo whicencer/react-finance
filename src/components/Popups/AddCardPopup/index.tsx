@@ -15,14 +15,18 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const [cardName, setCardName] = useState('');
   const [errorVisible, setErrorVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState('');
   
   const addNewCard = useAddCard();
-
-  const data = { balance, cardName, id, themeId: 2 };
+  const numberedBalance = Number(balance);
+  
+  const data = { balance: numberedBalance, cardName, id, themeId: 2 };
 
   const addCard = () => {
-    cardName.length !== 0 && cardName.length <= 20 && balance <= 999999999 && balance >= 0 ? addNewCard(data).then(() => setActive(false)) : alert('Error');
+    cardName.length !== 0 && cardName.length <= 20 && numberedBalance <= 999999999 && numberedBalance >= 0 ? addNewCard(data).then(() => {
+      setActive(false);
+      alert('Card was successfully added');
+    }) : alert('Error');
   };
 
   const handleChange = (event: any) => {
@@ -57,7 +61,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
           type={'number'}
           placeholder='Balance'
           value={balance}
-          onChange={(e) => setBalance(Number(e.target.value))}
+          onChange={(e) => setBalance(e.target.value)}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />
         <Button style={{ width: '60%' }} onClick={addCard}>Add card</Button>
