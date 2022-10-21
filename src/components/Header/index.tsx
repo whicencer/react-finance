@@ -24,7 +24,7 @@ const Header = () => {
     <HeaderComponent>
       <LogoLink to={'/dashboard'}>REACT FINANCE</LogoLink>
       <nav>
-        <StyledLink to={'/dashboard'}>Home</StyledLink>
+        <StyledLink to={'/dashboard'}>Dashboard</StyledLink>
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>

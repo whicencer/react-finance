@@ -8,6 +8,7 @@ import Input from "../../../shared/ui/Input";
 import Popup from "../../../shared/ui/Popup";
 import { IPopupStates } from '../../../app/typings/IPopupStates';
 import { generateObjectId } from '../../../utils/generateObjectId';
+import { validateFields } from './addCardPopup.utils';
 
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const id = `card_${generateObjectId()}`;
@@ -23,10 +24,10 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const data = { balance: numberedBalance, cardName, id, themeId: 2 };
 
   const addCard = () => {
-    cardName.length !== 0 && cardName.length <= 20 && numberedBalance <= 999999999 && numberedBalance >= 0 ? addNewCard(data).then(() => {
+    addNewCard(data).then(() => {
       setActive(false);
       alert('Card was successfully added');
-    }) : alert('Error');
+    });
   };
 
   const handleChange = (event: any) => {
@@ -64,7 +65,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
           onChange={(e) => setBalance(e.target.value)}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />
-        <Button style={{ width: '60%' }} onClick={addCard}>Add card</Button>
+        <Button style={{ width: '60%' }} onClick={() => validateFields(addCard, cardName, numberedBalance)}>Add card</Button>
       </Flex>
     </Popup>
   );

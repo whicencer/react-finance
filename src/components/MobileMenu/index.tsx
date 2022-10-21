@@ -9,7 +9,7 @@ interface Props {
 const MobileMenu: React.FC<Props> = ({ isBurgerOpen }) => {
   return (
     <MobileMenuStyled isBurgerOpen={isBurgerOpen}>
-      <StyledLink to={'/dashboard'}>Home</StyledLink>
+      <StyledLink to={'/dashboard'}>Dashboard</StyledLink>
       <StyledLink to={'/investments'}>Investments</StyledLink>
       <StyledLink to={'/transactions'}>Transactions</StyledLink>
     </MobileMenuStyled>

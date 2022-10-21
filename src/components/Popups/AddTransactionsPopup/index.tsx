@@ -7,11 +7,11 @@ import Button from '../../../shared/ui/Button';
 import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
 import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './selectOptions';
 import { useDispatch } from 'react-redux';
-import { addTransactionDB } from './addTransaction.service';
+import { addTransactionDB } from './addTransactionPopup.service';
 import { addTransaction } from '../../../store/slices/creditCards';
 import { getCurrentDate } from '../../../utils/getCurrentDate';
 import { generateObjectId } from '../../../utils/generateObjectId';
-import { validateFields } from './addTransactions.utils';
+import { validateFields } from './addTransactionsPopup.utils';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
