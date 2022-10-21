@@ -6,12 +6,13 @@ import Flex from '../../components/Flex';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 
-import { changeThemePopup, getCardFromDB } from './dashboard.service';
+import { changeThemePopup } from './dashboard.service';
 import { useDispatch } from 'react-redux';
 import { setCards } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/Popups/CardThemePopup';
 import { PageContent } from '../../shared/components/PageContent';
 import { OpenPopupButton } from '../../shared/ui/PageButton';
+import { getCardsFromDB } from '../../app/services/getCardsFromDB';
 
 const Dashboard = () => {
   const creditCards = useTypedSelector(state => state.creditCards);
@@ -24,7 +25,7 @@ const Dashboard = () => {
   const [currentCardId, setCurrentCardId] = useState('');
 
   useEffect(() => {
-    getCardFromDB().then(data => dispatch(setCards(data)));
+    getCardsFromDB().then(data => dispatch(setCards(data)));
   }, []);
 
   const cards = !creditCards.cards.length ? `You haven't made any cards yet` : creditCards.cards.map(({ cardName, balance, themeId, id }) => {

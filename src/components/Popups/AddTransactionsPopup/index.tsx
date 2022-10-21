@@ -25,7 +25,7 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
   const cards = useTypedSelector(state => state.creditCards.cards);
 
   const balances = cards.map(card => {
-    return {value: card.id, label: card.cardName};
+    return {value: card.id, label: `${card.cardName} ($${card.balance})`};
   });
 
   const addTransactionHandler = () => {
@@ -72,11 +72,7 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
         <br />
         
         <label>Category</label>
-        {
-          status === 'expense'
-            ? <CustomSelect setAction={setCategory} options={categoriesSelect} />
-            : <CustomSelect setAction={setCategory} options={categoriesIncomeSelect} />
-        }
+        <CustomSelect setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
         <br />
 
         <Button onClick={() => validateFields(addTransactionHandler, sum, note, balance, category, status)}>Add transaction</Button>

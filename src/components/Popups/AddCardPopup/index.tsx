@@ -27,6 +27,8 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
     addNewCard(data).then(() => {
       setActive(false);
       alert('Card was successfully added');
+    }).catch(err => {
+      alert(err.message);
     });
   };
 
