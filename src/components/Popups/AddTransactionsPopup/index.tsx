@@ -12,6 +12,8 @@ import { addTransaction } from '../../../store/slices/creditCards';
 import { getCurrentDate } from '../../../utils/getCurrentDate';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { validateFields } from './addTransactionsPopup.utils';
+import { toast } from 'react-toastify';
+import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
@@ -43,11 +45,11 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
     try {
       addTransactionDB(data, currentBalance);
       dispatch(addTransaction(data));
-      alert('Transaction was successfully added');
+      toast.success(`${getRandomEmoji()} Transaction was successfully added`);
       setActive(false);
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.error(error.message);
       }
     }
   };

@@ -7,6 +7,8 @@ import { db } from '../../app/config/firebase';
 import { useAuth } from '../../app/hooks/useAuth';
 import { ICardContextMenuProps } from './cardContextMenu.types';
 import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
+import { toast } from 'react-toastify';
+import { getRandomEmoji } from '../../utils/getRandomEmoji';
 
 export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup, x, y}) => {
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup,
                 deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
               });
             });
+            toast.success(`${getRandomEmoji()} Card was successfully deleted`);
           } },
           { text: 'Change theme', onClick: (e) => {
             e.stopPropagation();

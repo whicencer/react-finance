@@ -10,6 +10,9 @@ import { IPopupStates } from '../../../app/typings/IPopupStates';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { validateFields } from './addCardPopup.utils';
 
+import { toast } from 'react-toastify';
+import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const id = `card_${generateObjectId()}`;
 
@@ -26,9 +29,9 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const addCard = () => {
     addNewCard(data).then(() => {
       setActive(false);
-      alert('Card was successfully added');
+      toast.success(`${getRandomEmoji()} Card was successfully added`);
     }).catch(err => {
-      alert(err.message);
+      toast.error(err.message);
     });
   };
 

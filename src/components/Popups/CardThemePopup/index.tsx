@@ -9,6 +9,9 @@ import { useDispatch } from 'react-redux';
 import { changeCardTheme } from '../../../store/slices/creditCards';
 import { changeTheme } from './cardThemePopup.service';
 
+import { toast } from 'react-toastify';
+import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+
 export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = ({ popupState, id }) => {
   const [themeId, setThemeId] = useState(1);
   useEffect(() => { return; }, [themeId]);
@@ -19,6 +22,7 @@ export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = 
     changeTheme(id, themeId).then(() => {
       dispatch(changeCardTheme({ id, themeId }));
       popupState.setActive(false);
+      toast.success(`${getRandomEmoji()} Theme was successfully changed!`);
     });
   };
 
