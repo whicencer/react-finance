@@ -9,7 +9,6 @@ import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './select
 import { useDispatch } from 'react-redux';
 import { addTransactionDB } from './addTransactionPopup.service';
 import { addTransaction } from '../../../store/slices/creditCards';
-import { getCurrentDate } from '../../../utils/getCurrentDate';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { validateFields } from './addTransactionsPopup.utils';
 import { toast } from 'react-toastify';
@@ -37,7 +36,7 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
       sum,
       category,
       note,
-      date: getCurrentDate(),
+      date: new Date(),
       id: `transaction_${generateObjectId()}`
     };
     const currentBalance = cards[cards.findIndex(card => card.id === data.balance)].balance;

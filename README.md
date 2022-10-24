@@ -28,6 +28,9 @@ https://react-finance.vercel.app
 - [] - Responsive long note
 - [] - Deleting transactions with return money on balance
 
+#### Investments
+- [] - Create investments page
+
 
 #### Dashboard
 - [] - Last transactions section

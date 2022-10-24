@@ -4,6 +4,6 @@ export interface ITransaction {
   balance: string,
   category: string,
   note: string,
-  date: string,
+  date: Date,
   id: string
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ITransaction } from '../../app/typings/ITransaction';
+import { normalDate } from '../../utils/normalDate';
 import Flex from '../Flex';
 import { StyledTransactionItem } from './transactionItem.styles';
 
@@ -9,10 +10,10 @@ export const TransactionItem: React.FC<{ transaction?: ITransaction }> = ({ tran
   return (
     <StyledTransactionItem>
       <Flex alignItems='center'>
-          <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.png`)} alt="alt" />
+          <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.svg`)} alt="alt" />
         <Flex direction='column'>
           <h3>{transaction?.note || transaction?.category.toUpperCase()}</h3>
-          <p>{transaction?.date}</p>
+          <p>{normalDate(transaction?.date)}</p>
         </Flex>
       </Flex>
       <Flex>
