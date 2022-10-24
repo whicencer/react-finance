@@ -1,4 +1,4 @@
-export const normalDate = (date?: Date) => {
+export const getNormalDate = (date?: Date) => {
   const monthsDict = [
     'Jan',
     'Feb',

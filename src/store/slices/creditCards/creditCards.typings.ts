@@ -1,7 +1,7 @@
 import { ICardData } from "../../../app/typings/ICardData";
-import { ITransaction } from "../../../app/typings/ITransaction";
+import { IStoreTransaction } from "../../../app/typings/IStoreTransaction";
 
 export interface ICardsState {
   cards: Array<ICardData>,
-  transactions: Array<ITransaction>
+  transactions: Array<IStoreTransaction>
 }
