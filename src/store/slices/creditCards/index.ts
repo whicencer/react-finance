@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IStoreTransaction } from '../../../app/typings/IStoreTransaction';
+import { ITransaction } from '../../../app/typings/ITransaction';
 import { ICardsState } from './creditCards.typings';
 
 const initialState: ICardsState  = {
@@ -29,8 +29,8 @@ const creditCardsSlice = createSlice({
       const idInState = state.cards.findIndex(el => el.id === action.payload);
       state.cards.splice(idInState, 1);
     },
-    addTransaction: (state, action: PayloadAction<IStoreTransaction>) => {
-      state.transactions.push(action.payload);
+    addTransaction: (state, action: PayloadAction<ITransaction>) => {
+      state.transactions.unshift(action.payload);
     },
     setTransactions: (state, action) => {
       state.transactions = [...action.payload];

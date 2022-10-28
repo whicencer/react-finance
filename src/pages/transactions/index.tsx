@@ -1,26 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+// import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
 import Flex from '../../components/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
 import { OpenPopupButton } from '../../shared/ui/PageButton';
-import { setTransactions } from '../../store/slices/creditCards';
 import { TransactionsList } from './transactions.styles';
 
 const Transactions = () => {
   const [isPopupActive, setIsPopupActive] = useState(false);
   const { transactions } = useTypedSelector(state => state.creditCards);
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    getTransactionsFromDB().then(data => {
-      dispatch(setTransactions(data));
-    });
-  }, []);
 
   return (
     <div>

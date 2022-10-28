@@ -1,7 +1,6 @@
 import { getAuth } from "firebase/auth";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../app/config/firebase";
-import { getNormalDate } from "../../utils/getNormalDate";
 
 export const getTransactionsFromDB = async () => {
   const user = getAuth();
@@ -12,15 +11,14 @@ export const getTransactionsFromDB = async () => {
   const transactions = transactionsList.filter(el => el.id.split('_')[0] === 'transaction');
   
   return transactions.map(transaction => {
-    const normalDate = getNormalDate(new Date(transaction.date.seconds*1000));
     return {
       balance: transaction.balance,
       category: transaction.category,
-      date: normalDate,
+      date: transaction.date.toDate(),
       id: transaction.id,
       note: transaction.note,
       status: transaction.status,
       sum: transaction.sum
     };
-  });
+  }).reverse();
 };

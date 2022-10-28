@@ -6,8 +6,10 @@
 https://react-finance.vercel.app  
 
 ## Todo
-#### Done
+#### Cards
 - [x] - Validating input on adding cards  
+
+#### Transactions
 - [x] - Transactions page
 - [x] - Transaction component
 - [x] - Making redesign of TransactionItem component (IMPORTANT)
@@ -23,14 +25,12 @@ https://react-finance.vercel.app
 - [x] - Adding transactions to DB (18/10/2022)
 - [x] - Getting transactions from DB (18/10/2022)
 - [x] - Validation for AddTransactionPopup fields
-
-#### Transactions
 - [] - Responsive long note
 - [] - Deleting transactions with return money on balance
 
 #### Investments
-- [] - Create investments page
+- [x] - Create investments page (28/10/2022)
 
 
 #### Dashboard
-- [] - Last transactions section
+- [x] - Last transactions section (29/10/2022)

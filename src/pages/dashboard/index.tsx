@@ -8,14 +8,17 @@ import AddCardPopup from '../../components/Popups/AddCardPopup';
 
 import { changeThemePopup } from './dashboard.service';
 import { useDispatch } from 'react-redux';
-import { setCards } from '../../store/slices/creditCards';
+import { setCards, setTransactions } from '../../store/slices/creditCards';
 import { CardThemePopup } from '../../components/Popups/CardThemePopup';
 import { PageContent } from '../../shared/components/PageContent';
 import { OpenPopupButton } from '../../shared/ui/PageButton';
 import { getCardsFromDB } from '../../app/services/getCardsFromDB';
+import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
+import { TransactionItem } from '../../components/TransactionItem';
 
 const Dashboard = () => {
-  const creditCards = useTypedSelector(state => state.creditCards);
+  const creditCards = useTypedSelector(state => state.creditCards.cards);
+  const lastFiveTransactions = useTypedSelector(state => state.creditCards.transactions).slice(0, 5);
   const dispatch = useDispatch();
 
   // popups state
@@ -26,10 +29,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     getCardsFromDB().then(data => dispatch(setCards(data)));
+    getTransactionsFromDB().then(data => dispatch(setTransactions(data)));
   }, []);
 
-  const cards = !creditCards.cards.length ? `You haven't made any cards yet` : creditCards.cards.map(({ cardName, balance, themeId, id }) => {
+  const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
     return <CreditCard themeId={themeId} id={id} openPopup={() => changeThemePopup(id, setCardThemeActive, setCurrentCardId)} cardName={cardName} balance={balance} key={id} />;
+  });
+  const transactions = lastFiveTransactions.map(transaction => {
+    return <TransactionItem transaction={transaction} key={transaction.id} />;
   });
 
   return (
@@ -43,6 +50,16 @@ const Dashboard = () => {
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }
         </Flex>
+        
+        {
+          lastFiveTransactions.length
+          ?
+            <Flex direction='column' style={{ marginTop: 20 }}>
+              <h3>Last 5 transactions</h3>
+              {transactions}
+            </Flex>
+          : ''
+        }
       </PageContent>
       
       {/* Popups */}

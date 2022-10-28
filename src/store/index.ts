@@ -7,7 +7,9 @@ export const store = configureStore({
     user: userSlice,
     creditCards: creditCards,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false
+  }),
 });
 
 export type AppDispatch = typeof store.dispatch

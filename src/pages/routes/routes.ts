@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { Investments } from '../investments';
 import { RouteComponent } from './types';
 
 const Welcome = lazy(() => import('../welcome'));
@@ -24,4 +25,9 @@ export const privateRoutes: RouteComponent[] = [
     component: Transactions,
     key: 'transactions',
   },
+  {
+    path: '/investments',
+    component: Investments,
+    key: 'investments'
+  }
 ];

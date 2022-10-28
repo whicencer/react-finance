@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const validateFields = (callback: any, cardName: string, balance: number) => {
   let currentError = '';
   if (cardName.length <= 0) {
@@ -10,5 +12,5 @@ export const validateFields = (callback: any, cardName: string, balance: number)
     currentError = 'Balance should be more than 999.999.999';
   }
 
-  currentError ? alert(currentError) : callback();
+  currentError ? toast.error(currentError) : callback();
 };

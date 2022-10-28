@@ -1,9 +1,10 @@
 import React from 'react';
-import { IStoreTransaction } from '../../app/typings/IStoreTransaction';
+import { ITransaction } from '../../app/typings/ITransaction';
+import { getNormalDate } from '../../utils/getNormalDate';
 import Flex from '../Flex';
 import { StyledTransactionItem } from './transactionItem.styles';
 
-export const TransactionItem: React.FC<{ transaction?: IStoreTransaction }> = ({ transaction }) => {
+export const TransactionItem: React.FC<{ transaction?: ITransaction }> = ({ transaction }) => {
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
   const transactionSum = transaction?.status === 'expense' ? `- $${transaction?.sum.toFixed(2)}` : `+ $${transaction?.sum.toFixed(2)}`;
   return (
@@ -12,7 +13,7 @@ export const TransactionItem: React.FC<{ transaction?: IStoreTransaction }> = ({
           <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.svg`)} alt="alt" />
         <Flex direction='column'>
           <h3>{transaction?.note || transaction?.category.toUpperCase()}</h3>
-          <p>{transaction?.date}</p>
+          <p>{getNormalDate(transaction?.date)}</p>
         </Flex>
       </Flex>
       <Flex>
