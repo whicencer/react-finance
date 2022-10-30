@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 export const Investments = () => {
+  useDocumentTitle('React Finance - Investments');
   return (
     <div>
       <h2>Investments</h2>

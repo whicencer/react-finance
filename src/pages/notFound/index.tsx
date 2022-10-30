@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 const NotFoundComponent = styled.section`
   display: flex;
@@ -16,6 +17,7 @@ const NotFoundText = styled.h1`
 const NotFound = () => {
   const [timer, setTimer] = useState(5);
   const navigate = useNavigate();
+  useDocumentTitle('React Finance - Not found 404');
 
   useEffect(() => {
     setTimeout(() => {

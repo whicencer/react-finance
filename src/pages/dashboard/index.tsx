@@ -15,8 +15,10 @@ import { OpenPopupButton } from '../../shared/ui/PageButton';
 import { getCardsFromDB } from '../../app/services/getCardsFromDB';
 import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
 import { TransactionItem } from '../../components/TransactionItem';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 const Dashboard = () => {
+  useDocumentTitle('React Finance - Dashboard');
   const creditCards = useTypedSelector(state => state.creditCards.cards);
   const lastFiveTransactions = useTypedSelector(state => state.creditCards.transactions).slice(0, 5);
   const dispatch = useDispatch();

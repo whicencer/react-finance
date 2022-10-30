@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 // import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import Flex from '../../components/Flex';
@@ -12,6 +13,7 @@ import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 
 const Transactions = () => {
+  useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
   const transactions = useTypedSelector(state => state.creditCards.transactions);
   const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {

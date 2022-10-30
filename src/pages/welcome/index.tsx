@@ -11,8 +11,10 @@ import Button from '../../shared/ui/Button';
 import { WelcomeTitle, StyledImg } from './welcome.styles';
 
 import { setUser } from '../../store/slices/userSlice';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 const Welcome = () => {
+  useDocumentTitle('React Finance - Welcome');
   const dispatch = useDispatch();
 
   const SignInWithGoogle = () => {
