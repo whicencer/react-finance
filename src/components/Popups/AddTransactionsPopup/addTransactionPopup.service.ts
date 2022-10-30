@@ -5,6 +5,7 @@ import { ITransaction } from "../../../app/typings/ITransaction";
 export const addTransactionDB = (data: ITransaction, currentBalance: number) => {
   const { currentUser } = getAuth();
   const firestore = getFirestore();
+  
   if (data.status === 'expense' && currentBalance < data.sum) {
     throw new Error('Not enough money');
   } else {

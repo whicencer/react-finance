@@ -25,7 +25,7 @@ const creditCardsSlice = createSlice({
         card.themeId = action.payload.themeId;
       }
     },
-    deleteCard: (state, action) => {
+    deleteCard: (state, action: PayloadAction<string>) => {
       const idInState = state.cards.findIndex(el => el.id === action.payload);
       state.cards.splice(idInState, 1);
     },
@@ -34,9 +34,18 @@ const creditCardsSlice = createSlice({
     },
     setTransactions: (state, action) => {
       state.transactions = [...action.payload];
+    },
+    deleteTransaction: (state, action: PayloadAction<ITransaction>) => {
+      const idInState = state.transactions.findIndex(el => el.id === action.payload.id);
+      const transactionBalanceId = state.cards.findIndex(el => el.id === action.payload.balance);
+      
+      state.transactions.splice(idInState, 1);
+      action.payload.status === 'income'
+        ? state.cards[transactionBalanceId].balance -= action.payload.sum
+        : state.cards[transactionBalanceId].balance += action.payload.sum;
     }
   },
 });
 
-export const { addCard, changeCardTheme, deleteCard, setCards, addTransaction, setTransactions } = creditCardsSlice.actions;
+export const { addCard, changeCardTheme, deleteCard, setCards, addTransaction, setTransactions, deleteTransaction } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;

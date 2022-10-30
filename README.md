@@ -26,7 +26,7 @@ https://react-finance.vercel.app
 - [x] - Getting transactions from DB (18/10/2022)
 - [x] - Validation for AddTransactionPopup fields
 - [] - Responsive long note
-- [] - Deleting transactions with return money on balance
+- [x] - Deleting transactions with return money on balance (30/10/2022)
 
 #### Investments
 - [x] - Create investments page (28/10/2022)

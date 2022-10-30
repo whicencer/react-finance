@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
-import { CardContextMenu } from '../CardContextMenu';
+import { CardContextMenu } from './CardContextMenu';
 import Flex from '../Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
 

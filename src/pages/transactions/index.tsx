@@ -5,13 +5,22 @@ import Flex from '../../components/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';
+// import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
 import { OpenPopupButton } from '../../shared/ui/PageButton';
+import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 
 const Transactions = () => {
   const [isPopupActive, setIsPopupActive] = useState(false);
-  const { transactions } = useTypedSelector(state => state.creditCards);
+  const transactions = useTypedSelector(state => state.creditCards.transactions);
+  const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {
+    const aToTimestamp = Math.floor(a.getTime()/1000);
+    const bToTimestamp = Math.floor(b.getTime()/1000);
+
+    return bToTimestamp - aToTimestamp;
+  }).map(date => getNormalDate(date));
+  const filteredDatesList = listOfAllDates.filter((date, pos) => listOfAllDates.indexOf(date) === pos);
 
   return (
     <div>
@@ -22,9 +31,21 @@ const Transactions = () => {
           <OpenPopupButton onClick={() => setIsPopupActive(true)}>Add transaction</OpenPopupButton>
         </Flex>
         <TransactionsList>
+          { !transactions.length && `You haven't made any transactions yet` }
           {
-            transactions.length === 0 ? `You haven't created any transactions yet` : transactions.map((transaction, key) => {
-              return <TransactionItem transaction={transaction} key={key} />;
+            filteredDatesList.map((date, key) => {
+              return (
+                <div key={key}>
+                  <h4>{date}</h4>
+                  {
+                    transactions.filter(transaction => getNormalDate(transaction.date) === date).map(transaction => {
+                      return (
+                        <TransactionItem key={transaction.id} transaction={transaction} />
+                      );
+                    })
+                  }
+                </div>
+              );
             })
           }
         </TransactionsList>

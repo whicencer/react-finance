@@ -7,10 +7,15 @@ import { PopupContainer, PopupInner } from './popup.styles';
 
 const Popup: React.FC<IPopupProps> = ({ isActive, setActive, children }) => {
   const closePopup = () => setActive(false);
+  const closePopupOnEsc = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closePopup();
+    }
+  };
 
   return (
     <PopupContainer onClick={closePopup} isActive={isActive}>
-      <PopupInner onClick={(e) => e.stopPropagation()}>
+      <PopupInner onKeyDown={closePopupOnEsc} onClick={(e) => e.stopPropagation()}>
         { children }
         <AiOutlineClose
           style={{
