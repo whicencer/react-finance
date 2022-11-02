@@ -24,9 +24,10 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
   const [note, setNote] = useState('');
 
   const cards = useTypedSelector(state => state.creditCards.cards);
+  const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
 
   const balances = cards.map(card => {
-    return {value: card.id, label: `${card.cardName} ($${card.balance})`};
+    return {value: card.id, label: `${card.cardName} (${currency} ${card.balance})`};
   });
 
   const addTransactionHandler = () => {

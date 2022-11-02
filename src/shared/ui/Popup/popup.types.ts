@@ -5,7 +5,3 @@ export interface IPopupProps {
   setActive: Dispatch<SetStateAction<boolean>>;
   children: ReactElement
 }
-
-export interface IPopupStyledProps {
-  isActive: boolean;
-}

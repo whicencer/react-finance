@@ -13,8 +13,12 @@ const Popup: React.FC<IPopupProps> = ({ isActive, setActive, children }) => {
     }
   };
 
+  if (!isActive) {
+    return null;
+  }
+
   return (
-    <PopupContainer onClick={closePopup} isActive={isActive}>
+    <PopupContainer onClick={closePopup}>
       <PopupInner onKeyDown={closePopupOnEsc} onClick={(e) => e.stopPropagation()}>
         { children }
         <AiOutlineClose

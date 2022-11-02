@@ -3,6 +3,7 @@ import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { CardContextMenu } from './CardContextMenu';
 import Flex from '../Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
+import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 
 interface Props {
   cardName: string;
@@ -16,6 +17,8 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
   const [context, setContext] = useState(false);
   const [coords, setCoords] = useState({x: 0, y: 0});
   useAwayClick(() => setContext(false));
+  
+  const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
 
   return (
     <Card themeId={themeId} onClick={e => {
@@ -24,7 +27,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
       setCoords({x: e.pageX, y: e.pageY});
     }}>
       <Flex direction={'column'} justifyContent={'space-around'}>
-        <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>${balance.toFixed(2)}</h2>
+        <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>{currency}{balance.toFixed(2)}</h2>
         <p>{cardName}</p>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={cardSecondSection}>

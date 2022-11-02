@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { IPopupStyledProps } from './popup.types';
 
-export const PopupContainer = styled.div<IPopupStyledProps>`
+export const PopupContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -16,8 +15,6 @@ export const PopupContainer = styled.div<IPopupStyledProps>`
   transition-timing-function: cubic-bezier(.2,0,.2,.1);
   
   background-color: rgba(0, 0, 0, 0.4);
-  opacity: ${(props) => props.isActive ? '1' : '0'};
-  pointer-events: ${(props) => props.isActive ? 'all' : 'none'};
 `;
 
 export const PopupInner = styled.div`

@@ -12,9 +12,10 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   useAwayClick(() => setContext(false));
 
   const cardFromId = useTypedSelector(state => state.creditCards.cards).find(card => card.id === transaction.balance);
-
+  const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
+  
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
-  const transactionSum = transaction?.status === 'expense' ? `- $${transaction?.sum.toFixed(2)}` : `+ $${transaction?.sum.toFixed(2)}`;
+  const transactionSum = transaction?.status === 'expense' ? `- ${currency}${transaction?.sum.toFixed(2)}` : `+ ${currency}${transaction?.sum.toFixed(2)}`;
   
   if (cardFromId === undefined) {
     throw new Error();

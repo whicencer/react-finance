@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUserState } from './userSlice.typings';
+import { IUserState } from './user.typings';
 
 const initialState: IUserState = {
   displayName: null,

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUser } from '../../store/slices/userSlice';
+import { setUser } from '../../store/slices/user';
 import { auth } from '../config/firebase';
 
 // eslint-disable-next-line react/display-name

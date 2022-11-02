@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const dropdownButtonStyles = {
-  cursor: 'pointer'
+  cursor: 'pointer',
+  marginRight: 20,
 };
 
 export const HeaderComponent = styled.header`
