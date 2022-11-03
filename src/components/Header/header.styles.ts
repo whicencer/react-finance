@@ -7,10 +7,10 @@ export const dropdownButtonStyles = {
 
 export const HeaderComponent = styled.header`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: ${(props) => props.theme.colors.secondaryColor};
-  padding: 16px 24px;
+  padding: 16px 32px;
   &>button {
     display: none;
   }

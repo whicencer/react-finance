@@ -29,7 +29,7 @@ const Header = () => {
         <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', position: 'relative' }}>
         <p onClick={(e) => {
           e.stopPropagation();
           setDropdownOpen(prev=>!prev);

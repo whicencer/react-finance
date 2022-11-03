@@ -9,10 +9,12 @@ import { ICardContextMenuProps } from './cardContextMenu.types';
 import { getTransactionsFromDB } from '../../../app/services/getTransactionsFromDB';
 import { toast } from 'react-toastify';
 import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+import { useNavigate } from "react-router-dom";
 
 export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup, x, y}) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <ContextMenu
@@ -36,6 +38,10 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, openPopup,
           { text: 'Change theme', onClick: (e) => {
             e.stopPropagation();
             openPopup();
+          } },
+          { text: 'Add transaction', onClick: (e) => {
+            e.stopPropagation();
+            navigate('/transactions');
           } },
         ]
       }
