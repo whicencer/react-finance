@@ -9,17 +9,12 @@ import MobileMenu from '../MobileMenu';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
 import Droplist from '../../shared/ui/Dropdown/Droplist';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { useDispatch } from 'react-redux';
-import { setCurrency } from '../../store/slices/currencies';
+import { ChangeCurrency } from '../ChangeCurrency';
 
 const Header = () => {
   // Dropdown
   const [ isDropdownOpen, setDropdownOpen ] = useState(false);
   useAwayClick(() => setDropdownOpen(false));
-
-  const dispatch = useDispatch();
-  const currentCurrency = useTypedSelector(state => state.currencies.currentCurrency.code);
 
   const [isBurgerOpen, setBurgerOpen] = useState(false);
 
@@ -48,12 +43,7 @@ const Header = () => {
           }
           isActive={isDropdownOpen}
         />
-        
-        <select value={currentCurrency} onChange={e => dispatch(setCurrency(e.target.value))}>
-          <option value="uah">UAH</option>
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-        </select>
+        <ChangeCurrency />
       </div>
       <button onClick={() => setBurgerOpen(!isBurgerOpen)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
         <GiHamburgerMenu size={30} color={'#fff'} />

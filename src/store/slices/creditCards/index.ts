@@ -27,10 +27,20 @@ const creditCardsSlice = createSlice({
     },
     deleteCard: (state, action: PayloadAction<string>) => {
       const idInState = state.cards.findIndex(el => el.id === action.payload);
+      const updateTransactions = state.transactions.filter(transaction => transaction.balance !== action.payload);
+
       state.cards.splice(idInState, 1);
+      state.transactions = updateTransactions;
     },
     addTransaction: (state, action: PayloadAction<ITransaction>) => {
+      const card = state.cards.find((card) => card.id === action.payload.balance);
+
       state.transactions.unshift(action.payload);
+      
+      if (card !== undefined) {
+        const resultSum = action.payload.status === 'expense' ? card.balance - action.payload.sum : card.balance + action.payload.sum;
+        card.balance = resultSum;
+      }
     },
     setTransactions: (state, action) => {
       state.transactions = [...action.payload];

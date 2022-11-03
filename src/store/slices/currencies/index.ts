@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { setLocalStorage } from "../../../utils/localStorage";
 import { ICurrenciesState } from "./currencies.typings";
 import { validateCurrency } from "./currencies.utils";
 
@@ -14,7 +15,10 @@ const currencySlice = createSlice({
   initialState,
   reducers: {
     setCurrency: (state, action: PayloadAction<string>) => {
-      state.currentCurrency = validateCurrency(action.payload);
+      const validatedCurrency = validateCurrency(action.payload);
+
+      state.currentCurrency = validatedCurrency;
+      setLocalStorage('currency', validatedCurrency.code);
     }
   }
 });

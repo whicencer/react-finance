@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 // eslint-disable-next-line react/display-name
-export const ToastProvider = (Component: React.FC) => () => {
+const ToastProvider = (Component: React.FC) => () => {
   return (
     <>
       <Component />
@@ -21,3 +21,5 @@ export const ToastProvider = (Component: React.FC) => () => {
     </>
   );
 };
+
+export default ToastProvider;

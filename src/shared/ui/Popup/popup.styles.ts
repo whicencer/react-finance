@@ -24,4 +24,5 @@ export const PopupInner = styled.div`
   padding: 30px;
   color: #fff;
   min-width: 30%;
+  width: 420px;
 `;
