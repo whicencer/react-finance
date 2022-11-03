@@ -3,5 +3,5 @@ import { DropdownStyles } from '../dropdown.styles';
 
 export const ContextMenuStyles = styled(DropdownStyles)<{x: number, y: number}>`
   top: ${props => props.y}px;
-  left: 20%;
+  left: ${props => props.x}px;
 `;

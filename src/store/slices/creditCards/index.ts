@@ -32,6 +32,13 @@ const creditCardsSlice = createSlice({
       state.cards.splice(idInState, 1);
       state.transactions = updateTransactions;
     },
+    changeCardName: (state, action: PayloadAction<{ id: string, newName: string }> ) => {
+      const card = state.cards.find(card => card.id === action.payload.id);
+
+      if (card !== undefined) {
+        card.cardName = action.payload.newName;
+      }
+    },
     addTransaction: (state, action: PayloadAction<ITransaction>) => {
       const card = state.cards.find((card) => card.id === action.payload.balance);
 
@@ -57,5 +64,5 @@ const creditCardsSlice = createSlice({
   },
 });
 
-export const { addCard, changeCardTheme, deleteCard, setCards, addTransaction, setTransactions, deleteTransaction } = creditCardsSlice.actions;
+export const { addCard, changeCardTheme, deleteCard, setCards, changeCardName, addTransaction, setTransactions, deleteTransaction } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;

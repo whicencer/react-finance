@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export const changeThemePopup = (
+export const openPopup = (
     cardId: string,
     setCardThemeActive: Dispatch<SetStateAction<boolean>>,
     setCurrentCardId: Dispatch<SetStateAction<string>>

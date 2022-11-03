@@ -38,7 +38,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
         <h3>{transactionSum}</h3>
       </Flex>
 
-      {context && <TransactionItemContextMenu currentBalance={cardFromId?.balance} x={coords.x} y={coords.y} transaction={transaction} />}
+      {context && <TransactionItemContextMenu x={coords.x} currentBalance={cardFromId?.balance} y={coords.y} transaction={transaction} />}
     </StyledTransactionItem>
   );
 };

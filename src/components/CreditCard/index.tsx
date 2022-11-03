@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { CardContextMenu } from './CardContextMenu';
@@ -10,10 +11,9 @@ interface Props {
   balance: number;
   themeId: number;
   id: string;
-  openPopup?: () => void;
 }
 
-const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id }) => {
+const CreditCard: React.FC<Props> = ({ cardName, balance, themeId, id }) => {
   const [context, setContext] = useState(false);
   const [coords, setCoords] = useState({x: 0, y: 0});
   useAwayClick(() => setContext(false));
@@ -24,7 +24,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
     <Card themeId={themeId} onClick={e => {
       e.stopPropagation();
       setContext(true);
-      setCoords({x: e.pageX, y: e.pageY});
+      setCoords({x: e.pageX-100, y: e.pageY});
     }}>
       <Flex direction={'column'} justifyContent={'space-around'}>
         <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>{currency}{balance.toFixed(2)}</h2>
@@ -36,7 +36,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, openPopup, themeId, id
         <img style={{ width: '70px' }} src="https://usa.visa.com/dam/VCOM/regional/na/us/pay-with-visa/images/card-chip-800x450.png"
            alt="card-chip" />
       </Flex>
-      { context && <CardContextMenu x={coords.x} y={coords.y} id={id} openPopup={openPopup} /> }
+      { context && <CardContextMenu x={coords.x} y={coords.y} id={id} /> }
     </Card>
   );
 };
