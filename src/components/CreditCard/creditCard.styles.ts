@@ -5,11 +5,12 @@ export const Card = styled.div<{themeId: number}>`
   display: flex;
   justify-content: space-between;
   background: ${props => {
-    switch(props.themeId) {
-      case 1: return props.theme.colors.cardBackground[1];
-      case 2: return props.theme.colors.cardBackground[2];
-      case 3: return props.theme.colors.cardBackground[3];
-    }
+    return props.theme.colors.cardBackground[props.themeId as keyof {
+      1: string;
+      2: string;
+      3: string;
+      4: string;
+    }];
   }};
   background-size: cover;
   border-radius: 20px;

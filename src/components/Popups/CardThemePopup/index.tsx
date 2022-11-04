@@ -41,6 +41,9 @@ export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = 
           <InvisibleButton onClick={() => setThemeId(3)}>
             <Image src={require('../../../assets/card_theme_3.png')} alt="theme_3" />
           </InvisibleButton>
+          <InvisibleButton onClick={() => setThemeId(4)}>
+            <Image src={require('../../../assets/card_theme_4.png')} alt="theme_4" />
+          </InvisibleButton>
         </Flex>
         <Button style={{ width: '60%' }} onClick={changeThemeHandler}>Change theme</Button>
       </Flex>
