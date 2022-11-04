@@ -4,7 +4,8 @@ import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { ITransaction } from '../../app/typings/ITransaction';
 import Flex from '../Flex';
 import { TransactionItemContextMenu } from './TransactionContextMenu';
-import { StyledTransactionItem } from './transactionItem.styles';
+
+import styles from './styles.module.scss';
 
 export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ transaction }) => {
   const [context, setContext] = useState(false);
@@ -22,7 +23,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   }
   
   return (
-    <StyledTransactionItem onClick={e => {
+    <div className={styles.transaction} onClick={e => {
       e.stopPropagation();
       setContext(true);
       setCoords({x: e.pageX, y: e.pageY});
@@ -39,6 +40,6 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
       </Flex>
 
       {context && <TransactionItemContextMenu x={coords.x} currentBalance={cardFromId?.balance} y={coords.y} transaction={transaction} />}
-    </StyledTransactionItem>
+    </div>
   );
 };
