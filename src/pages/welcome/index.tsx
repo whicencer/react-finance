@@ -8,10 +8,10 @@ import { auth } from '../../app/config/firebase';
 import Flex from '../../components/Flex';
 import Button from '../../shared/ui/Button';
 
-import { WelcomeTitle, StyledImg } from './welcome.styles';
-
 import { setUser } from '../../store/slices/user';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
+
+import styles from './styles.module.scss';
 
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
@@ -49,12 +49,12 @@ const Welcome = () => {
           justifyContent="center"
           padding="0 30px"
         >
-          <WelcomeTitle>
+          <h1 className={styles.welcomeTitle}>
             Manage your finance with <br /> React Finance
-          </WelcomeTitle>
+          </h1>
           <Button onClick={SignInWithGoogle} style={{ marginTop: '20px' }}>Get Started</Button>
         </Flex>
-        <StyledImg src={require('../../assets/home.gif')} alt="shape" />
+        <img className={styles.welcomeImage} src={require('../../assets/home.gif')} alt="shape" />
       </Flex>
     </>
   );
