@@ -8,7 +8,7 @@ export const MobileMenuStyled = styled.div<Props>`
   transform: ${(props) => props.isBurgerOpen ? `translateX(-32px)` : `translateX(-400px)`};
   transition: .3s;
   position: absolute;
-  top: 12%;
+  top: 9%;
   background-color: #0f0f13;
   opacity: ${(props) => props.isBurgerOpen ? `1` : `0`};
   visibility: ${(props) => props.isBurgerOpen ? `visible` : 'hidden'};
