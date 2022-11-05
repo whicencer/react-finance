@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../app/config/firebase';
 
-import Flex from '../../components/Flex';
+import Flex from '../../shared/ui/Flex';
 import Button from '../../shared/ui/Button';
 
 import { setUser } from '../../store/slices/user';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
-import styles from './styles.module.scss';
+import styles from './welcome.module.scss';
 
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
@@ -37,20 +37,17 @@ const Welcome = () => {
 
   return (
     <>
-      <Flex justifyContent="center" padding="10px 0">
-        <h2 style={{ fontFamily: 'Archivo', fontWeight: '400' }}>
-          REACT FINANCE
-        </h2>
-      </Flex>
       <Flex justifyContent="space-around" alignItems="center">
         <Flex
-          style={{ height: '90vh', zIndex: 2 }}
+          style={{ height: '95vh', zIndex: 2 }}
           direction="column"
           justifyContent="center"
           padding="0 30px"
         >
           <h1 className={styles.welcomeTitle}>
-            Manage your finance with <br /> React Finance
+            Manage your finance with
+            <br />
+            <span style={{ fontSize: '55px', textDecoration: 'underline' }}>React Finance</span>
           </h1>
           <Button onClick={SignInWithGoogle} style={{ marginTop: '20px' }}>Get Started</Button>
         </Flex>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 import CreditCard from '../../components/CreditCard';
-import Flex from '../../components/Flex';
+import Flex from '../../shared/ui/Flex';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 

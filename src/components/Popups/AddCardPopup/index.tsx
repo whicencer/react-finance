@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAddCard } from './addCardPopup.hooks';
 import { AddCardPopupTitle } from "../../../pages/dashboard/dashboard.styles";
-import Flex from "../../Flex";
+import Flex from "../../../shared/ui/Flex";
 import Button from "../../../shared/ui/Button";
 import Input from "../../../shared/ui/Input";
 import Popup from "../../../shared/ui/Popup";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IPopupStates } from '../../../app/typings/IPopupStates';
-import Flex from '../../Flex';
+import Flex from '../../../shared/ui/Flex';
 import { InvisibleButton, Preview, Image } from './cardThemePopup.styles';
 import Popup from '../../../shared/ui/Popup';
 import Button from '../../../shared/ui/Button';

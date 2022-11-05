@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 // import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import Flex from '../../components/Flex';
+import Flex from '../../shared/ui/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';

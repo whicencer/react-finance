@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { ITransaction } from '../../app/typings/ITransaction';
-import Flex from '../Flex';
+import Flex from '../../shared/ui/Flex';
 import { TransactionItemContextMenu } from './TransactionContextMenu';
 
-import styles from './styles.module.scss';
+import styles from './TransactionItem.module.scss';
 
 export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ transaction }) => {
   const [context, setContext] = useState(false);

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { CardContextMenu } from './CardContextMenu';
-import Flex from '../Flex';
+import Flex from '../../shared/ui/Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 
