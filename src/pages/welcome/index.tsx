@@ -47,7 +47,7 @@ const Welcome = () => {
           <h1 className={styles.welcomeTitle}>
             Manage your finance with
             <br />
-            <span style={{ fontSize: '55px', textDecoration: 'underline' }}>React Finance</span>
+            React Finance
           </h1>
           <Button onClick={SignInWithGoogle} style={{ marginTop: '20px' }}>Get Started</Button>
         </Flex>
