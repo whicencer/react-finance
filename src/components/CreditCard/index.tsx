@@ -5,6 +5,7 @@ import { CardContextMenu } from './CardContextMenu';
 import Flex from '../../shared/ui/Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
+import { formatNumber } from '../../utils/formatNumber';
 
 interface Props {
   cardName: string;
@@ -27,7 +28,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, themeId, id }) => {
       setCoords({x: e.pageX-100, y: e.pageY});
     }}>
       <Flex direction={'column'} justifyContent={'space-around'}>
-        <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>{currency}{balance.toFixed(2)}</h2>
+        <h2 style={{ textOverflow: 'ellipsis', overflow: 'hidden', width: '100%' }}>{currency}{formatNumber(balance)}</h2>
         <p>{cardName}</p>
       </Flex>
       <Flex direction={'column'} alignItems={'center'} style={cardSecondSection}>

@@ -2,6 +2,7 @@ html, body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   background-color: #000;
+  overflow-x: hidden;
   color: #fff;
 }
 

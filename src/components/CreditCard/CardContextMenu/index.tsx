@@ -12,6 +12,7 @@ import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 import { useNavigate } from "react-router-dom";
 import { CardThemePopup } from '../../Popups/CardThemePopup';
 import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
+import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
 
 export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => {
   const dispatch = useDispatch();
@@ -20,6 +21,21 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => 
 
   const [isCardThemeActive, setCardThemeActive] = useState(false);
   const [isCardNameActive, setCardNameActive] = useState(false);
+  const [isConfirmActive, setConfirmActive] = useState(false);
+
+  const deleteCardCallback = async (e: any) => {
+    e.stopPropagation();
+    dispatch(deleteCard(id));
+    
+    await deleteDoc(doc(db, `user_${user.uid}`, `cards_${id}`));
+    getTransactionsFromDB().then(data => {
+      const transactionsWithDeletingBalance = data.filter(transaction => transaction.balance === id);
+      transactionsWithDeletingBalance.map(transaction => {
+        deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
+      });
+    });
+    toast.success(`${getRandomEmoji()} Card was successfully deleted`);
+  };
 
   return (
     <>
@@ -28,19 +44,7 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => 
       y={y}
       dropdownList={
         [
-          { text: 'Delete card', onClick: async (e) => {
-              e.stopPropagation();
-              dispatch(deleteCard(id));
-              
-              await deleteDoc(doc(db, `user_${user.uid}`, `cards_${id}`));
-              getTransactionsFromDB().then(data => {
-                const transactionsWithDeletingBalance = data.filter(transaction => transaction.balance === id);
-                transactionsWithDeletingBalance.map(transaction => {
-                  deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
-                });
-              });
-              toast.success(`${getRandomEmoji()} Card was successfully deleted`);
-            } },
+          { text: 'Delete card', onClick: () => setConfirmActive(true)},
             { text: 'Change theme', onClick: (e) => {
               e.stopPropagation();
               setCardThemeActive(true);
@@ -58,6 +62,7 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => 
       />
       <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={id} />
       <ChangeCardNamePopup popupState={{ isActive: isCardNameActive, setActive: setCardNameActive }} id={id} />
+      <ConfirmationPopup isActive={isConfirmActive} setIsActive={setConfirmActive} confirmCallback={deleteCardCallback} confirmText='Вы уверены что хотите удалить карту?' />
     </>
   );
 };

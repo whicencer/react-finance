@@ -3,6 +3,7 @@ import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { ITransaction } from '../../app/typings/ITransaction';
 import Flex from '../../shared/ui/Flex';
+import { formatNumber } from '../../utils/formatNumber';
 import { TransactionItemContextMenu } from './TransactionContextMenu';
 
 import styles from './TransactionItem.module.scss';
@@ -16,7 +17,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
-  const transactionSum = transaction?.status === 'expense' ? `- ${currency}${transaction?.sum.toFixed(2)}` : `+ ${currency}${transaction?.sum.toFixed(2)}`;
+  const transactionSum = transaction?.status === 'expense' ? `- ${currency}${formatNumber(transaction?.sum)}` : `+ ${currency}${formatNumber(transaction?.sum)}`;
   
   if (cardFromId === undefined) {
     throw new Error();
