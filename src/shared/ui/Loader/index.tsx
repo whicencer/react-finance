@@ -19,6 +19,7 @@ const loaderAnimation = keyframes`
 
 const Loader = styled.div`
   border: 1px solid ${(props) => props.theme.colors.azureColor};
+  border-radius: 20%;
   width: 100px;
   height: 100px;
   padding: 3px;
@@ -34,6 +35,7 @@ const Loader = styled.div`
     justify-content: center;
     font-size: 30px;
     animation: ${loaderAnimation} infinite 1s;
+    border-radius: 20%;
   }
 `;
 

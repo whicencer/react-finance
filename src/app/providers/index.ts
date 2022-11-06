@@ -5,5 +5,6 @@ import RouterProvider from './routerProvider';
 import StyledComponentProvider from './themeProvider';
 import CurrencyProvider from './currencyProvider';
 import ToastProvider from './toastProvider';
+import CheckOnlineProvider from './checkOnlineProvider';
 
-export const withProviders = compose(StyledComponentProvider, RouterProvider, ReduxProvider, AuthProvider, ToastProvider, CurrencyProvider);
+export const withProviders = compose(CheckOnlineProvider, StyledComponentProvider, RouterProvider, ReduxProvider, AuthProvider, ToastProvider, CurrencyProvider);
