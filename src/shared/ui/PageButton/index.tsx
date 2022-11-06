@@ -7,10 +7,11 @@ export const OpenPopupButton = styled.button`
   padding: 7px;
   background-color: transparent;
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 13px;
   cursor: pointer;
   transition: .2s;
+  font-family: ${(props) => props.theme.defaultFontFamily};
   
   &:hover {border-color: blue;}
 `;

@@ -50,7 +50,7 @@ const Dashboard = () => {
       <PageContent>
         <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
           <h2>Dashboard</h2>
-          <OpenPopupButton onClick={() => setAddCardActive(true)}>Add Credit Card</OpenPopupButton>
+          <OpenPopupButton onClick={() => setAddCardActive(true)}>Add credit card</OpenPopupButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }
