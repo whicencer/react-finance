@@ -15,6 +15,8 @@ export const PopupContainer = styled.div`
   transition-timing-function: cubic-bezier(.2,0,.2,.1);
   
   background-color: rgba(0, 0, 0, 0.4);
+
+  z-index: 1000;
 `;
 
 export const PopupInner = styled.div`
