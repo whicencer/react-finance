@@ -6,11 +6,9 @@ import { IPopupProps } from './popup.types';
 import { PopupContainer, PopupInner } from './popup.styles';
 
 const Popup: React.FC<IPopupProps> = ({ isActive, setActive, children }) => {
-  const closePopup = () => setActive(false);
-  const closePopupOnEsc = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      closePopup();
-    }
+  const closePopup = (e: any) => {
+    e.stopPropagation();
+    setActive(false);
   };
 
   if (!isActive) {
@@ -19,7 +17,7 @@ const Popup: React.FC<IPopupProps> = ({ isActive, setActive, children }) => {
 
   return (
     <PopupContainer onClick={closePopup}>
-      <PopupInner onKeyDown={closePopupOnEsc} onClick={(e) => e.stopPropagation()}>
+      <PopupInner onClick={(e) => e.stopPropagation()}>
         { children }
         <AiOutlineClose
           style={{

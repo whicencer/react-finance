@@ -14,7 +14,7 @@ import { CardThemePopup } from '../../Popups/CardThemePopup';
 import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
 
-export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => {
+export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOpen, setIsOpen}) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -40,25 +40,18 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y}) => 
   return (
     <>
       <ContextMenu
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
       x={x}
       y={y}
       dropdownList={
         [
           { text: 'Delete card', onClick: () => setConfirmActive(true)},
-            { text: 'Change theme', onClick: (e) => {
-              e.stopPropagation();
-              setCardThemeActive(true);
-            } },
-            { text: 'Add transaction', onClick: (e) => {
-              e.stopPropagation();
-              navigate('/transactions');
-            } },
-            { text: 'Change name', onClick: (e) => {
-              e.stopPropagation();
-              setCardNameActive(true);
-            } },
-          ]
-        }
+          { text: 'Change theme', onClick: () => setCardThemeActive(true)},
+          { text: 'Add transaction', onClick: () => navigate('/transactions')},
+          { text: 'Change name', onClick: () => setCardNameActive(true)},
+         ]
+      }
       />
       <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={id} />
       <ChangeCardNamePopup popupState={{ isActive: isCardNameActive, setActive: setCardNameActive }} id={id} />

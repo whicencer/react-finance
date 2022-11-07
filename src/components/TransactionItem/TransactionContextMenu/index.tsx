@@ -7,13 +7,15 @@ import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
 import { deleteTransaction } from '../../../store/slices/creditCards';
 import { ITransactionContextMenuProps } from './transactionContextMenu.types';
 
-export const TransactionItemContextMenu: React.FC<ITransactionContextMenuProps> = ({x, y, transaction, currentBalance}) => {
+export const TransactionItemContextMenu: React.FC<ITransactionContextMenuProps> = ({x, y, transaction, currentBalance, isOpen, setIsOpen}) => {
   const { user } = useAuth();
   const dispatch = useDispatch();
   const firestore = getFirestore();
 
   return (
     <ContextMenu
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
     x={x}
     y={y}
     dropdownList={

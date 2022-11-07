@@ -9,15 +9,17 @@ import { TransactionItemContextMenu } from './TransactionContextMenu';
 import styles from './TransactionItem.module.scss';
 
 export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ transaction }) => {
-  const [context, setContext] = useState(false);
+  const [contextOpen, setContextOpen] = useState(false);
   const [coords, setCoords] = useState({x: 0, y: 0});
-  useAwayClick(() => setContext(false));
+  useAwayClick(() => setContextOpen(false));
 
   const cardFromId = useTypedSelector(state => state.creditCards.cards).find(card => card.id === transaction.balance);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
-  const transactionSum = transaction?.status === 'expense' ? `- ${currency}${formatNumber(transaction?.sum)}` : `+ ${currency}${formatNumber(transaction?.sum)}`;
+  const transactionSum = transaction?.status === 'expense'
+    ? `- ${currency}${formatNumber(transaction?.sum)}`
+    : `+ ${currency}${formatNumber(transaction?.sum)}`;
   
   if (cardFromId === undefined) {
     throw new Error();
@@ -26,7 +28,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   return (
     <div className={styles.transaction} onClick={e => {
       e.stopPropagation();
-      setContext(true);
+      setContextOpen(true);
       setCoords({x: e.pageX, y: e.pageY});
     }}>
       <Flex alignItems='center'>
@@ -40,7 +42,14 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
         <h3>{transactionSum}</h3>
       </Flex>
 
-      {context && <TransactionItemContextMenu x={coords.x} currentBalance={cardFromId?.balance} y={coords.y} transaction={transaction} />}
+      <TransactionItemContextMenu
+        isOpen={contextOpen}
+        setIsOpen={setContextOpen}
+        x={coords.x}
+        currentBalance={cardFromId?.balance}
+        y={coords.y}
+        transaction={transaction}
+      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { useAwayClick } from '../../app/hooks/useAwayClick';
 import { CardContextMenu } from './CardContextMenu';
 import Flex from '../../shared/ui/Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
@@ -15,16 +14,15 @@ interface Props {
 }
 
 const CreditCard: React.FC<Props> = ({ cardName, balance, themeId, id }) => {
-  const [context, setContext] = useState(false);
+  const [contextOpen, setContextOpen] = useState(false);
   const [coords, setCoords] = useState({x: 0, y: 0});
-  useAwayClick(() => setContext(false));
   
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
 
   return (
     <Card themeId={themeId} onClick={e => {
       e.stopPropagation();
-      setContext(true);
+      setContextOpen(true);
       setCoords({x: e.pageX-100, y: e.pageY});
     }}>
       <Flex direction={'column'} justifyContent={'space-around'}>
@@ -37,7 +35,7 @@ const CreditCard: React.FC<Props> = ({ cardName, balance, themeId, id }) => {
         <img style={{ width: '70px' }} src="https://usa.visa.com/dam/VCOM/regional/na/us/pay-with-visa/images/card-chip-800x450.png"
            alt="card-chip" />
       </Flex>
-      { context && <CardContextMenu x={coords.x} y={coords.y} id={id} /> }
+      <CardContextMenu setIsOpen={setContextOpen} isOpen={contextOpen} x={coords.x} y={coords.y} id={id} />
     </Card>
   );
 };
