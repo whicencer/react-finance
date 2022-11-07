@@ -14,6 +14,8 @@ export const validateFields = (callback: any, sum: any, note: string, balance: s
     currentError = 'Choose your balance';
   } else if (status === 'income' && categoriesExpense.includes(category) || status === 'expense' && categoriesIncome.includes(category)) {
     currentError = 'Choose correct category';
+  } else if (category.length <= 0) {
+    currentError = 'Wrong category!';
   }
   
   currentError ? toast.error(currentError) : callback();

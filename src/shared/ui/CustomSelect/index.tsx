@@ -1,11 +1,17 @@
 import React from 'react';
-import Select from 'react-select';
 import { ICustomSelectProps } from './customSelect.types';
+import cssStyles from './CustomSelect.module.scss';
 
-export const CustomSelect: React.FC<ICustomSelectProps> = ({ options, styles, setAction}) => {
+export const CustomSelect: React.FC<ICustomSelectProps> = ({ options, value, styles, setAction}) => {
   return (
-    <div style={{...styles, color: '#000'}}>
-      <Select onChange={(e) => setAction(e?.value)} options={options} />
+    <div style={styles} className={cssStyles.customSelect}>
+      <select value={value} onChange={(e) => setAction(e.target.value)}>
+        {
+          options.map((option, key) => {
+            return <option key={key} value={option.value}>{option.label}</option>;
+          })
+        }
+      </select>
     </div>
   );
 };

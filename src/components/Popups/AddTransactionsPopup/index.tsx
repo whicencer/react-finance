@@ -17,18 +17,18 @@ import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
 
-  const [status, setStatus] = useState<'income' | 'expense'>('expense');
-  const [balance, setBalance] = useState('');
-  const [sum, setSum] = useState(0);
-  const [category, setCategory] = useState('');
-  const [note, setNote] = useState('');
-
   const cards = useTypedSelector(state => state.creditCards.cards);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
-
+  
   const balances = cards.map(card => {
     return {value: card.id, label: `${card.cardName} (${currency} ${card.balance})`};
   });
+
+  const [status, setStatus] = useState<'income' | 'expense'>('expense');
+  const [balance, setBalance] = useState(balances[0].value);
+  const [sum, setSum] = useState(0);
+  const [category, setCategory] = useState('entertainments');
+  const [note, setNote] = useState('');
 
   const addTransactionHandler = () => {
     const data = {
@@ -58,23 +58,23 @@ export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActiv
     <Popup isActive={isActive} setActive={setActive}>
       <div>
         <label>Income / Expense</label>
-        <CustomSelect setAction={setStatus} options={statusSelect} />
+        <CustomSelect value={status} setAction={setStatus} options={statusSelect} />
         <br />
         
         <label>Sum</label>
-        <Input onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(+e.currentTarget.value)} placeholder='Sum' type={'number'} />
+        <Input value={sum} onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(+e.currentTarget.value)} placeholder='Sum' type={'number'} />
         <br />
 
         <label>Note</label>
-        <Input onChange={(e: React.FormEvent<HTMLInputElement>) => setNote(e.currentTarget.value)} placeholder='Note' />
+        <Input value={note} onChange={(e: React.FormEvent<HTMLInputElement>) => setNote(e.currentTarget.value)} placeholder='Note' />
         <br />
 
         <label>Balance</label>
-        <CustomSelect setAction={setBalance} options={balances} />
+        <CustomSelect value={balance} setAction={setBalance} options={balances} />
         <br />
         
         <label>Category</label>
-        <CustomSelect setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
+        <CustomSelect value={category} setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
         <br />
 
         <Button onClick={() => validateFields(addTransactionHandler, sum, note, balance, category, status)}>Add transaction</Button>
