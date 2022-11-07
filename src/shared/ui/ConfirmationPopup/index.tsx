@@ -12,7 +12,13 @@ interface IConfirmationPopupProps {
 
 export const ConfirmationPopup: React.FC<IConfirmationPopupProps> = ({ confirmText, confirmCallback, isActive, setIsActive }) => {
   return (
-    <div onClick={(e) => e.stopPropagation()} className={isActive ? styles.confirmOuter : styles.confirmNotActive}>
+    <div
+      onClick={(e) => {
+        e.stopPropagation();
+        setIsActive(false);
+      }}
+      className={isActive ? styles.confirmOuter : styles.confirmNotActive}
+    >
       <div className={styles.confirmPopup}>
         <h3>{ confirmText }</h3>
 
