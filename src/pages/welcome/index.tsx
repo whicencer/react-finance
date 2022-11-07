@@ -47,9 +47,9 @@ const Welcome = () => {
           <h1 className={styles.welcomeTitle}>
             Manage your finance with
             <br />
-            React Finance
+            <span className={styles.welcomeTitleGradient}>React Finance</span>
           </h1>
-          <Button onClick={SignInWithGoogle} style={{ marginTop: '20px' }}>Get Started</Button>
+          <Button className={styles.welcomeButton} onClick={SignInWithGoogle}>Get started</Button>
         </Flex>
         <img className={styles.welcomeImage} src={require('../../assets/home.gif')} alt="shape" />
       </Flex>
