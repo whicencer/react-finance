@@ -45,10 +45,13 @@ const Header = () => {
         />
         <ChangeCurrency />
       </div>
-      <button onClick={() => setBurgerOpen(!isBurgerOpen)} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
+      <button onClick={(e) => {
+        e.stopPropagation();
+        setBurgerOpen(!isBurgerOpen);
+      }} style={{background: 'none', border: 'none', cursor: 'pointer'}}>
         <GiHamburgerMenu size={30} color={'#fff'} />
       </button>
-      <MobileMenu isBurgerOpen={isBurgerOpen} />
+      <MobileMenu setBurgerOpen={setBurgerOpen} isBurgerOpen={isBurgerOpen} />
     </HeaderComponent>
   );
 };
