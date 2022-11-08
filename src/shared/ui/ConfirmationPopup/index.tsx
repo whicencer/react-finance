@@ -23,8 +23,8 @@ export const ConfirmationPopup: React.FC<IConfirmationPopupProps> = ({ confirmTe
         <h3>{ confirmText }</h3>
 
         <div className={styles.buttons}>
-          <Button onClick={confirmCallback}>Да</Button>
-          <SecondaryButton onClick={() => setIsActive(false)} style={{ marginLeft: '25px' }}>Нет</SecondaryButton>
+          <Button onClick={confirmCallback}>Yes</Button>
+          <SecondaryButton onClick={() => setIsActive(false)} style={{ marginLeft: '25px' }}>No</SecondaryButton>
         </div>
       </div>
     </div>

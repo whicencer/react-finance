@@ -55,7 +55,7 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOp
       />
       <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={id} />
       <ChangeCardNamePopup popupState={{ isActive: isCardNameActive, setActive: setCardNameActive }} id={id} />
-      <ConfirmationPopup isActive={isConfirmActive} setIsActive={setConfirmActive} confirmCallback={deleteCardCallback} confirmText='Вы уверены что хотите удалить карту?' />
+      <ConfirmationPopup isActive={isConfirmActive} setIsActive={setConfirmActive} confirmCallback={deleteCardCallback} confirmText='Are you sure you want to delete the card?' />
     </>
   );
 };
