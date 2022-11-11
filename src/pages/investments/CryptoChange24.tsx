@@ -1,13 +1,11 @@
 import React from 'react';
 import { CryptoCard } from '../../components/CryptoCard';
-import { useGetCryptoCoinsQuery } from '../../services/cryptoApi';
+import { useGetCryptoCoinsWithLimitQuery } from '../../services/cryptoApi';
 import Flex from '../../shared/ui/Flex';
 import { CryptoCardSkeleton } from '../../shared/ui/Skeletons/CryptoCardSkeleton';
 
 export const CryptoChange24 = () => {
-  const { data, error, isLoading } = useGetCryptoCoinsQuery('');
-
-  console.log(data, error);
+  const { data, isLoading } = useGetCryptoCoinsWithLimitQuery('4');
 
   return (
     <Flex direction='column' style={{ marginTop: 20 }}>
@@ -22,10 +20,13 @@ export const CryptoChange24 = () => {
                 <CryptoCardSkeleton />
               </>
             : <>
-                <CryptoCard coinName={{short: 'btc', full: 'bitcoin'}} />
-                <CryptoCard coinName={{short: 'bnb', full: 'bnb'}} />
-                <CryptoCard coinName={{short: 'eth', full: 'ethereum'}} />
-                <CryptoCard coinName={{short: 'sol', full: 'solana'}} />
+                {
+                  data?.data.map((coin, key) => {
+                    return (
+                      <CryptoCard coin={coin} key={key} />
+                    );
+                  })
+                }
               </>
         }
       </Flex>

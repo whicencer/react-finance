@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { ICryptoData } from './types/ICryptoData';
 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
@@ -7,10 +8,10 @@ export const cryptoApi = createApi({
     getCryptoByName: builder.query({
       query: (name) => `assets/${name}`,
     }),
-    getCryptoCoins: builder.query({
-      query: () => `assets`
+    getCryptoCoinsWithLimit: builder.query<ICryptoData, string>({
+      query: (limit) => `assets/?limit=${limit}`
     }),
   }),
 });
 
-export const { useGetCryptoByNameQuery, useGetCryptoCoinsQuery } = cryptoApi;
+export const { useGetCryptoByNameQuery, useGetCryptoCoinsWithLimitQuery } = cryptoApi;
