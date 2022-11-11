@@ -8,7 +8,7 @@ import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopu
 import { TransactionItem } from '../../components/TransactionItem';
 // import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
-import { OpenPopupButton } from '../../shared/ui/PageButton';
+import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 
@@ -30,7 +30,7 @@ const Transactions = () => {
       <PageContent>
         <Flex justifyContent='space-between'>
           <h2>Transactions</h2>
-          <OpenPopupButton onClick={() => setIsPopupActive(true)}>Add transaction</OpenPopupButton>
+          <PageButton onClick={() => setIsPopupActive(true)}>Add transaction</PageButton>
         </Flex>
         <TransactionsList>
           { !transactions.length && `You haven't made any transactions yet` }

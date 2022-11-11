@@ -1,0 +1,35 @@
+.cryptoCard {
+  display: flex;
+
+  background-color: #0F0F13;
+  padding: 15px 20px;
+  border-radius: 25px;
+
+  margin-right: 17px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+.cryptoCardImage{
+  width: 45px;
+  height: 45px;
+}
+
+.cryptoCardPercentage {
+  color: #0cbe7a;
+  font-size: 18px;
+  font-weight: 600;
+}
+.cryptoCardPercentageMinus {
+  font-size: 18px;
+  font-weight: 600;
+  color: #EA3943;
+}
+.cryptoCardCoinName {
+  color: #B9BDBB;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}

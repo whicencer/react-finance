@@ -9,7 +9,7 @@ import AddCardPopup from '../../components/Popups/AddCardPopup';
 import { useDispatch } from 'react-redux';
 import { setCards, setTransactions } from '../../store/slices/creditCards';
 import { PageContent } from '../../shared/components/PageContent';
-import { OpenPopupButton } from '../../shared/ui/PageButton';
+import { PageButton } from '../../shared/ui/PageButton';
 import { getCardsFromDB } from '../../app/services/getCardsFromDB';
 import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
 import { TransactionItem } from '../../components/TransactionItem';
@@ -50,7 +50,7 @@ const Dashboard = () => {
       <PageContent>
         <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
           <h2>Dashboard</h2>
-          <OpenPopupButton onClick={() => setAddCardActive(true)}>Add credit card</OpenPopupButton>
+          <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cards }

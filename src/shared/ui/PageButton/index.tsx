@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const OpenPopupButton = styled.button`
+export const PageButton = styled.button`
   border: 2px solid #1e1e24;
   border-radius: 6px;
   outline: none;
