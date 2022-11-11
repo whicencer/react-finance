@@ -13,6 +13,7 @@ export const categoriesSelect = [
   { value: 'investments', label: 'Investments' },
   { value: 'traveling', label: 'Traveling' },
   { value: 'transport', label: 'Transport' },
+  { value: 'other', label: 'Other' },
 ];
 
 export const categoriesIncomeSelect = [
