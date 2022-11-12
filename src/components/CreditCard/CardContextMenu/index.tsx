@@ -6,7 +6,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../../app/config/firebase';
 import { useAuth } from '../../../app/hooks/useAuth';
 import { ICardContextMenuProps } from './cardContextMenu.types';
-import { getTransactionsFromDB } from '../../../app/services/getTransactionsFromDB';
+import { getTransactionsFromDB } from '../../../services/transactionsService';
 import { toast } from 'react-toastify';
 import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 import { useNavigate } from "react-router-dom";

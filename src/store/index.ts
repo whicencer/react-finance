@@ -9,12 +9,12 @@ export const store = configureStore({
     user: userSlice,
     creditCards: creditCards,
     currencies: currencies,
-    [cryptoApi.reducerPath]: cryptoApi.reducer
+    [cryptoApi.reducerPath]: cryptoApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: false
-    }).concat(cryptoApi.middleware);
+    }).concat([cryptoApi.middleware]);
   }
 });
 

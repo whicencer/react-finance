@@ -1,6 +1,6 @@
 import { getAuth } from '@firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../app/config/firebase';
+import { db } from '../app/config/firebase';
 
 export const getCardsFromDB = async () => {
   const user = getAuth();

@@ -13,7 +13,9 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   const [coords, setCoords] = useState({x: 0, y: 0});
   useAwayClick(() => setContextOpen(false));
 
-  const cardFromId = useTypedSelector(state => state.creditCards.cards).find(card => card.id === transaction.balance);
+  const { cards } = useTypedSelector(state => state.creditCards);
+  const cardFromId = cards.find(card => card.id === transaction.balance);
+  
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
@@ -46,7 +48,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
         isOpen={contextOpen}
         setIsOpen={setContextOpen}
         x={coords.x}
-        currentBalance={cardFromId?.balance}
+        currentBalance={cardFromId.balance}
         y={coords.y}
         transaction={transaction}
       />
