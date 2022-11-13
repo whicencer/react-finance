@@ -7,7 +7,7 @@ import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 
 import { useDispatch } from 'react-redux';
-import { setCards } from '../../store/slices/creditCards';
+import { setCards, setCardsLoading } from '../../store/slices/creditCards';
 import { setTransactions } from '../../store/slices/creditCards';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
@@ -15,10 +15,11 @@ import { getCardsFromDB } from '../../app/services/getCardsFromDB';
 import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
+import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+  const { items: cards, isLoading: cardsLoading } = useTypedSelector(state => state.creditCards.cards);
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
   const dispatch = useDispatch();
 
@@ -26,7 +27,11 @@ const Dashboard = () => {
   const [isAddCardActive, setAddCardActive] = useState(false);
 
   useEffect(() => {
-    getCardsFromDB().then(data => dispatch(setCards(data)));
+    dispatch(setCardsLoading(true));
+    getCardsFromDB().then(data => {
+      dispatch(setCards(data));
+      dispatch(setCardsLoading(false));
+    });
     getTransactionsFromDB().then(data => dispatch(setTransactions(data)));
   }, []);
 
@@ -54,7 +59,7 @@ const Dashboard = () => {
           <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { mappedCards }
+          { cardsLoading ? <CreditCardSkeleton /> : mappedCards }
         </Flex>
         
         {
