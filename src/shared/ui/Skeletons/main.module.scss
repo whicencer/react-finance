@@ -1,0 +1,11 @@
+.skeletonAnimate {
+  background: linear-gradient(-45deg, #1e1e22, #2a2a2e, #525253);
+	background-size: 300%;
+  animation: animated_gradient 3s ease-in-out infinite;
+}
+
+@keyframes animated_gradient {
+	0% { background-position: 0px 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0px 50%; }
+}
