@@ -5,26 +5,32 @@ import CreditCard from '../../components/CreditCard';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 
-import { TransactionItem } from '../../components/TransactionItem';
-import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { getCardsFromDB } from '../../services/cardsService';
 import { useDispatch } from 'react-redux';
-import { setCards, setTransactions } from '../../store/slices/creditCards';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { getTransactionsFromDB } from '../../services/transactionsService';
+
+import { setCards, setCardsLoading } from '../../store/slices/creditCards';
+import { setTransactions } from '../../store/slices/creditCards';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
+import { getCardsFromDB } from '../../services/cardsService';
+import { getTransactionsFromDB } from '../../services/transactionsService';
+import { TransactionItem } from '../../components/TransactionItem';
+import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
+import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton';
+import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  
-  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+  const { items: cards, isLoading: cardsLoading } = useTypedSelector(state => state.creditCards.cards);
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
 
   const dispatch = useDispatch();
   
   useEffect(() => {
-    getCardsFromDB().then(data => dispatch(setCards(data)));
+    dispatch(setCardsLoading(true));
+    getCardsFromDB().then(data => {
+      dispatch(setCards(data));
+      dispatch(setCardsLoading(false));
+    });
     getTransactionsFromDB().then(data => dispatch(setTransactions(data)));
   }, []);
   
@@ -57,7 +63,7 @@ const Dashboard = () => {
           <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { cardsMapped }
+          { cardsLoading ? <CreditCardSkeleton /> : cardsMapped }
         </Flex>
         
         {
