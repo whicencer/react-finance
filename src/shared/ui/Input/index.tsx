@@ -1,23 +1,28 @@
-import styled from "styled-components";
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import styles from './Input.module.scss';
 
-const Input = styled.input`
-  display: block;
-  border: 1px solid #d0d0d0;
-  padding: 10px;
-  border-radius: 5px;
-  min-width: 30%;
-  width: 95%;
+interface IInputProps {
+  placeholder: string;
+  value: string;
+  onChange: (e: any) => void;
+  onBlur?: (e: any) => void;
+  type?: string;
+  style?: any
+}
 
-  &::placeholder {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: sans-serif;
-  }
-  &:focus {
-    outline: solid;
-    outline-width: 2px;
-    outline-color: #2684ff;
-  }
-`;
+const Input: React.FC<IInputProps> = ({ onChange, placeholder, value, type, onBlur, style }) => {
+  return (
+    <input
+      className={styles.input}
+      type={type || 'text'}
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      onBlur={onBlur}
+      style={style}
+    />
+  );
+};
 
 export default Input;

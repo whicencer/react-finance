@@ -57,7 +57,6 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
         <AddCardPopupTitle>Add credit card</AddCardPopupTitle>
         <label style={{ color: 'red', display: errorVisible ? 'block' : 'none' }}>{errorMessage}</label>
         <Input
-          required
           placeholder='Card Name'
           value={cardName}
           onChange={handleChange}
@@ -65,7 +64,6 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
           style={{ margin: '10px', width: '80%' }}
         />
         <Input
-          required
           type={'number'}
           placeholder='Balance'
           value={balance}
