@@ -24,7 +24,7 @@ export const ChangeCardNamePopup: React.FC<{popupState: IPopupStates, id: string
     <Popup isActive={popupState.isActive} setActive={popupState.setActive}>
       <Flex direction='column' alignItems='center'>
         <h2>Change card name</h2>
-        <Input placeholder='New card name' onChange={e => setNewNameValue(e.target.value)} style={{ marginTop: 20 }} />
+        <Input value={newNameValue} placeholder='New card name' onChange={e => setNewNameValue(e.target.value)} style={{ marginTop: 20 }} />
         <Button style={{ marginTop: 20 }} onClick={changeNameHandler}>Update card name</Button>
       </Flex>
     </Popup>
