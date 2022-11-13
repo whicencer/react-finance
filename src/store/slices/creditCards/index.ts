@@ -1,10 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITransaction } from '../../../app/typings/ITransaction';
+import { createSlice } from '@reduxjs/toolkit';
 import { ICardsState } from './creditCards.typings';
+import { changeCardNameReducer } from './creditCards.reducers/cards/changeCardName';
+import { deleteCardReducer } from './creditCards.reducers/cards/deleteCard';
+import { changeCardThemeReducer } from './creditCards.reducers/cards/changeCardTheme';
+import { setCardsReducer } from './creditCards.reducers/cards/setCards';
+import { addCardReducer } from './creditCards.reducers/cards/addCard';
+import { deleteTransactionReducer } from './creditCards.reducers/transactions/deleteTransaction';
+import { setTransactionsReducer } from './creditCards.reducers/transactions/setTransactions';
+import { addTransactionReducer } from './creditCards.reducers/transactions/addTransaction';
 
 const initialState: ICardsState  = {
-  cards: [],
-  transactions: []
+  cards: {
+    items: [],
+    isLoading: false
+  },
+  transactions: {
+    items: [],
+    isLoading: false
+  }
 };
 
 
@@ -12,57 +25,16 @@ const creditCardsSlice = createSlice({
   name: 'creditCards',
   initialState,
   reducers: {
-    addCard: (state, action) => {
-      state.cards.push(action.payload);
-    },
-    setCards: (state, action) => {
-      state.cards = [...action.payload];
-    },
-    changeCardTheme: (state, action: PayloadAction<{ id: string, themeId: number }>) => {
-      const card = state.cards.find((card) => card.id === action.payload.id);
-      
-      if (card !== undefined) {
-        card.themeId = action.payload.themeId;
-      }
-    },
-    deleteCard: (state, action: PayloadAction<string>) => {
-      const idInState = state.cards.findIndex(el => el.id === action.payload);
-      const updateTransactions = state.transactions.filter(transaction => transaction.balance !== action.payload);
-
-      state.cards.splice(idInState, 1);
-      state.transactions = updateTransactions;
-    },
-    changeCardName: (state, action: PayloadAction<{ id: string, newName: string }> ) => {
-      const card = state.cards.find(card => card.id === action.payload.id);
-
-      if (card !== undefined) {
-        card.cardName = action.payload.newName;
-      }
-    },
-    addTransaction: (state, action: PayloadAction<ITransaction>) => {
-      const card = state.cards.find((card) => card.id === action.payload.balance);
-
-      state.transactions.unshift(action.payload);
-      
-      if (card !== undefined) {
-        const resultSum = action.payload.status === 'expense' ? card.balance - action.payload.sum : card.balance + action.payload.sum;
-        card.balance = resultSum;
-      }
-    },
-    setTransactions: (state, action) => {
-      state.transactions = [...action.payload];
-    },
-    deleteTransaction: (state, action: PayloadAction<ITransaction>) => {
-      const idInState = state.transactions.findIndex(el => el.id === action.payload.id);
-      const transactionBalanceId = state.cards.findIndex(el => el.id === action.payload.balance);
-      
-      state.transactions.splice(idInState, 1);
-      action.payload.status === 'income'
-        ? state.cards[transactionBalanceId].balance -= action.payload.sum
-        : state.cards[transactionBalanceId].balance += action.payload.sum;
-    }
+    addCard: addCardReducer,
+    setCards: setCardsReducer,
+    changeCardTheme: changeCardThemeReducer,
+    deleteCard: deleteCardReducer,
+    changeCardName: changeCardNameReducer,
+    deleteTransaction: deleteTransactionReducer,
+    setTransactions: setTransactionsReducer,
+    addTransaction: addTransactionReducer
   },
 });
 
-export const { addCard, changeCardTheme, deleteCard, setCards, changeCardName, addTransaction, setTransactions, deleteTransaction } = creditCardsSlice.actions;
+export const { addCard, changeCardTheme, deleteCard, setCards, changeCardName, deleteTransaction, setTransactions, addTransaction } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;

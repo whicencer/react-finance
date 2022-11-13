@@ -5,8 +5,6 @@ import CreditCard from '../../components/CreditCard';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 
-import { PageContent } from '../../shared/components/PageContent';
-import { OpenPopupButton } from '../../shared/ui/PageButton';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 import { getCardsFromDB } from '../../services/cardsService';
@@ -14,10 +12,15 @@ import { useDispatch } from 'react-redux';
 import { setCards, setTransactions } from '../../store/slices/creditCards';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { getTransactionsFromDB } from '../../services/transactionsService';
+import { PageContent } from '../../shared/components/PageContent';
+import { PageButton } from '../../shared/ui/PageButton';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  const { transactions, cards } = useTypedSelector(state => state.creditCards);
+  
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
+
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -33,6 +36,7 @@ const Dashboard = () => {
   });
   
   const cardsMapped = !cards.length ? `You haven't made any cards yet` : cards?.map(({ cardName, balance, themeId, id }) => {
+
     return (
       <CreditCard
         themeId={themeId}
@@ -50,7 +54,7 @@ const Dashboard = () => {
       <PageContent>
         <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
           <h2>Dashboard</h2>
-          <OpenPopupButton onClick={() => setAddCardActive(true)}>Add credit card</OpenPopupButton>
+          <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cardsMapped }

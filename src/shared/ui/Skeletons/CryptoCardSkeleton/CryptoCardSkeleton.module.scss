@@ -1,0 +1,48 @@
+.cryptoCardSkeleton {
+  background-color: #0F0F13;
+  border-radius: 25px;
+  margin-left: 10px;
+  
+  &:not(:last-child) {
+    margin-right: 17px;
+  }
+}
+
+.skeletonAnimate {
+  background: linear-gradient(-45deg, #1e1e22, #2a2a2e, #343435);
+	background-size: 300%;
+  animation: animated_gradient 3s ease-in-out infinite;
+}
+
+.skeletonImage {
+  margin: 15px 0 15px 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #1e1e22;
+  border-radius: 50px;
+}
+span {
+  display: inline-block;
+}
+
+.skeletonTitle {
+  border-radius: 100px;
+  display: inline-block;
+  width: 100px;
+  height: 15px;
+  background-color: #1e1e22;
+}
+.skeletonText {
+  margin-top: 10px;
+  border-radius: 100px;
+  display: inline-block;
+  width: 50px;
+  height: 13px;
+  background-color: #1e1e22;
+}
+
+@keyframes animated_gradient {
+	0% { background-position: 0px 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0px 50%; }
+}

@@ -15,9 +15,9 @@ import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './select
 export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setActive }) => {
   const dispatch = useDispatch();
 
-  const { cards } = useTypedSelector(state => state.creditCards);
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
-  
+
   const balances = cards.map(card => {
     return {value: card.id, label: `${card.cardName} (${currency} ${card.balance})`};
   });
@@ -33,7 +33,7 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       id: `transaction_${generateObjectId()}`
     };
     const currentBalance = cards[cards.findIndex(card => card.id === data.balance)].balance;
-    
+
     try {
       addTransactionDB(data, currentBalance);
       dispatch(addTransaction(data));
@@ -60,14 +60,13 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
   useEffect(() => {
     status === 'expense' ? setCategory('entertainments') : setCategory('income');
   }, [status]);
-  
 
   return (
     <div>
       <label>Income / Expense</label>
       <CustomSelect value={status} setAction={setStatus} options={statusSelect} />
       <br />
-      
+
       <label>Sum</label>
       <Input value={sum} onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(e.currentTarget.value)} placeholder='Sum' type={'number'} />
       <br />
@@ -79,7 +78,7 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       <label>Balance</label>
       <CustomSelect value={balance} setAction={setBalance} options={balances} />
       <br />
-      
+
       <label>Category</label>
       <CustomSelect value={categoryLabel} setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
       <br />
