@@ -7,6 +7,16 @@
   -ms-user-select: none;
 }
 
+input, select, textarea {
+  -webkit-user-select: none;
+  -webkit-user-select: auto !important;
+  -khtml-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  -o-user-select: auto !important;
+  user-select: auto !important;  
+}
+
 html, body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
