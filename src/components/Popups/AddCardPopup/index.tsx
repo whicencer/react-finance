@@ -66,7 +66,6 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
         <Input
           type={'number'}
           placeholder='Balance'
-          value={balance}
           onChange={(e) => setBalance(e.target.value)}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />

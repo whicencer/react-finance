@@ -4,7 +4,7 @@ import styles from './Input.module.scss';
 
 interface IInputProps {
   placeholder: string;
-  value: string;
+  value?: string;
   onChange: (e: any) => void;
   onBlur?: (e: any) => void;
   type?: string;
