@@ -6,6 +6,10 @@ html, body {
   color: #fff;
 }
 
+* {
+  -webkit-user-drag: none;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
