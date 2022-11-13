@@ -7,7 +7,7 @@ import { addCard } from "../../../store/slices/creditCards";
 
 export const useAddCard = () => {
   const dispatch = useDispatch();
-  const cards = useTypedSelector(state => state.creditCards.cards);
+  const { items: cards } = useTypedSelector(state => state.creditCards);
   const firestore = getFirestore();
   const { currentUser } = getAuth();
 

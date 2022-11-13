@@ -7,7 +7,8 @@ import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 
 import { useDispatch } from 'react-redux';
-import { setCards, setTransactions } from '../../store/slices/creditCards';
+import { setCards } from '../../store/slices/creditCards';
+import { setTransactions } from '../../store/slices/transactions';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getCardsFromDB } from '../../app/services/getCardsFromDB';
@@ -17,8 +18,8 @@ import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  const creditCards = useTypedSelector(state => state.creditCards.cards);
-  const lastFiveTransactions = useTypedSelector(state => state.creditCards.transactions).slice(0, 5);
+  const { items: cards } = useTypedSelector(state => state.creditCards);
+  const { items: transactions } = useTypedSelector(state => state.transactions);
   const dispatch = useDispatch();
 
   // popups state
@@ -29,7 +30,7 @@ const Dashboard = () => {
     getTransactionsFromDB().then(data => dispatch(setTransactions(data)));
   }, []);
 
-  const cards = !creditCards.length ? `You haven't made any cards yet` : creditCards.map(({ cardName, balance, themeId, id }) => {
+  const mappedCards = !cards.length ? `You haven't made any cards yet` : cards.map(({ cardName, balance, themeId, id }) => {
     return (
       <CreditCard
         themeId={themeId}
@@ -40,7 +41,7 @@ const Dashboard = () => {
       />
     );
   });
-  const transactions = lastFiveTransactions.map(transaction => {
+  const last5Transactions = transactions.slice(0, 5).map(transaction => {
     return <TransactionItem transaction={transaction} key={transaction.id} />;
   });
 
@@ -53,15 +54,15 @@ const Dashboard = () => {
           <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { cards }
+          { mappedCards }
         </Flex>
         
         {
-          lastFiveTransactions.length
+          transactions.length
           ?
             <Flex direction='column' style={{ marginTop: 20 }}>
               <h3>Last 5 transactions</h3>
-              {transactions}
+              {last5Transactions}
             </Flex>
           : ''
         }

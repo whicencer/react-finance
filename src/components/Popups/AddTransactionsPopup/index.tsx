@@ -8,7 +8,7 @@ import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
 import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './selectOptions';
 import { useDispatch } from 'react-redux';
 import { addTransactionDB } from './addTransactionPopup.service';
-import { addTransaction } from '../../../store/slices/creditCards';
+import { addTransaction } from '../../../store/slices/transactions';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { validateFields } from './addTransactionsPopup.utils';
 import { toast } from 'react-toastify';
@@ -17,7 +17,7 @@ import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const dispatch = useDispatch();
 
-  const cards = useTypedSelector(state => state.creditCards.cards);
+  const { items: cards } = useTypedSelector(state => state.creditCards);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const balances = cards.map(card => {

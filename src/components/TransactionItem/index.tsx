@@ -13,7 +13,8 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   const [coords, setCoords] = useState({x: 0, y: 0});
   useAwayClick(() => setContextOpen(false));
 
-  const cardFromId = useTypedSelector(state => state.creditCards.cards).find(card => card.id === transaction.balance);
+  const { items: cards } = useTypedSelector(state => state.creditCards);
+  const cardById = cards.find(card => card.id === transaction.balance);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
@@ -21,7 +22,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
     ? `- ${currency}${formatNumber(transaction?.sum)}`
     : `+ ${currency}${formatNumber(transaction?.sum)}`;
   
-  if (cardFromId === undefined) {
+  if (cardById === undefined) {
     throw new Error();
   }
   
@@ -35,7 +36,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
           <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.svg`)} alt="alt" />
         <Flex direction='column'>
           <h3>{transaction?.note || transaction?.category.toUpperCase()}</h3>
-          <p>{cardFromId?.cardName}</p>
+          <p>{cardById?.cardName}</p>
         </Flex>
       </Flex>
       <Flex>
@@ -46,7 +47,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
         isOpen={contextOpen}
         setIsOpen={setContextOpen}
         x={coords.x}
-        currentBalance={cardFromId?.balance}
+        currentBalance={cardById?.balance}
         y={coords.y}
         transaction={transaction}
       />

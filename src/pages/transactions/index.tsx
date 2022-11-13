@@ -15,7 +15,7 @@ import { TransactionsList } from './transactions.styles';
 const Transactions = () => {
   useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
-  const transactions = useTypedSelector(state => state.creditCards.transactions);
+  const { items: transactions } = useTypedSelector(state => state.transactions);
   const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {
     const aToTimestamp = Math.floor(a.getTime()/1000);
     const bToTimestamp = Math.floor(b.getTime()/1000);
