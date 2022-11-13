@@ -16,4 +16,7 @@
     outline-width: 2px;
     outline-color: #2684ff;
   }
+  &:invalid {
+    border: 2px solid red;
+  }
 }
