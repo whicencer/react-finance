@@ -69,11 +69,11 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       <br />
 
       <label>Sum</label>
-      <Input value={sum} onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(e.currentTarget.value)} placeholder='Sum' type={'number'} />
+      <Input pattern='[0-9]' value={sum} onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(e.currentTarget.value)} placeholder='Sum' type={'number'} />
       <br />
 
       <label>Note</label>
-      <Input value={note} onChange={(e: React.FormEvent<HTMLInputElement>) => setNote(e.currentTarget.value)} placeholder='Note' />
+      <Input pattern='.{0,80}' value={note} onChange={(e: React.FormEvent<HTMLInputElement>) => setNote(e.currentTarget.value)} placeholder='Note' />
       <br />
 
       <label>Balance</label>
