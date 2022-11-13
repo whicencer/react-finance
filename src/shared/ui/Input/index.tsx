@@ -8,15 +8,17 @@ interface IInputProps {
   onChange: (e: any) => void;
   onBlur?: (e: any) => void;
   type?: string;
-  style?: any
+  style?: any;
+  pattern?: string;
 }
 
-const Input: React.FC<IInputProps> = ({ onChange, placeholder, value, type, onBlur, style }) => {
+const Input: React.FC<IInputProps> = ({ onChange, pattern, placeholder, value, type, onBlur, style }) => {
   return (
     <input
       className={styles.input}
       type={type || 'text'}
       value={value}
+      pattern={pattern}
       placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
