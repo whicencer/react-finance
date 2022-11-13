@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-// import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import Flex from '../../shared/ui/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';
-// import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
@@ -15,7 +13,7 @@ import { TransactionsList } from './transactions.styles';
 const Transactions = () => {
   useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
-  const { items: transactions } = useTypedSelector(state => state.transactions);
+  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
   const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {
     const aToTimestamp = Math.floor(a.getTime()/1000);
     const bToTimestamp = Math.floor(b.getTime()/1000);

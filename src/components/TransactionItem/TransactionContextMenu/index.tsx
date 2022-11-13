@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { db } from '../../../app/config/firebase';
 import { useAuth } from '../../../app/hooks/useAuth';
 import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
-import { deleteTransaction } from '../../../store/slices/transactions';
+import { deleteTransaction } from '../../../store/slices/creditCards';
 import { ITransactionContextMenuProps } from './transactionContextMenu.types';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
 

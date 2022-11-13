@@ -6,7 +6,7 @@ import { changeCardName } from "../../../store/slices/creditCards";
 
 export const useChangeCardName = (id: string) => {
   const dispatch = useDispatch();
-  const { items: cards } = useTypedSelector(state => state.creditCards);
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
   const firestore = getFirestore();
   const { currentUser } = getAuth();
 

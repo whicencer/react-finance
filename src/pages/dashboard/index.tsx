@@ -8,7 +8,7 @@ import AddCardPopup from '../../components/Popups/AddCardPopup';
 
 import { useDispatch } from 'react-redux';
 import { setCards } from '../../store/slices/creditCards';
-import { setTransactions } from '../../store/slices/transactions';
+import { setTransactions } from '../../store/slices/creditCards';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getCardsFromDB } from '../../app/services/getCardsFromDB';
@@ -18,8 +18,8 @@ import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  const { items: cards } = useTypedSelector(state => state.creditCards);
-  const { items: transactions } = useTypedSelector(state => state.transactions);
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
   const dispatch = useDispatch();
 
   // popups state

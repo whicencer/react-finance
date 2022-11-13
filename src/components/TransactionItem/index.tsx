@@ -13,7 +13,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
   const [coords, setCoords] = useState({x: 0, y: 0});
   useAwayClick(() => setContextOpen(false));
 
-  const { items: cards } = useTypedSelector(state => state.creditCards);
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
   const cardById = cards.find(card => card.id === transaction.balance);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
