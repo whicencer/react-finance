@@ -4,10 +4,8 @@ import Header from '../../components/Header';
 import CreditCard from '../../components/CreditCard';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
-
 import { useDispatch } from 'react-redux';
-
-import { setCards, setCardsLoading } from '../../store/slices/creditCards';
+import { setCards, setCardsLoading, setTransactionsLoading } from '../../store/slices/creditCards';
 import { setTransactions } from '../../store/slices/creditCards';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
@@ -17,25 +15,34 @@ import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 import { CreditCardSkeletons } from './CreditCardSkeletons';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
+import { TransactionsSkeletons } from './TransactionsSkeletons';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
   const { items: cards, isLoading: cardsLoading } = useTypedSelector(state => state.creditCards.cards);
-  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
-
+  const { items: transactions, isLoading: transactionsLoading } = useTypedSelector(state => state.creditCards.transactions);
   const dispatch = useDispatch();
+
+  // popups state
+  const [isAddCardActive, setAddCardActive] = useState(false);
   
   useEffect(() => {
+    // set loading state
     dispatch(setCardsLoading(true));
+    dispatch(setTransactionsLoading(true));
+    
     getCardsFromDB().then(data => {
+      // set loading false
       dispatch(setCards(data));
       dispatch(setCardsLoading(false));
     });
-    getTransactionsFromDB().then(data => dispatch(setTransactions(data)));
+
+    getTransactionsFromDB().then(data => {
+      // set loading false
+      dispatch(setTransactions(data));
+      dispatch(setTransactionsLoading(false));
+    });
   }, []);
-  
-  // popups state
-  const [isAddCardActive, setAddCardActive] = useState(false);
 
   const last5Transactions = transactions.slice(0, 5).map(transaction => {
     return <TransactionItem transaction={transaction} key={transaction.id} />;
@@ -65,16 +72,11 @@ const Dashboard = () => {
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
           { cardsLoading ? <CreditCardSkeletons /> : cardsMapped }
         </Flex>
-        
-        {
-          transactions?.length
-          ?
-            <Flex direction='column' style={{ marginTop: 20 }}>
-              <h3>Last 5 transactions</h3>
-              { last5Transactions }
-            </Flex>
-          : null
-        }
+
+        <Flex direction='column' style={{ marginTop: 20 }}>
+          <h3>Last 5 transactions</h3>
+          {transactionsLoading ? <TransactionsSkeletons /> : last5Transactions}
+        </Flex>
       </PageContent>
       
       {/* Popups */}
