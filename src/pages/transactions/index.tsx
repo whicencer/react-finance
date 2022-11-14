@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import Flex from '../../shared/ui/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
@@ -9,6 +8,7 @@ import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
+import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 
 const Transactions = () => {
   useDocumentTitle('React Finance - Transactions');
@@ -20,6 +20,7 @@ const Transactions = () => {
 
     return bToTimestamp - aToTimestamp;
   }).map(date => getNormalDate(date));
+
   const filteredDatesList = listOfAllDates.filter((date, pos) => listOfAllDates.indexOf(date) === pos);
 
   return (
