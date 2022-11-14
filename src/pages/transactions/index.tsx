@@ -4,7 +4,6 @@ import Flex from '../../shared/ui/Flex';
 import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';
-// import { TransactionItem } from '../../components/TransactionItem';
 import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
