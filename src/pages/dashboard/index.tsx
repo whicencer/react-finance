@@ -15,7 +15,7 @@ import { getCardsFromDB } from '../../services/cardsService';
 import { getTransactionsFromDB } from '../../services/transactionsService';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton';
+import { CreditCardSkeletons } from './CreditCardSkeletons';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 
 const Dashboard = () => {
@@ -63,7 +63,7 @@ const Dashboard = () => {
           <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { cardsLoading ? <CreditCardSkeleton /> : cardsMapped }
+          { cardsLoading ? <CreditCardSkeletons /> : cardsMapped }
         </Flex>
         
         {
