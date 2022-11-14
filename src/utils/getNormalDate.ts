@@ -19,6 +19,10 @@ export const getNormalDate = (date?: Date) => {
     const month = date.getMonth();
     const year = date.getFullYear();
 
+    if (date.toDateString() === new Date().toDateString()) {
+      return 'Today';
+    }
+
     return `${day} ${monthsDict[month]} ${year}`;
   }
 };
