@@ -8,6 +8,7 @@ import { addCardReducer } from './creditCards.reducers/cards/addCard';
 import { deleteTransactionReducer } from './creditCards.reducers/transactions/deleteTransaction';
 import { setTransactionsReducer } from './creditCards.reducers/transactions/setTransactions';
 import { addTransactionReducer } from './creditCards.reducers/transactions/addTransaction';
+import { setCardsLoadingReducer } from './creditCards.reducers/cards/setCardsLoading';
 
 const initialState: ICardsState  = {
   cards: {
@@ -32,9 +33,10 @@ const creditCardsSlice = createSlice({
     changeCardName: changeCardNameReducer,
     deleteTransaction: deleteTransactionReducer,
     setTransactions: setTransactionsReducer,
-    addTransaction: addTransactionReducer
+    addTransaction: addTransactionReducer,
+    setCardsLoading: setCardsLoadingReducer
   },
 });
 
-export const { addCard, changeCardTheme, deleteCard, setCards, changeCardName, deleteTransaction, setTransactions, addTransaction } = creditCardsSlice.actions;
+export const { addCard, setCardsLoading, changeCardTheme, deleteCard, setCards, changeCardName, deleteTransaction, setTransactions, addTransaction } = creditCardsSlice.actions;
 export default creditCardsSlice.reducer;
