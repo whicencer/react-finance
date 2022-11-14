@@ -15,7 +15,7 @@ import { getCardsFromDB } from '../../app/services/getCardsFromDB';
 import { getTransactionsFromDB } from '../../app/services/getTransactionsFromDB';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton';
+import { CreditCardSkeletons } from './CreditCardSkeletons';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
@@ -59,7 +59,7 @@ const Dashboard = () => {
           <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
         </Flex>
         <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { cardsLoading ? <CreditCardSkeleton /> : mappedCards }
+          { cardsLoading ? <CreditCardSkeletons /> : mappedCards }
         </Flex>
         
         {
