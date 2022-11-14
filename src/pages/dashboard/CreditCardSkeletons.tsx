@@ -4,7 +4,7 @@ import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton
 
 export const CreditCardSkeletons = () => {
   const skeletonsCountElement = [];
-  const skeletonsCount = Math.floor((window.innerWidth/100*80)/260);
+  const skeletonsCount = Math.floor((window.innerWidth < 960 ? window.innerWidth : 960)/260);
   
   for (let i = 0; i < skeletonsCount; i++) {
     skeletonsCountElement.push(i);

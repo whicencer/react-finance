@@ -1,0 +1,27 @@
+.transactionSkeleton {
+  width: 96%;
+  padding: 8px;
+  border-radius: 10px;
+
+  margin: 10px 0;
+  background-color: #0F0F13;
+}
+
+.transactionSkeletonIcon {
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+}
+
+.transactionSkeletonDescription {
+  width: 140px;
+  height: 13px;
+  border-radius: 15px;
+}
+
+.transactionSkeletonCardName {
+  width: 75px;
+  height: 11px;
+  border-radius: 15px;
+  margin-top: 8px;
+}
