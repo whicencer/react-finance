@@ -1,0 +1,52 @@
+.categoriesExpenses {
+  margin-top: 15px;
+  overflow: auto;
+}
+.categoryExpensesItem {
+  position: relative;
+  border: 10px solid transparent;
+  border-radius: 50%;
+  flex-wrap: wrap;
+
+  transition: .3s;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: #111;
+    transform: scale(1.1);
+    
+    .tooltip {
+      opacity: 1;
+    }
+  }
+
+  &:first-child {
+    margin-left: 10px;
+  }
+}
+.categoryExpensesItemIcon {
+  width: 70px;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  
+  font-size: 9px;
+  font-weight: 600;
+
+  transition: .4s;
+}

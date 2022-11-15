@@ -9,11 +9,14 @@ import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
+import { CategoriesExpenses } from './CategoriesExpenses/CategoriesExpenses';
 
 const Transactions = () => {
+  // Hooks
   useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
+
   const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {
     const aToTimestamp = Math.floor(a.getTime()/1000);
     const bToTimestamp = Math.floor(b.getTime()/1000);
@@ -31,6 +34,8 @@ const Transactions = () => {
           <h2>Transactions</h2>
           <PageButton onClick={() => setIsPopupActive(true)}>Add transaction</PageButton>
         </Flex>
+
+        <CategoriesExpenses />
         <TransactionsList>
           { !transactions.length && `You haven't made any transactions yet` }
           {

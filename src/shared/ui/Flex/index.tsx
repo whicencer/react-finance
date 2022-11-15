@@ -11,6 +11,7 @@ interface IFlexProps {
   alignItems?: 'center' | 'flex-start' | 'flex-end';
   margin?: string;
   padding?: string;
+  wrap?: string;
 }
 
 const Flex = styled.div<IFlexProps>`
@@ -20,6 +21,7 @@ const Flex = styled.div<IFlexProps>`
   align-items: ${(props) => props.alignItems || 'flex-start'};
   margin: ${(props) => props.margin || '0'};
   padding: ${props => props.padding || '0'};
+  flex-wrap: ${props => props.wrap || 'nowrap'}
 `;
 
 export default Flex;
