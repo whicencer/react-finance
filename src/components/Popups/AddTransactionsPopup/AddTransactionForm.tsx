@@ -8,6 +8,7 @@ import Input from '../../../shared/ui/Input';
 import { addTransaction } from '../../../store/slices/creditCards';
 import { generateObjectId } from '../../../utils/generateObjectId';
 import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+import { numberFieldFormat } from '../../../utils/numberFieldFormat';
 import { addTransactionDB } from './addTransactionPopup.service';
 import { validateFields } from './addTransactionsPopup.utils';
 import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './selectOptions';
@@ -61,6 +62,10 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
     status === 'expense' ? setCategory('entertainments') : setCategory('income');
   }, [status]);
 
+  const handleSumChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setSum(numberFieldFormat(e.currentTarget.value));
+  };
+
   return (
     <div>
       <label>Income / Expense</label>
@@ -68,7 +73,7 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       <br />
 
       <label>Sum</label>
-      <Input pattern='[0-9]' value={sum} onChange={(e: React.FormEvent<HTMLInputElement>) => setSum(e.currentTarget.value)} placeholder='Sum' type={'number'} />
+      <Input pattern='[0-9]+([\.][0-9]+)?' value={sum} onChange={handleSumChange} placeholder='Sum' type={'text'} />
       <br />
 
       <label>Note</label>

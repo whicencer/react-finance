@@ -12,13 +12,12 @@ import { validateFields } from './addCardPopup.utils';
 
 import { toast } from 'react-toastify';
 import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+import { numberFieldFormat } from '../../../utils/numberFieldFormat';
 
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const id = `card_${generateObjectId()}`;
 
   const [cardName, setCardName] = useState('');
-  const [errorVisible, setErrorVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const [balance, setBalance] = useState('');
   
   const addNewCard = useAddCard();
@@ -34,40 +33,25 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
       toast.error(err.message);
     });
   };
-
-  const handleChange = (event: any) => {
-    if (event.target.value.length >= 20) {
-      setErrorMessage('This field length should be less than 20 characters');
-      setErrorVisible(true);
-    } else {
-      setErrorVisible(false);
-    }
-    setCardName(event.target.value);
-  };
-  const handleBlur = (event: any) => {
-    if (event.target.value <= 0) {
-      setErrorMessage('Field cannot be empty!');
-      setErrorVisible(true);
-    }
+  const handleBalanceChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setBalance(numberFieldFormat(e.currentTarget.value));
   };
 
   return (
     <Popup isActive={isActive} setActive={setActive}>
       <Flex direction='column' alignItems='center'>
         <AddCardPopupTitle>Add credit card</AddCardPopupTitle>
-        <label style={{ color: 'red', display: errorVisible ? 'block' : 'none' }}>{errorMessage}</label>
         <Input
           placeholder='Card Name'
           value={cardName}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          onChange={(e: React.FormEvent<HTMLInputElement>) => setCardName(e.currentTarget.value)}
           style={{ margin: '10px', width: '80%' }}
         />
         <Input
-          pattern='[0-9]'
-          type={'number'}
+          pattern='[0-9]+([\.][0-9]+)?'
           placeholder='Balance'
-          onChange={(e) => setBalance(e.target.value)}
+          onChange={handleBalanceChange}
+          value={balance}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />
         <Button style={{ width: '60%' }} onClick={() => validateFields(addCard, cardName, numberedBalance)}>Add card</Button>
