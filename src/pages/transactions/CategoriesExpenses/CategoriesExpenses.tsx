@@ -22,7 +22,7 @@ export const CategoriesExpenses = () => {
 
   return (
     <Flex direction='column' className={styles.categoriesExpenses}>
-      <h3>Expenses by categories in 2022</h3>
+      <h4>Expenses by categories in {currentYear}:</h4>
       <Flex justifyContent='center' margin='10px 0' padding='5px 0'>
         {
           Object.keys(allTransactionsByCategory).map(category => {
