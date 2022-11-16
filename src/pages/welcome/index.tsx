@@ -12,6 +12,7 @@ import { setUser } from '../../store/slices/user';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 
 import styles from './welcome.module.scss';
+import { toast } from 'react-toastify';
 
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
@@ -23,15 +24,15 @@ const Welcome = () => {
         .then(result => {
           const {displayName, email, photoURL, uid} = result.user;
           const payload = {
-            displayName: displayName,
-            email: email,
+            displayName,
+            email,
             photoUrl: photoURL,
-            uid: uid,
+            uid
           };
           dispatch(setUser(payload));
         });
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      toast.error(e.message);
     }
   };
 
