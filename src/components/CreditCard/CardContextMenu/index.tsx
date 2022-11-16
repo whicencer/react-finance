@@ -25,16 +25,18 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOp
 
   const deleteCardCallback = async (e: any) => {
     e.stopPropagation();
-    dispatch(deleteCard(id));
     
     await deleteDoc(doc(db, `user_${user.uid}`, `cards_${id}`));
-    getTransactionsFromDB().then(data => {
-      const transactionsWithDeletingBalance = data.filter(transaction => transaction.balance === id);
-      transactionsWithDeletingBalance.map(transaction => {
+    dispatch(deleteCard(id));
+    getTransactionsFromDB().then((data) => {
+      const transactionsWithDeletingBalance = data.filter((transaction) => transaction.balance === id);
+      transactionsWithDeletingBalance.map((transaction) => {
         deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
       });
     });
     toast.success(`${getRandomEmoji()} Card was successfully deleted`);
+
+    setConfirmActive(false);
   };
 
   return (
