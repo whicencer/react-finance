@@ -1,0 +1,52 @@
+.datePickerButton {
+  background-color: #0F0F13;
+  padding: 7px 15px;
+  border-radius: 15px;
+  
+  &:hover {
+    background-color: #1c1c24;
+    cursor: pointer;
+  }
+}
+
+.datePickerWrapper {
+  position: relative;
+}
+
+.datePicker {
+  z-index: 100;
+
+  opacity: 0;
+  visibility: hidden;
+
+  position: absolute;
+  top: 40px;
+
+  min-width: 150%;
+  min-height: 100%;
+
+  padding: 10px;
+  background-color: #1c1c24;
+  border-radius: 10px;
+}
+.datePicker.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.datePickerMonth {
+  background-color: #2d2d3a;
+  margin: 5px;
+
+  border-radius: 10px;
+
+  width: 40px;
+  height: 40px;
+
+  font-size: 12px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #3d3d4e;
+  }
+}

@@ -10,7 +10,7 @@
     width: 100%;
     height: 37px;
     
-    &:hover{
+    &:hover {
       cursor:pointer;
     }
   }
@@ -18,5 +18,13 @@
   option {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
+  }
+}
+
+.customSelect.dark {
+  select {
+    color: #fff;
+    background-color: #0F0F13;
+    border: 1px solid #0F0F13;
   }
 }
