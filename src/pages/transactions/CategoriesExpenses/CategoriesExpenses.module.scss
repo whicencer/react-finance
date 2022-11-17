@@ -1,52 +1,46 @@
 .categoriesExpenses {
   margin-top: 15px;
-  overflow: auto;
+  width: 100%;
 }
 .categoryExpensesItem {
-  position: relative;
   border: 10px solid transparent;
   border-radius: 50%;
   flex-wrap: wrap;
 
-  transition: .3s;
-
+  
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
 
+span {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  margin: 5px;
+
+  &::before {
+    transition: .2s;
+    z-index: -1;
+    border-radius: 15px;
+    opacity: 0;
+    background-color: #111;
+    padding: 12px;
+    width: 110px;
+    bottom: 90%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    content: attr(data-clue);
+  }
   &:hover {
-    border-color: #111;
-    transform: scale(1.1);
-    
-    .tooltip {
+    &::before {
+      z-index: 1000;
       opacity: 1;
     }
   }
 
-  &:first-child {
-    margin-left: 10px;
+  img {
+    width: 70px;
   }
-}
-.categoryExpensesItemIcon {
-  width: 70px;
-}
-
-.tooltip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  background-color: #000;
-  width: 100%;
-  height: 100%;
-  
-  font-size: 9px;
-  font-weight: 600;
-
-  transition: .4s;
 }
