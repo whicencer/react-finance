@@ -1,6 +1,7 @@
 .categoriesExpenses {
   margin-top: 15px;
   width: 100%;
+  overflow: auto;
 }
 .categoryExpensesItem {
   border: 10px solid transparent;
@@ -13,9 +14,8 @@
   white-space: nowrap;
 }
 
-span {
+.categoriesExpenseItem {
   display: inline-block;
-  position: relative;
   text-align: center;
   margin: 5px;
 
@@ -27,8 +27,7 @@ span {
     background-color: #111;
     padding: 12px;
     width: 110px;
-    bottom: 90%;
-    left: 0;
+    top: 10px;
     right: 0;
     position: absolute;
     content: attr(data-clue);

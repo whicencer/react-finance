@@ -29,17 +29,17 @@ export const CategoriesExpenses = () => {
   const monthsText = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(',');
 
   return (
-    <Flex direction='column'>
+    <Flex direction='column' style={{ position: 'relative' }}>
       <Flex direction='column'>
         <DatePicker onChange={(month, year) => setCurrentDate({month, year})} />
         <p style={{ marginTop: 10 }}>Expenses in <span style={{ fontWeight: 600, color: '#959595' }}>{`${monthsText[month]} ${year}`}</span>: {symbol+formatNumber(summaryExpense)}</p>
       </Flex>
-      <Flex  wrap='wrap' justifyContent='center' alignItems='center' className={styles.categoriesExpenses}>
+      <Flex alignItems='center' className={styles.categoriesExpenses}>
         {
           Object.keys(allTransactionsByCategory).map(category => {
             const categorySum = allTransactionsByCategory[category].length && formatNumber(allTransactionsByCategory[category].map(transaction => transaction.sum).reduce((a,b) => a+b));
             return (
-              <span key={category} data-clue={`${category[0].toUpperCase() + category.slice(1)}: ${symbol+categorySum}`}>
+              <span className={styles.categoriesExpenseItem} key={category} data-clue={`${category[0].toUpperCase() + category.slice(1)}: ${symbol+categorySum}`}>
                 <img src={require(`../../../assets/${category}.svg`)} alt={category} />
               </span>
             );
