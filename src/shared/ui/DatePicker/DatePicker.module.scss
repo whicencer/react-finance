@@ -1,3 +1,16 @@
+button {
+  padding: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
 .datePickerButton {
   background-color: #0F0F13;
   padding: 7px 15px;
@@ -49,4 +62,8 @@
     cursor: pointer;
     background-color: #3d3d4e;
   }
+}
+
+.datePickerMonth.active {
+  background-color: #55556d;
 }
