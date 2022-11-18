@@ -11,7 +11,7 @@ interface IDatePickerProps {
 export const DatePicker: React.FC<IDatePickerProps> = ({ onChange }) => {
   const [chooseDateActive, setChooseDateActive] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const [currentYear] = useState(new Date().getFullYear());
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useAwayClick(() => setChooseDateActive(false));
   const monthsText = 'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(',');
@@ -28,15 +28,14 @@ export const DatePicker: React.FC<IDatePickerProps> = ({ onChange }) => {
       </Flex>
       <Flex direction='column' alignItems='center' className={chooseDateActive ? styles.datePicker+" "+styles.active : styles.datePicker}>
         <Flex style={{ width: '90%' }} justifyContent='space-between' alignItems='center'>
-          <button>{'<'}</button>
-          <span>{currentYear}</span>
-          <button>{'>'}</button>
+          <button disabled={currentYear === 2020} onClick={() => currentYear-1 >= 2020 && setCurrentYear(currentYear-1)}>{currentYear-1}</button>
+          <h3>{currentYear}</h3>
+          <button onClick={() => setCurrentYear(currentYear+1)}>{currentYear+1}</button>
         </Flex>
         <Flex style={{ width: '90%', marginTop: '15px' }} wrap={'wrap'} justifyContent='space-between'>
           {
-            monthsText.map(month => {
-              const monthToNumber = new Date(`2022-${month}-1`).getMonth();
-              return <Flex onClick={() => setCurrentMonth(monthToNumber)} justifyContent='center' alignItems='center' className={monthToNumber === currentMonth ? styles.datePickerMonth+" "+styles.active : styles.datePickerMonth} key={month}>{month}</Flex>;
+            monthsText.map((_, monthIndex) => {
+              return <Flex onClick={() => setCurrentMonth(monthIndex)} justifyContent='center' alignItems='center' className={monthIndex === currentMonth ? styles.datePickerMonth+" "+styles.active : styles.datePickerMonth} key={monthIndex}>{monthsText[monthIndex]}</Flex>;
             })
           }
         </Flex>

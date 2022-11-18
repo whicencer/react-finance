@@ -4,11 +4,14 @@ button {
   border: none;
   outline: none;
 
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-
+  color: rgb(110, 110, 110);
+  font-size: 15px;
+  
   cursor: pointer;
+  
+  &:disabled {
+    color: rgb(70, 70, 70);
+  }
 }
 
 .datePickerButton {
@@ -65,5 +68,5 @@ button {
 }
 
 .datePickerMonth.active {
-  background-color: #55556d;
+  background-color: #1261e0;
 }
