@@ -24,9 +24,9 @@ export const CryptoChange24 = () => {
                   data?.data.map((coin, key) => {
                     return (
                       <CryptoCard coin={coin} key={key} />
-                    );
-                  })
-                }
+                      );
+                    })
+                  }
               </>
         }
       </Flex>
