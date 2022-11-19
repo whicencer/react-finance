@@ -10,14 +10,18 @@ import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { CategoriesExpenses } from './CategoriesExpenses/CategoriesExpenses';
+import { FilterByCardName } from './FilterByCardName/FilterByCardName';
 
 const Transactions = () => {
   // Hooks
   useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
+  const [currentFilterCard, setCurrentFilterCard] = useState('');
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
 
-  const listOfAllDates = transactions.map(transaction => transaction.date).sort((a,b) => {
+  const filteredTransactions = transactions.filter(transaction => !currentFilterCard.length ? transaction : transaction.balance === currentFilterCard);
+
+  const listOfAllDates = filteredTransactions.map(transaction => transaction.date).sort((a,b) => {
     const aToTimestamp = Math.floor(a.getTime()/1000);
     const bToTimestamp = Math.floor(b.getTime()/1000);
 
@@ -37,6 +41,7 @@ const Transactions = () => {
 
         <CategoriesExpenses />
         <TransactionsList>
+          <FilterByCardName setCurrentCard={setCurrentFilterCard} />
           { !transactions.length && `You haven't made any transactions yet` }
           {
             filteredDatesList.map((date, key) => {
