@@ -69,7 +69,7 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
   return (
     <div>
       <label>Income / Expense</label>
-      <CustomSelect theme='light' value={status} setAction={setStatus} options={statusSelect} />
+      <CustomSelect value={status} setAction={setStatus} options={statusSelect} />
       <br />
 
       <label>Sum</label>
@@ -81,11 +81,11 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       <br />
 
       <label>Balance</label>
-      <CustomSelect theme='light' value={balance} setAction={setBalance} options={balances} />
+      <CustomSelect value={balance} setAction={setBalance} options={balances} />
       <br />
 
       <label>Category</label>
-      <CustomSelect theme='light' value={categoryLabel} setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
+      <CustomSelect value={categoryLabel} setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
       <br />
 
       <Button onClick={() => validateFields(addTransactionHandler, sum, note, balance, category, status)}>Add transaction</Button>
