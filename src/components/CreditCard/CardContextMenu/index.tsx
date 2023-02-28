@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { CardThemePopup } from '../../Popups/CardThemePopup';
 import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
+import { ITransaction } from '../../../app/typings/ITransaction';
 
 export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOpen, setIsOpen}) => {
   const dispatch = useDispatch();
@@ -23,14 +24,14 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOp
   const [isCardNameActive, setCardNameActive] = useState(false);
   const [isConfirmActive, setConfirmActive] = useState(false);
 
-  const deleteCardCallback = async (e: any) => {
+  const deleteCardCallback = async (e: Event) => {
     e.stopPropagation();
     
     await deleteDoc(doc(db, `user_${user.uid}`, `cards_${id}`));
     dispatch(deleteCard(id));
-    getTransactionsFromDB().then((data) => {
-      const transactionsWithDeletingBalance = data.filter((transaction) => transaction.balance === id);
-      transactionsWithDeletingBalance.map((transaction) => {
+    getTransactionsFromDB().then((data: ITransaction[]) => {
+      const deletingCardTransactions = data.filter((transaction) => transaction.balance === id);
+      deletingCardTransactions.map((transaction) => {
         deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
       });
     });
