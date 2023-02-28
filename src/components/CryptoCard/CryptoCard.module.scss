@@ -1,6 +1,8 @@
 .cryptoCard {
   display: flex;
 
+  cursor: pointer;
+
   background-color: #0F0F13;
   padding: 15px 35px;
   padding-left: 20px;
@@ -16,14 +18,14 @@
 }
 
 .cryptoCardPercentage {
-  color: #0cbe7a;
+  color: #38FDB6;
   font-size: 18px;
   font-weight: 600;
 }
 .cryptoCardPercentageMinus {
   font-size: 18px;
   font-weight: 600;
-  color: #EA3943;
+  color: #FD4438;
 }
 .cryptoCardCoinName {
   color: #B9BDBB;

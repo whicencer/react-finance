@@ -13,9 +13,9 @@ import { getCardsFromDB } from '../../services/cardsService';
 import { getTransactionsFromDB } from '../../services/transactionsService';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { CreditCardSkeletons } from './CreditCardSkeletons';
+import { CreditCardSkeletons } from './components/CreditCardSkeletons';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { TransactionsSkeletons } from './TransactionsSkeletons';
+import { TransactionsSkeletons } from './components/TransactionsSkeletons';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
@@ -44,21 +44,22 @@ const Dashboard = () => {
     });
   }, []);
 
-  const last5Transactions = transactions.slice(0, 5).map(transaction => {
-    return <TransactionItem transaction={transaction} key={transaction.id} />;
-  });
+  const last5Transactions = !transactions.length
+    ? 'You have not made any transactions yet'
+    : transactions.slice(0, 5).map(transaction => <TransactionItem transaction={transaction} key={transaction.id} />);
   
-  const cardsMapped = !cards.length ? `You haven't made any cards yet` : cards?.map(({ cardName, balance, themeId, id }) => {
-
-    return (
-      <CreditCard
-        themeId={themeId}
-        id={id}
-        cardName={cardName}
-        balance={balance}
-        key={id}
-      />
-    );
+  const cardsMapped = !cards.length
+    ? `You haven't made any cards yet`
+    : cards?.map(({ cardName, balance, themeId, id }) => {
+      return (
+        <CreditCard
+          themeId={themeId}
+          id={id}
+          cardName={cardName}
+          balance={balance}
+          key={id}
+        />
+      );
   });
 
   return (

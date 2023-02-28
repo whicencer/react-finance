@@ -1,0 +1,1 @@
+export const allExpenseCategories = 'beauty,education,entertainments,food,health,investments,other,tech,transport,traveling,income'.split(',');

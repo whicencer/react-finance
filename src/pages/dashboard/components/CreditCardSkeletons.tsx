@@ -1,6 +1,6 @@
 import React from 'react';
-import Flex from '../../shared/ui/Flex';
-import { CreditCardSkeleton } from '../../shared/ui/Skeletons/CreditCardSkeleton';
+import Flex from '../../../shared/ui/Flex';
+import { CreditCardSkeleton } from '../../../shared/ui/Skeletons/CreditCardSkeleton';
 
 export const CreditCardSkeletons = () => {
   const skeletonsCountElement = [];
