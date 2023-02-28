@@ -26,15 +26,20 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const data = { balance: numberedBalance, cardName, id, themeId: 2 };
 
   const addCard = () => {
-    addNewCard(data).then(() => {
+    const resolve = () => {
       setActive(false);
       toast.success(`${getRandomEmoji()} Card was successfully added`);
-    }).catch(err => {
-      toast.error(err.message);
-    });
+    };
+    const reject = (error: Error) => toast.error(error.message);
+
+    addNewCard(data, resolve, reject);
   };
   const handleBalanceChange = (e: React.FormEvent<HTMLInputElement>) => {
     setBalance(numberFieldFormat(e.currentTarget.value));
+  };
+  const handleAddCard = () => {
+    const errorHandler = (errorMessage: string) => toast.error(errorMessage);
+    validateFields(addCard, cardName, numberedBalance, errorHandler);
   };
 
   return (
@@ -54,7 +59,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
           value={balance}
           style={{ margin: '10px 0 20px 0', width: '80%' }}
         />
-        <Button style={{ width: '60%' }} onClick={() => validateFields(addCard, cardName, numberedBalance)}>Add card</Button>
+        <Button style={{ width: '60%' }} onClick={handleAddCard}>Add card</Button>
       </Flex>
     </Popup>
   );

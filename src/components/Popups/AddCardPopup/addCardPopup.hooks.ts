@@ -11,12 +11,19 @@ export const useAddCard = () => {
   const firestore = getFirestore();
   const { currentUser } = getAuth();
 
-  return async (data: ICardData) => {
-    if (cards.find(card => card.cardName === data.cardName)) {
-      throw new Error(`Card with name ${data.cardName} already exists`);
-    } else {
-      dispatch(addCard(data));
-      await setDoc(doc(firestore, `user_${currentUser?.uid}`, `cards_${data.id}`), data);
-    }
+  // eslint-disable-next-line no-unused-vars
+  return (data: ICardData, resolve: () => void, reject: (error: Error) => void) => {
+    const createCardFunction = async () => {
+      if (cards.find(card => card.cardName === data.cardName)) {
+        throw new Error(`Card with name ${data.cardName} already exists`);
+      } else {
+        dispatch(addCard(data));
+        await setDoc(doc(firestore, `user_${currentUser?.uid}`, `cards_${data.id}`), data);
+      }
+    };
+
+    createCardFunction()
+      .then(resolve)
+      .catch(reject);
   };
 };
