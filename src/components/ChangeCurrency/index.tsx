@@ -14,8 +14,10 @@ export const ChangeCurrency = () => {
     try {
       dispatch(setCurrency(e.target.value));
       toast.success(`${getRandomEmoji()} Currency successfully changed`);
-    } catch (err: any) {
-      toast.error(err.message);
+    } catch (error) {
+      let message = 'Unknown Error';
+      if (error instanceof Error) message = error.message;
+      toast.error(message);
     }
   };
 
