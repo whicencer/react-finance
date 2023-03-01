@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { categoriesIncomeSelect, categoriesSelect } from './selectOptions';
+import { categoriesIncomeSelect, categoriesSelect } from './addTransaction.constants';
 
 export const validateFields = (callback: any, sum: any, note: string, balance: string, category: string, status: string) => {
   let currentError = '';
