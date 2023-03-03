@@ -7,7 +7,7 @@ import Flex from '../../shared/ui/Flex';
 import { PageButton } from '../../shared/ui/PageButton';
 import { CryptoChange24 } from './CryptoChange24';
 
-export const Investments = () => {
+const Investments = () => {
   useDocumentTitle('React Finance - Investments');
   
   return (
@@ -24,3 +24,5 @@ export const Investments = () => {
     </div>
   );
 };
+
+export default Investments;

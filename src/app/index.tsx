@@ -1,7 +1,7 @@
-import React from "react";
-import Routing from "../pages/routes";
-import { useDocumentTitle } from "./hooks/useDocumentTitle";
-import { withProviders } from "./providers";
+import React from 'react';
+import { useDocumentTitle } from './hooks/useDocumentTitle';
+import { withProviders } from './providers';
+import Routing from '../pages/routes';
 
 const App = () => {
   useDocumentTitle('React Finance - Welcome');

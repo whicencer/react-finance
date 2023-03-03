@@ -40,13 +40,13 @@ export const TransactionItemContextMenu: React.FC<ITransactionContextMenuProps> 
             }
           ]
         }
-        />
-        <ConfirmationPopup
-          isActive={isConfirmActive}
-          setIsActive={setIsConfirmActive}
-          confirmCallback={deleteTransactionHandler}
-          confirmText='Are you sure you want to delete the transaction?'
-        />
+      />
+      <ConfirmationPopup
+        isActive={isConfirmActive}
+        setIsActive={setIsConfirmActive}
+        confirmCallback={deleteTransactionHandler}
+        confirmText='Are you sure you want to delete the transaction?'
+      />
     </>
   );
 };

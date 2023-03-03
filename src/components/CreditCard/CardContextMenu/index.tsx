@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { deleteCard } from '../../../store/slices/creditCards';
 import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
 import { doc, deleteDoc } from "firebase/firestore";
@@ -9,7 +10,6 @@ import { ICardContextMenuProps } from './cardContextMenu.types';
 import { getTransactionsFromDB } from '../../../services/transactionsService';
 import { toast } from 'react-toastify';
 import { getRandomEmoji } from '../../../utils/getRandomEmoji';
-import { useNavigate } from "react-router-dom";
 import { CardThemePopup } from '../../Popups/CardThemePopup';
 import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';

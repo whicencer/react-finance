@@ -1,10 +1,10 @@
 import { lazy } from 'react';
-import { Investments } from '../investments';
 import { RouteComponent } from './types';
 
 const Welcome = lazy(() => import('../welcome'));
 const Dashboard = lazy(() => import('../dashboard'));
 const Transactions = lazy(() => import('../transactions'));
+const Investments = lazy(() => import('../investments'));
 
 export const publicRoutes: RouteComponent[] = [
   {
