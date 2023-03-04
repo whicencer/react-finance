@@ -35,7 +35,12 @@ export const DatePicker: React.FC<IDatePickerProps> = ({ onChange }) => {
         <Flex style={{ width: '90%', marginTop: '15px' }} wrap={'wrap'} justifyContent='space-between'>
           {
             monthsText.map((_, monthIndex) => {
-              return <Flex onClick={() => setCurrentMonth(monthIndex)} justifyContent='center' alignItems='center' className={monthIndex === currentMonth ? styles.datePickerMonth+" "+styles.active : styles.datePickerMonth} key={monthIndex}>{monthsText[monthIndex]}</Flex>;
+              return <Flex onClick={() => setCurrentMonth(monthIndex)} justifyContent='center' alignItems='center'
+                className={
+                  monthIndex === currentMonth
+                  ? styles.datePickerMonth+" "+styles.active
+                  : styles.datePickerMonth} key={monthIndex}
+              >{monthsText[monthIndex]}</Flex>;
             })
           }
         </Flex>

@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction } from 'react';
 
 export interface IPopupProps {
   isActive: boolean;

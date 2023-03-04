@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Options = Array<{ value: string | number, label: string }>;
 
 export interface ICustomSelectProps {
