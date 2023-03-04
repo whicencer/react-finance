@@ -14,6 +14,7 @@ import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { TransactionsSkeletons } from './components/TransactionsSkeletons';
 import { fetchCards } from '../../store/slices/creditCards/creditCards.actions/fetchCards';
 import { fetchTransactions } from '../../store/slices/creditCards/creditCards.actions/fetchTransactions';
+import { AppThunkDispatch } from '../../app/typings/AppThunkDispatch';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
