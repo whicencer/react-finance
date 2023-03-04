@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import Header from '../../components/Header';
 import CreditCard from '../../components/CreditCard';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 import { useDispatch } from 'react-redux';
-import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
@@ -50,21 +48,18 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Header />
-      <PageContent>
-        <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
-          <h2>Dashboard</h2>
-          <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
-        </Flex>
-        <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-          { cardsLoading ? <CreditCardSkeletons /> : cardsMapped }
-        </Flex>
+      <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
+        <h2>Dashboard</h2>
+        <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
+      </Flex>
+      <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
+        { cardsLoading ? <CreditCardSkeletons /> : cardsMapped }
+      </Flex>
 
-        <Flex direction='column' style={{ marginTop: 20 }}>
-          <h3>Last 5 transactions</h3>
-          {transactionsLoading ? <TransactionsSkeletons /> : last5Transactions}
-        </Flex>
-      </PageContent>
+      <Flex direction='column' style={{ marginTop: 20 }}>
+        <h3>Last 5 transactions</h3>
+        {transactionsLoading ? <TransactionsSkeletons /> : last5Transactions}
+      </Flex>
 
       {/* Popups */}
       <AddCardPopup isActive={isAddCardActive} setActive={setAddCardActive} />

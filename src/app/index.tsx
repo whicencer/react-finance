@@ -5,9 +5,7 @@ import Routing from '../pages/routes';
 
 const App = () => {
   useDocumentTitle('React Finance - Welcome');
-  return (
-    <Routing />
-  );
+  return <Routing />;
 };
 
 export default withProviders(App);

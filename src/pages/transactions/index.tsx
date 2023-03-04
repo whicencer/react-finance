@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 import Flex from '../../shared/ui/Flex';
-import Header from '../../components/Header';
 import { AddTransactionPopup } from '../../components/Popups/AddTransactionsPopup';
 import { TransactionItem } from '../../components/TransactionItem';
-import { PageContent } from '../../shared/components/PageContent';
 import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
@@ -39,38 +37,35 @@ const Transactions = () => {
 
   return (
     <div>
-      <Header />
-      <PageContent>
-        <Flex justifyContent='space-between'>
-          <h2>Transactions</h2>
-          <PageButton onClick={() => setIsPopupActive(true)}>Add transaction</PageButton>
-        </Flex>
-        
-        <Flex direction='column'>
-          <DatePicker onChange={(month, year) => setCurrentDate({month, year})} />
-        </Flex>
-        <CategoriesExpenses currentDate={{ month, year }} />
-        <TransactionsList>
-          <FilterByCardName setCurrentCard={setCurrentFilterCard} />
-          { !transactions.length && `You haven't made any transactions yet` }
-          {
-            transactionsByDate.length ? filteredDatesList.map((date, key) => {
-              return (
-                <div key={key}>
-                  <h4>{date}</h4>
-                  {
-                    transactionsByDate.filter(transaction => getNormalDate(transaction.date) === date).map(transaction => {
-                      return (
-                        <TransactionItem key={transaction.id} transaction={transaction} />
-                      );
-                    })
-                  }
-                </div>
-              );
-            }) : `You have any transactions at ${monthsText[month]} ${year}`
-          }
-        </TransactionsList>
-      </PageContent>
+      <Flex justifyContent='space-between'>
+        <h2>Transactions</h2>
+        <PageButton onClick={() => setIsPopupActive(true)}>Add transaction</PageButton>
+      </Flex>
+      
+      <Flex direction='column'>
+        <DatePicker onChange={(month, year) => setCurrentDate({month, year})} />
+      </Flex>
+      <CategoriesExpenses currentDate={{ month, year }} />
+      <TransactionsList>
+        <FilterByCardName setCurrentCard={setCurrentFilterCard} />
+        { !transactions.length && `You haven't made any transactions yet` }
+        {
+          transactionsByDate.length ? filteredDatesList.map((date, key) => {
+            return (
+              <div key={key}>
+                <h4>{date}</h4>
+                {
+                  transactionsByDate.filter(transaction => getNormalDate(transaction.date) === date).map(transaction => {
+                    return (
+                      <TransactionItem key={transaction.id} transaction={transaction} />
+                    );
+                  })
+                }
+              </div>
+            );
+          }) : `You have any transactions at ${monthsText[month]} ${year}`
+        }
+      </TransactionsList>
       <AddTransactionPopup isActive={isPopupActive} setActive={setIsPopupActive} />
     </div>
   );

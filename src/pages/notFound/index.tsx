@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-
-const NotFoundComponent = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-`;
-const NotFoundText = styled.h1`
-  font-size: 160px;
-`;
+import { NotFoundComponent, NotFoundText } from './notFound.styles';
 
 const NotFound = () => {
   const [timer, setTimer] = useState(5);
