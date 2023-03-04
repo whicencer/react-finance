@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Button from '../Button';
 import SecondaryButton from '../SecondaryButton';
@@ -5,10 +6,9 @@ import styles from './ConfirmationPopup.module.scss';
 
 interface IConfirmationPopupProps {
   confirmText: string;
-  confirmCallback: () => void;
+  confirmCallback: any;
   isActive: boolean;
-  // eslint-disable-next-line no-unused-vars
-  setIsActive: (bool: boolean) => void;
+  setIsActive: any;
 }
 
 export const ConfirmationPopup: React.FC<IConfirmationPopupProps> = ({ confirmText, confirmCallback, isActive, setIsActive }) => {
