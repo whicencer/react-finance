@@ -20,14 +20,19 @@ const Transactions = () => {
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
   const [{ month, year }, setCurrentDate] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
 
+  // Filter by card name
   const filteredTransactions = transactions.filter(transaction => !currentFilterCard.length ? transaction : transaction.balance === currentFilterCard);
 
-  const listOfAllDates = filteredTransactions.map(transaction => transaction.date).sort((a,b) => {
-    const aToTimestamp = Math.floor(a.getTime()/1000);
-    const bToTimestamp = Math.floor(b.getTime()/1000);
+  // Sort by date
+  const listOfAllDates = filteredTransactions
+    .filter(transaction => transaction.date.getMonth() === month)
+    .map(transaction => transaction.date).sort((a,b) => {
+      const aToTimestamp = Math.floor(a.getTime()/1000);
+      const bToTimestamp = Math.floor(b.getTime()/1000);
 
-    return bToTimestamp - aToTimestamp;
-  }).map(date => getNormalDate(date));
+      return bToTimestamp - aToTimestamp;
+    })
+    .map(date => getNormalDate(date));
 
   const filteredDatesList = listOfAllDates.filter((date, pos) => listOfAllDates.indexOf(date) === pos);
   
