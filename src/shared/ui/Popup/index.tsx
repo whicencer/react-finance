@@ -6,6 +6,7 @@ import { IPopupProps } from './popup.types';
 import { PopupContainer, PopupInner } from './popup.styles';
 
 const Popup: React.FC<IPopupProps> = ({ isActive, setActive, children }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const closePopup = (e: any) => {
     e.stopPropagation();
     setActive(false);

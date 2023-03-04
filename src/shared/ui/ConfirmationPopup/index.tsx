@@ -5,9 +5,10 @@ import styles from './ConfirmationPopup.module.scss';
 
 interface IConfirmationPopupProps {
   confirmText: string;
-  confirmCallback: any;
+  confirmCallback: () => void;
   isActive: boolean;
-  setIsActive: any
+  // eslint-disable-next-line no-unused-vars
+  setIsActive: (bool: boolean) => void;
 }
 
 export const ConfirmationPopup: React.FC<IConfirmationPopupProps> = ({ confirmText, confirmCallback, isActive, setIsActive }) => {
