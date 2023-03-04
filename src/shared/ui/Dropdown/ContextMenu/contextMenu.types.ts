@@ -2,7 +2,7 @@
 import { Dispatch } from "react";
 
 export interface ContextMenuPropsType {
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
   dropdownList: Array<{ text: string, onClick: (e?: any) => void }>;
   y: number;
   x: number;
