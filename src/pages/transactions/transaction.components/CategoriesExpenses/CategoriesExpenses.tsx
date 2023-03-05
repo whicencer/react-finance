@@ -63,7 +63,7 @@ export const CategoriesExpenses: React.FC<{ currentDate: { month: number, year: 
                 setCurrentCategorySum(categorySum);
                 setIsCategoryExpensesActive(true);
               }} className={styles.categoriesExpenseItem} key={category} data-clue={`${firstBigLetter(category)}: ${symbol+categorySum}`}>
-                <img src={require(`../../../assets/${category}.svg`)} alt={category} />
+                <img src={require(`../../../../assets/${category}.svg`)} alt={category} />
               </span>
             );
           })
