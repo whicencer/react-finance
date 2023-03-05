@@ -40,7 +40,7 @@ export const DatePicker: React.FC<IDatePickerProps> = ({ onChange }) => {
                   monthIndex === currentMonth
                   ? styles.datePickerMonth+" "+styles.active
                   : styles.datePickerMonth} key={monthIndex}
-              >{monthsText[monthIndex]}</Flex>;
+              ц>{monthsText[monthIndex]}</Flex>;
             })
           }
         </Flex>

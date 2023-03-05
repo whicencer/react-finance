@@ -7,8 +7,8 @@ import { PageButton } from '../../shared/ui/PageButton';
 import { getNormalDate } from '../../utils/getNormalDate';
 import { TransactionsList } from './transactions.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { CategoriesExpenses } from './CategoriesExpenses/CategoriesExpenses';
-import { FilterByCardName } from './FilterByCardName/FilterByCardName';
+import { CategoriesExpenses } from './transaction.components/CategoriesExpenses/CategoriesExpenses';
+import { FilterByCardName } from './transaction.components/FilterByCardName/FilterByCardName';
 import { DatePicker } from '../../widgets/DatePicker';
 import { monthsText } from './transactions.constants';
 
@@ -19,7 +19,7 @@ const Transactions = () => {
   const [currentFilterCard, setCurrentFilterCard] = useState('');
   const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
   const [{ month, year }, setCurrentDate] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
-
+  console.log('render');
   // Filter by card name
   const filteredTransactions = transactions.filter(transaction => !currentFilterCard.length ? transaction : transaction.balance === currentFilterCard);
 

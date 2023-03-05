@@ -1,7 +1,7 @@
 import React from 'react';
-import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import { CustomSelect } from '../../../shared/ui/CustomSelect';
-import Flex from '../../../shared/ui/Flex';
+import { useTypedSelector } from '../../../../app/hooks/useTypedSelector';
+import { CustomSelect } from '../../../../shared/ui/CustomSelect';
+import Flex from '../../../../shared/ui/Flex';
 import styles from './FilterByCardName.module.scss';
 
 export const FilterByCardName: React.FC<{setCurrentCard: React.Dispatch<string>}> = ({ setCurrentCard }) => {
