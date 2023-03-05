@@ -9,7 +9,7 @@ import { TransactionsList } from './transactions.styles';
 import { useTypedSelector } from '../../app/hooks/useTypedSelector';
 import { CategoriesExpenses } from './CategoriesExpenses/CategoriesExpenses';
 import { FilterByCardName } from './FilterByCardName/FilterByCardName';
-import { DatePicker } from '../../shared/ui/DatePicker';
+import { DatePicker } from '../../widgets/DatePicker';
 import { monthsText } from './transactions.constants';
 
 const Transactions = () => {

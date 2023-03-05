@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-import CreditCard from '../../components/CreditCard';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 import { useDispatch } from 'react-redux';
 import { PageButton } from '../../shared/ui/PageButton';
-import { TransactionItem } from '../../components/TransactionItem';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { CreditCardSkeletons } from './components/CreditCardSkeletons';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { TransactionsSkeletons } from './components/TransactionsSkeletons';
 import { fetchCards } from '../../store/slices/creditCards/creditCards.actions/fetchCards';
 import { fetchTransactions } from '../../store/slices/creditCards/creditCards.actions/fetchTransactions';
 import { AppThunkDispatch } from '../../app/typings/AppThunkDispatch';
+import CreditCardsList from './dashboard.components/CreditCardsList';
+import TransactionsList from './dashboard.components/TransactionsList';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');
-  const { items: cards, isLoading: cardsLoading } = useTypedSelector(state => state.creditCards.cards);
-  const { items: transactions, isLoading: transactionsLoading } = useTypedSelector(state => state.creditCards.transactions);
   const dispatch = useDispatch<AppThunkDispatch>();
 
   // popups state
@@ -28,24 +23,6 @@ const Dashboard = () => {
     dispatch(fetchTransactions());
   }, []);
 
-  const last5Transactions = !transactions.length
-    ? 'You have not made any transactions yet'
-    : transactions.slice(0, 5).map(transaction => <TransactionItem transaction={transaction} key={transaction.id} />);
-
-  const cardsMapped = !cards.length
-    ? `You haven't made any cards yet`
-    : cards?.map(({ cardName, balance, themeId, id }) => {
-      return (
-        <CreditCard
-          themeId={themeId}
-          id={id}
-          cardName={cardName}
-          balance={balance}
-          key={id}
-        />
-      );
-  });
-
   return (
     <div>
       <Flex alignItems={'center'} justifyContent={'space-between'} style={{ marginBottom: '24px' }}>
@@ -53,12 +30,11 @@ const Dashboard = () => {
         <PageButton onClick={() => setAddCardActive(true)}>Add credit card</PageButton>
       </Flex>
       <Flex style={{ overflowY: 'auto', paddingBottom: '20px' }} alignItems={'center'}>
-        { cardsLoading ? <CreditCardSkeletons /> : cardsMapped }
+        <CreditCardsList />
       </Flex>
 
       <Flex direction='column' style={{ marginTop: 20 }}>
-        <h3>Last 5 transactions</h3>
-        {transactionsLoading ? <TransactionsSkeletons /> : last5Transactions}
+        <TransactionsList />
       </Flex>
 
       {/* Popups */}
