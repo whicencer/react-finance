@@ -12,8 +12,6 @@ const Transactions = () => {
   useDocumentTitle('React Finance - Transactions');
   const [isPopupActive, setIsPopupActive] = useState(false);
   const [{ month, year }, setCurrentDate] = useState({ year: new Date().getFullYear(), month: new Date().getMonth() });
-  
-  console.log('render transactions');
 
   return (
     <div>
