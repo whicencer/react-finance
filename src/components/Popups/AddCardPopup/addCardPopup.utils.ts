@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-export const validateFields = (callback: () => never, cardName: string, balance: number, error: (errorMessage: string) => void) => {
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
+export const validateFields = (callback: any, cardName: string, balance: number, error: (errorMessage: string) => void) => {
   let currentError = '';
   if (cardName.length <= 0) {
     currentError = 'Please, enter card name';
