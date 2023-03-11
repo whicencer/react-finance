@@ -9,7 +9,6 @@ export const Card = styled.div<{themeId: number}>`
       1: string;
       2: string;
       3: string;
-      4: string;
     }];
   }};
   background-size: cover;
