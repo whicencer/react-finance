@@ -1,0 +1,13 @@
+.closeButton {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  color: #fff;
+
+  transition: .3s;
+  
+  &:hover {
+    color: #ff1b1b;
+  }
+}
