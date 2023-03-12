@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 import Flex from '../../shared/ui/Flex';
 import { PageButton } from '../../shared/ui/PageButton';
-import { CryptoChange24 } from './CryptoChange24';
+import { CryptoChange24 } from './components/CryptoChange24';
 
 const Investments = () => {
   useDocumentTitle('React Finance - Investments');

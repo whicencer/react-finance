@@ -1,9 +1,9 @@
 import React from 'react';
-import { CryptoCard } from '../../components/CryptoCard';
-import { useGetCryptoCoinsWithLimitQuery } from '../../services/cryptoApi';
-import Flex from '../../shared/ui/Flex';
-import Input from '../../shared/ui/Input';
-import { CryptoCardSkeleton } from '../../shared/ui/Skeletons/CryptoCardSkeleton';
+import { CryptoCard } from '../../../components/CryptoCard';
+import { useGetCryptoCoinsWithLimitQuery } from '../../../services/cryptoApi';
+import Flex from '../../../shared/ui/Flex';
+import { CryptoCardSkeleton } from '../../../shared/ui/Skeletons/CryptoCardSkeleton';
+import { SearchCrypto } from './SearchCrypto';
 
 export const CryptoChange24 = () => {
   const { data, isLoading } = useGetCryptoCoinsWithLimitQuery('4');
@@ -31,10 +31,7 @@ export const CryptoChange24 = () => {
               </>
         }
       </Flex>
-      <Flex justifyContent='space-between' alignItems='center' style={{ width: '100%', marginTop: 40 }}>
-        <h4>Cryptocurrencies</h4>
-        <Input onChange={(event) => console.log(event.target)} placeholder='Coin name' style={{ width: '130px', height: '10px' }} />
-      </Flex>
+      <SearchCrypto />
     </Flex>
   );
 };
