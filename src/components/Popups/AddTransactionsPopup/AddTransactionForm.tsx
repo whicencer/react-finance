@@ -15,6 +15,11 @@ import { AddTransactionInput } from './AddTransactionInput';
 export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setActive }) => {
   const createTransaction = useAddTransaction();
   const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+
+  if (!cards.length) {
+    return <h3>To add a transaction, you first need to create a card</h3>;
+  }
+
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   const allCards = cards.map(card => {
     return {value: card.id, label: `${card.cardName} (${currency} ${card.balance})`};
