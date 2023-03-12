@@ -3,7 +3,6 @@ import { CryptoCard } from '../../../components/CryptoCard';
 import { useGetCryptoCoinsWithLimitQuery } from '../../../services/cryptoApi';
 import Flex from '../../../shared/ui/Flex';
 import { CryptoCardSkeleton } from '../../../shared/ui/Skeletons/CryptoCardSkeleton';
-import { SearchCrypto } from './SearchCrypto';
 
 export const CryptoChange24 = () => {
   const { data, isLoading } = useGetCryptoCoinsWithLimitQuery('4');
@@ -31,7 +30,6 @@ export const CryptoChange24 = () => {
               </>
         }
       </Flex>
-      <SearchCrypto />
     </Flex>
   );
 };

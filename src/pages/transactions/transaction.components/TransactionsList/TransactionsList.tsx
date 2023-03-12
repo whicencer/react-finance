@@ -36,10 +36,16 @@ const TransactionsList: React.FC<Props> = ({ year, month }) => {
     return transaction.date.getFullYear() === year && transaction.date.getMonth() === month;
   });
 
+  if (!transactionsByDate.length && !transactions.length) {
+    return (
+      // eslint-disable-next-line react/no-unescaped-entities
+      <p>You haven't made any transactions yet</p>
+    );
+  }
+
   return (
     <>
       <FilterByCardName setCurrentCard={setCurrentFilterCard} />
-      { !transactions.length && `You haven't made any transactions yet` }
       {
         transactionsByDate.length ? filteredDatesList.map((date, key) => {
           return (
