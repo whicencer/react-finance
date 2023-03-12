@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Flex from '../../shared/ui/Flex';
 import Button from '../../shared/ui/Button';
@@ -10,7 +10,13 @@ import { useSignInWithGoogle } from './Welcome.hooks/useSignInWithGoogle';
 
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
-  const signInWithGoogle = useSignInWithGoogle();
+  const [isAuthPopupActive, setIsAuthPopupActive] = useState(false);
+  const signInWithGoogle = useSignInWithGoogle(setIsAuthPopupActive);
+
+  const handleSignIn = () => {
+    setIsAuthPopupActive(true);
+    signInWithGoogle();
+  };
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
@@ -25,7 +31,7 @@ const Welcome = () => {
           <br />
           <span className={styles.welcomeTitleGradient}>React Finance</span>
         </h1>
-        <Button className={styles.welcomeButton} onClick={signInWithGoogle}>Get started</Button>
+        <Button disabled={isAuthPopupActive} className={styles.welcomeButton} onClick={handleSignIn}>Get started</Button>
       </Flex>
       <img className={styles.welcomeImage} src={require('../../assets/home.gif')} alt="shape" />
     </Flex>

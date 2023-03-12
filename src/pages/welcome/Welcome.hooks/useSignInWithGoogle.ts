@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import { auth } from "../../../app/config/firebase";
 import { setUser } from "../../../store/slices/user";
 
-export const useSignInWithGoogle = () => {
+// eslint-disable-next-line no-unused-vars
+export const useSignInWithGoogle = (setAuthPopup: (state: boolean) => void) => {
   const dispatch = useDispatch();
 
   const handleSignInWithGoogle = async () => {
@@ -20,6 +21,7 @@ export const useSignInWithGoogle = () => {
       dispatch(setUser(payload));
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
+      setAuthPopup(false);
       toast.error(error.message);
     }
   };

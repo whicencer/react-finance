@@ -15,6 +15,10 @@ const Button = styled.button`
   &:hover {
     box-shadow: 0 0 15px ${(props) => props.theme.colors.azureColor};
   }
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.azureColorDisabled};
+    color: ${(props) => props.theme.colors.secondaryColor};
+  }
 `;
 
 export default Button;

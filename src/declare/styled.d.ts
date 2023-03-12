@@ -65,6 +65,7 @@ declare module 'styled-components' {
       whiteColor: string;
       secondaryColor: string;
       azureColor: string;
+      azureColorDisabled: string;
       amberColor: string;
       greenColor: string;
       gray9: string;

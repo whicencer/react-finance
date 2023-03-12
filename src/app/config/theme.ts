@@ -63,6 +63,7 @@ const theme: DefaultTheme = {
     primaryColor: '#000',
     secondaryColor: '#0F0F13',
     azureColor: '#0062ff',
+    azureColorDisabled: '#19345e',
     amberColor: '#fe7e07',
     greenColor: '#15ffab',
     gray9: '#1E1E24',
