@@ -15,7 +15,7 @@ export const CryptoDetails: React.FC<{ coin: ICrypto }> = ({ coin }) => {
           { coin.symbol }
         </div>
       </Flex>
-      <h3>{ formatNumber(+coin.priceUsd) }</h3>
+      <h3>${ formatNumber(+coin.priceUsd) }</h3>
     </Flex>
   );
 };
