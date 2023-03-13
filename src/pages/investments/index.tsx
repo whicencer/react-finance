@@ -4,6 +4,7 @@ import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
 import Flex from '../../shared/ui/Flex';
 import { PageButton } from '../../shared/ui/PageButton';
 import { CryptoChange24 } from './components/CryptoChange24';
+import { CryptoSearch } from './components/CryptoSearch';
 
 const Investments = () => {
   useDocumentTitle('React Finance - Investments');
@@ -15,6 +16,7 @@ const Investments = () => {
         <PageButton onClick={() => toast.info(`😒 I'm still in development`)}>Create portfolio</PageButton>
       </Flex>
       <CryptoChange24 />
+      <CryptoSearch />
     </div>
   );
 };
