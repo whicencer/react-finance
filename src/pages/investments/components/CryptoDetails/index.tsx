@@ -3,6 +3,7 @@ import { ICrypto } from '../../../../app/typings/ICrypto';
 import { useGetCoinInMarketsQuery } from '../../../../services/cryptoApi';
 import Flex from '../../../../shared/ui/Flex';
 import { formatNumber } from '../../../../utils/formatNumber';
+import { CoinMarketCard } from './CoinMarketCard';
 
 import styles from './styles.module.scss';
 
@@ -28,14 +29,11 @@ export const CryptoDetails: React.FC<{ coin: ICrypto }> = ({ coin }) => {
         <h3>${ formatNumber(+coin.priceUsd) }</h3>
       </Flex>
 
-      <Flex direction='column' style={{ marginTop: 30 }}>
+      <Flex justifyContent='center' alignItems='center' wrap='wrap' style={{ marginTop: 30 }}>
         {
-          data.data.map((el, key) => {
+          data.data.map((market, key) => {
             return (
-              <div key={key} style={{ margin: 20 }}>
-                <h3>{el.exchangeId}</h3>
-                <h5>{el.baseSymbol}: ${el.priceUsd}</h5>
-              </div>
+              <CoinMarketCard key={key} marketData={market} />
             );
           })
         }

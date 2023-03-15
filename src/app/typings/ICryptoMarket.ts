@@ -1,4 +1,4 @@
-export interface ICryptoMarkets {
+export interface ICryptoMarket {
   exchangeId:    string;
   baseId:        string;
   quoteId:       string;

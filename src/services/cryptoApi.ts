@@ -1,7 +1,7 @@
 import { ICoinData } from './types/ICoinData';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICryptoData } from './types/ICryptoData';
-import { ICryptoMarkets } from './types/ICryptoMarkets';
+import { ICryptoMarket } from '../app/typings/ICryptoMarket';
 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
@@ -13,8 +13,8 @@ export const cryptoApi = createApi({
     getCryptoCoinsWithLimit: builder.query<ICryptoData, string>({
       query: (limit) => `assets/?limit=${limit}`
     }),
-    getCoinInMarkets: builder.query<{data: ICryptoMarkets[]}, string>({
-      query: (coinName) => `assets/${coinName.toLowerCase()}/markets?limit=5`
+    getCoinInMarkets: builder.query<{data: ICryptoMarket[]}, string>({
+      query: (coinName) => `assets/${coinName.toLowerCase()}/markets?limit=20`
     })
   }),
 });
