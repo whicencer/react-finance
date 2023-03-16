@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export const CryptoSearch = () => {
   const [currentQuery, setCurrentQuery] = useState('bitcoin');
-  const { data, error, isError } = useGetCryptoByNameQuery(currentQuery);
+  const { data, error, isError } = useGetCryptoByNameQuery(currentQuery.toLowerCase());
   
   if (!data?.data) {
     return (

@@ -8,7 +8,7 @@ import { CoinMarketCard } from './CoinMarketCard';
 import styles from './styles.module.scss';
 
 export const CryptoDetails: React.FC<{ coin: ICrypto }> = ({ coin }) => {
-  const { data } = useGetCoinInMarketsQuery(coin.name);
+  const { data } = useGetCoinInMarketsQuery(coin.name.toLowerCase());
 
   if (!data?.data) {
     return (

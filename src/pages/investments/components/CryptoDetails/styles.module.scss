@@ -19,7 +19,8 @@
 
 .cryptoMarketCard {
   margin: 20px;
-  padding: 20px 30px;
+  padding: 20px;
+  min-width: 180px;
   background-color: #0f0f13;
   border-radius: 25px;
   transition: cubic-bezier(0.215, 0.610, 0.355, 1) .3s;

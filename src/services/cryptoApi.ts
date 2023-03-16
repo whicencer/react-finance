@@ -14,7 +14,7 @@ export const cryptoApi = createApi({
       query: (limit) => `assets/?limit=${limit}`
     }),
     getCoinInMarkets: builder.query<{data: ICryptoMarket[]}, string>({
-      query: (coinName) => `assets/${coinName.toLowerCase()}/markets?limit=20`
+      query: (coinName) => `assets/${coinName}/markets?limit=20`
     })
   }),
 });
