@@ -29,7 +29,8 @@ export const CryptoDetails: React.FC<{ coin: ICrypto }> = ({ coin }) => {
         <h3>${ formatNumber(+coin.priceUsd) }</h3>
       </Flex>
 
-      <Flex justifyContent='center' alignItems='center' wrap='wrap' style={{ marginTop: 30 }}>
+      <h2 style={{ marginTop: 25 }}>Markets</h2>
+      <Flex justifyContent='center' wrap='wrap' style={{ marginTop: 10 }}>
         {
           data.data.map((market, key) => {
             return (
