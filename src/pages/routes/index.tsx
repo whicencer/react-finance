@@ -6,7 +6,7 @@ import PrivateRoutes from './lib/PrivateRoutes';
 import PublicRoutes from './lib/PublicRoutes';
 import { privateRoutes, publicRoutes } from './routes';
 
-const Routing = () => {
+export const Routing = () => {
   const mappedPrivate = privateRoutes.map((route) => {
     return (
       <Route path={route.path} element={<route.component />} key={route.key} />
@@ -32,5 +32,3 @@ const Routing = () => {
     </Suspense>
   );
 };
-
-export default Routing;

@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import React, { useState } from 'react';
-import { useTypedSelector } from '../../../../app/hooks/useTypedSelector';
-import { ITransaction } from '../../../../app/typings/ITransaction';
-import { CategoryExpensesPopup } from '../../../../components/Popups/CategoryExpensesPopup';
-import Flex from '../../../../shared/ui/Flex';
-import { firstBigLetter } from '../../../../utils/firstBigLetter';
-import { formatNumber } from '../../../../utils/formatNumber';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { ITransaction } from '@typings/ITransaction';
+import { CategoryExpensesPopup } from '@components/Popups/CategoryExpensesPopup';
+import { icons } from '@shared/categoryImages';
+import Flex from '@shared/ui/Flex';
+import { firstBigLetter } from '@utils/firstBigLetter';
+import { formatNumber } from '@utils/formatNumber';
 import { monthsText } from '../../transactions.constants';
 import { allExpenseCategories } from './CategoriesExpenses.constants';
 import styles from './CategoriesExpenses.module.scss';
@@ -63,7 +64,7 @@ export const CategoriesExpenses: React.FC<{ currentDate: { month: number, year: 
                 setCurrentCategorySum(categorySum);
                 setIsCategoryExpensesActive(true);
               }} className={styles.categoriesExpenseItem} key={category} data-clue={`${firstBigLetter(category)}: ${symbol+categorySum}`}>
-                <img src={require(`../../../../assets/${category}.svg`)} alt={category} />
+                <img src={icons[category]} alt={category} />
               </span>
             );
           })

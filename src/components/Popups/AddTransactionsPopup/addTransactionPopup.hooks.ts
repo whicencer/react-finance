@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addTransactionDB } from './addTransactionPopup.service';
-import { addTransaction } from '../../../store/slices/creditCards';
-import { ITransaction } from '../../../app/typings/ITransaction';
+import { addTransaction } from '@store/slices/creditCards';
+import { ITransaction } from '@typings/ITransaction';
 
 export const useAddTransaction = () => {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import { doc, setDoc, getFirestore } from '@firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import { ICardData } from '../../../app/typings/ICardData';
-import { addCard } from "../../../store/slices/creditCards";
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { ICardData } from '@typings/ICardData';
+import { addCard } from '@store/slices/creditCards';
 
 export const useAddCard = () => {
   const dispatch = useDispatch();

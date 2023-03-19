@@ -1,8 +1,8 @@
-import { getAuth } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
-import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../../app/hooks/useTypedSelector";
-import { changeCardName } from "../../../store/slices/creditCards";
+import { getAuth } from 'firebase/auth';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { changeCardName } from '@store/slices/creditCards';
 
 export const useChangeCardName = (id: string) => {
   const dispatch = useDispatch();

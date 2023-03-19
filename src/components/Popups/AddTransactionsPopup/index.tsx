@@ -1,6 +1,6 @@
 import React from 'react';
-import { IPopupStates } from '../../../app/typings/IPopupStates';
-import Popup from '../../../shared/ui/Popup';
+import { IPopupStates } from '@typings/IPopupStates';
+import Popup from '@shared/ui/Popup';
 import { AddTransactionForm } from './AddTransactionForm';
 
 export const AddTransactionPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {

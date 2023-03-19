@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import { TransactionItem } from '../../../components/TransactionItem';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { TransactionItem } from '@components/TransactionItem';
 import { TransactionsSkeletons } from './TransactionsSkeletons';
 
 const TransactionsList = () => {

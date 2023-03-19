@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useAwayClick } from '../../app/hooks/useAwayClick';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { ITransaction } from '../../app/typings/ITransaction';
-import Flex from '../../shared/ui/Flex';
-import { formatNumber } from '../../utils/formatNumber';
+import { useAwayClick } from '@hooks/useAwayClick';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { ITransaction } from '@typings/ITransaction';
+import Flex from '@shared/ui/Flex';
+import { icons } from '@shared/categoryImages';
+import { formatNumber } from '@utils/formatNumber';
 import { TransactionItemContextMenu } from './TransactionContextMenu';
 
 import styles from './TransactionItem.module.scss';
@@ -15,17 +16,14 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
 
   const { items: cards } = useTypedSelector(state => state.creditCards.cards);
   const cardById = cards.find(card => card.id === transaction.balance);
-
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
-  const transactionIcon = transaction?.category?transaction.category.toLowerCase() : 'income';
+  const transactionIcon = transaction?.category?.toLowerCase() || 'income';
   const transactionSum = transaction?.status === 'expense'
     ? `- ${currency}${formatNumber(transaction?.sum)}`
     : `+ ${currency}${formatNumber(transaction?.sum)}`;
   
-  if (cardById === undefined) {
-    throw new Error();
-  }
+  if (!cardById) throw new Error();
   
   return (
     <div className={styles.transaction} onClick={e => {
@@ -34,7 +32,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
       setCoords({x: e.pageX, y: e.pageY});
     }}>
       <Flex alignItems='center'>
-          <img style={{ marginRight: '10px', width: '40px' }} src={require(`../../assets/${transactionIcon}.svg`)} alt="alt" />
+          <img style={{ marginRight: '10px', width: '40px' }} src={icons[transactionIcon]} alt='transaction-category-icon' />
         <Flex direction='column'>
           <h3>{transaction?.note || transaction?.category.toUpperCase()}</h3>
           <p>{cardById?.cardName}</p>

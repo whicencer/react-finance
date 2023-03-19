@@ -1,6 +1,6 @@
-import { getAuth } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
-import { db } from "../../../app/config/firebase";
+import { getAuth } from 'firebase/auth';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { db } from '@config/firebase';
 
 export const changeTheme = async (cardId: string, themeId: number) => {
   const user = getAuth();

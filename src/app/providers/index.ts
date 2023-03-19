@@ -1,4 +1,4 @@
-import compose from '../../utils/compose';
+import compose from '@utils/compose';
 import AuthProvider from './authProvider';
 import ReduxProvider from './reduxProvider';
 import StyledComponentProvider from './themeProvider';

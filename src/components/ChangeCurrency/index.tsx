@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { setCurrency } from "../../store/slices/currencies";
-import { getRandomEmoji } from "../../utils/getRandomEmoji";
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { setCurrency } from "@store/slices/currencies";
+import { getRandomEmoji } from "@utils/getRandomEmoji";
 import styles from './ChangeCurrency.module.scss';
 
 export const ChangeCurrency = () => {

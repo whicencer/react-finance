@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useAddCard } from './addCardPopup.hooks';
-import { AddCardPopupTitle } from "../../../pages/dashboard/dashboard.styles";
-import Flex from "../../../shared/ui/Flex";
-import Button from "../../../shared/ui/Button";
-import Input from "../../../shared/ui/Input";
-import Popup from "../../../shared/ui/Popup";
-import { IPopupStates } from '../../../app/typings/IPopupStates';
-import { generateObjectId } from '../../../utils/generateObjectId';
+import { AddCardPopupTitle } from '@pages/dashboard/dashboard.styles';
+import Flex from '@shared/ui/Flex';
+import Button from '@shared/ui/Button';
+import Input from '@shared/ui/Input';
+import Popup from '@shared/ui/Popup';
+import { IPopupStates } from '@typings/IPopupStates';
+import { generateObjectId } from '@utils/generateObjectId';
 import { validateFields } from './addCardPopup.utils';
 
 import { toast } from 'react-toastify';
-import { getRandomEmoji } from '../../../utils/getRandomEmoji';
-import { numberFieldFormat } from '../../../utils/numberFieldFormat';
+import { getRandomEmoji } from '@utils/getRandomEmoji';
+import { numberFieldFormat } from '@utils/numberFieldFormat';
 
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
   const id = `card_${generateObjectId()}`;
