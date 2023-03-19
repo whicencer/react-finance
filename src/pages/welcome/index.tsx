@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-import Flex from '../../shared/ui/Flex';
-import Button from '../../shared/ui/Button';
+import Flex from '@shared/ui/Flex';
+import Button from '@shared/ui/Button';
 
-import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
+import { useDocumentTitle } from '@hooks/useDocumentTitle';
+
+import welcomeImage from '@assets/home.gif';
 
 import styles from './welcome.module.scss';
 import { useSignInWithGoogle } from './Welcome.hooks/useSignInWithGoogle';
@@ -33,7 +35,7 @@ const Welcome = () => {
         </h1>
         <Button disabled={isAuthPopupActive} className={styles.welcomeButton} onClick={handleSignIn}>Get started</Button>
       </Flex>
-      <img className={styles.welcomeImage} src={require('../../assets/home.gif')} alt="shape" />
+      <img className={styles.welcomeImage} src={welcomeImage} alt="shape" />
     </Flex>
   );
 };

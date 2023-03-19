@@ -1,12 +1,12 @@
 import { deleteDoc, doc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { db } from '../../../app/config/firebase';
-import { useAuth } from '../../../app/hooks/useAuth';
-import { ITransaction } from '../../../app/typings/ITransaction';
-import { getTransactionsFromDB } from '../../../services/transactionsService';
-import { deleteCard } from '../../../store/slices/creditCards';
-import { getRandomEmoji } from '../../../utils/getRandomEmoji';
+import { db } from '@config/firebase';
+import { useAuth } from '@hooks/useAuth';
+import { ITransaction } from '@typings/ITransaction';
+import { getTransactionsFromDB } from '@services/transactionsService';
+import { deleteCard } from '@store/slices/creditCards';
+import { getRandomEmoji } from '@utils/getRandomEmoji';
 
 export const useDeleteCard = (id: string) => {
   const dispatch = useDispatch();

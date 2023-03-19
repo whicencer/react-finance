@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { CardContextMenu } from './CardContextMenu';
-import Flex from '../../shared/ui/Flex';
+import Flex from '@shared/ui/Flex';
 import { Card, cardSecondSection } from './creditCard.styles';
-import { useTypedSelector } from '../../app/hooks/useTypedSelector';
-import { formatNumber } from '../../utils/formatNumber';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { formatNumber } from '@utils/formatNumber';
 
 interface Props {
   cardName: string;

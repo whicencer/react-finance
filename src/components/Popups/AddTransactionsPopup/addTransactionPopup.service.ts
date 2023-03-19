@@ -1,6 +1,6 @@
-import { getAuth } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
-import { ITransaction } from "../../../app/typings/ITransaction";
+import { getAuth } from 'firebase/auth';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { ITransaction } from '@typings/ITransaction';
 
 export const addTransactionDB = (data: ITransaction, currentBalance: number) => {
   const { currentUser } = getAuth();

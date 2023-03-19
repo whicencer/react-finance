@@ -1,7 +1,7 @@
 import React from 'react';
 import { MobileMenuStyled } from './mobileMenu.styles';
 import StyledLink from '../StyledLink';
-import { useAwayClick } from '../../app/hooks/useAwayClick';
+import { useAwayClick } from '@hooks/useAwayClick';
 
 interface Props {
   isBurgerOpen: boolean;

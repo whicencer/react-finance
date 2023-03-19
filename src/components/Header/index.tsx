@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../app/hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
+import { useLogout } from '@hooks/useLogout';
 import LogoLink from './LogoLink';
 import StyledLink from '../StyledLink';
 import { dropdownButtonStyles, HeaderComponent } from './header.styles';
-import { useLogout } from '../../app/hooks/useLogout';
 import MobileMenu from '../MobileMenu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import { ITransaction } from '../../../app/typings/ITransaction';
-import Flex from '../../../shared/ui/Flex';
-import Popup from '../../../shared/ui/Popup';
-import { firstBigLetter } from '../../../utils/firstBigLetter';
-import { formatNumber } from '../../../utils/formatNumber';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import { ITransaction } from '@typings/ITransaction';
+import Flex from '@shared/ui/Flex';
+import Popup from '@shared/ui/Popup';
+import { firstBigLetter } from '@utils/firstBigLetter';
+import { formatNumber } from '@utils/formatNumber';
 
 export const CategoryExpensesPopup: React.FC<{ isActive: boolean, setActive: React.Dispatch<React.SetStateAction<boolean>>, transactions: ITransaction[], category: string, categorySum: string }> = ({ isActive, categorySum, category, setActive, transactions }) => {
   const {symbol} = useTypedSelector(state => state.currencies.currentCurrency);

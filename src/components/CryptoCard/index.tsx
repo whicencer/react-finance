@@ -1,6 +1,6 @@
 import React from 'react';
-import { ICrypto } from '../../app/typings/ICrypto';
-import Flex from '../../shared/ui/Flex';
+import { ICrypto } from '@typings/ICrypto';
+import Flex from '@shared/ui/Flex';
 import styles from './CryptoCard.module.scss';
 
 export const CryptoCard: React.FC<{ coin: ICrypto }> = ({ coin }) => {

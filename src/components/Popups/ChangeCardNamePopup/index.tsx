@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { IPopupStates } from "../../../app/typings/IPopupStates";
-import Button from '../../../shared/ui/Button';
-import Input from '../../../shared/ui/Input';
-import Popup from "../../../shared/ui/Popup";
-import Flex from '../../../shared/ui/Flex';
+import { IPopupStates } from '@typings/IPopupStates';
+import Button from '@shared/ui/Button';
+import Input from '@shared/ui/Input';
+import Popup from '@shared/ui/Popup';
+import Flex from '@shared/ui/Flex';
 import { useChangeCardName } from './changeCardNamePopup.hooks';
 
 export const ChangeCardNamePopup: React.FC<{popupState: IPopupStates, id: string}> = ({ popupState, id }) => {
