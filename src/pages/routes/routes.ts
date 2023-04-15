@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { RouteComponent } from './types';
+import Signup from '@pages/signup';
 
 const Welcome = lazy(() => import('../welcome'));
 const Dashboard = lazy(() => import('../dashboard'));
@@ -12,6 +13,11 @@ export const publicRoutes: RouteComponent[] = [
     component: Welcome,
     key: 'welcome',
   },
+  {
+    path: '/signup',
+    component: Signup,
+    key: 'signup'
+  }
 ];
 
 export const privateRoutes: RouteComponent[] = [

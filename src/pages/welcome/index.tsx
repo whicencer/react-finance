@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Flex from '@shared/ui/Flex';
 import Button from '@shared/ui/Button';
@@ -8,17 +10,18 @@ import { useDocumentTitle } from '@hooks/useDocumentTitle';
 import welcomeImage from '@assets/home.gif';
 
 import styles from './welcome.module.scss';
-import { useSignInWithGoogle } from './Welcome.hooks/useSignInWithGoogle';
+// import { useSignInWithGoogle } from './Welcome.hooks/useSignInWithGoogle';
 
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
-  const [isAuthPopupActive, setIsAuthPopupActive] = useState(false);
-  const signInWithGoogle = useSignInWithGoogle(setIsAuthPopupActive);
+  const navigate = useNavigate();
+  // const [isAuthPopupActive, setIsAuthPopupActive] = useState(false);
+  // const signInWithGoogle = useSignInWithGoogle(setIsAuthPopupActive);
 
-  const handleSignIn = () => {
-    setIsAuthPopupActive(true);
-    signInWithGoogle();
-  };
+  // const handleSignIn = () => {
+  //   setIsAuthPopupActive(true);
+  //   signInWithGoogle();
+  // };
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
@@ -33,7 +36,8 @@ const Welcome = () => {
           <br />
           <span className={styles.welcomeTitleGradient}>React Finance</span>
         </h1>
-        <Button disabled={isAuthPopupActive} className={styles.welcomeButton} onClick={handleSignIn}>Get started</Button>
+        {/* <Button disabled={isAuthPopupActive} className={styles.welcomeButton} onClick={handleSignIn}>Get started</Button> */}
+        <Button className={styles.welcomeButton} onClick={() => navigate('/signup')}>Get started</Button>
       </Flex>
       <img className={styles.welcomeImage} src={welcomeImage} alt="shape" />
     </Flex>

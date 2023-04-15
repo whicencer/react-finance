@@ -1,0 +1,28 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    font-size: 31px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  min-width: 370px;
+  margin-top: 20px;
+
+  button {
+    margin-top: 15px;
+  }
+}
+
+.formElement {
+  margin: 10px 0;
+}
