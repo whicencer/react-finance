@@ -34,3 +34,6 @@ https://react-finance.vercel.app
 
 #### Dashboard
 - [x] - Last transactions section (29/10/2022)
+
+#### Auth
+- [] - Sign in (save token)
