@@ -33,7 +33,7 @@ const Header = () => {
         <p onClick={(e) => {
           e.stopPropagation();
           setDropdownOpen(prev=>!prev);
-        }} style={dropdownButtonStyles}>{user.displayName}</p>
+        }} style={dropdownButtonStyles}>{user.username}</p>
 
         <Droplist
           dropdownList={

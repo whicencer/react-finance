@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
-import styles from './styles.module.scss';
-import Input from '@shared/ui/Input';
-import Button from '@shared/ui/Button';
+import React from 'react';
 import { MainApi } from '@services/mainApi';
 import { toast } from 'react-toastify';
+import AuthForm from '@components/AuthForm';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const isDisabled = !username.length || password.length < 8;
-
-  const signUp = () => {
+  const navigate = useNavigate();
+  const signUp = (username: string, password: string) => {
     const api = new MainApi();
 
     api.signup({ username, password })
@@ -19,25 +15,19 @@ const Signup = () => {
           toast.error(response.message);
         } else {
           toast.success(response.message);
+          navigate('/signin');
         }
       });
   };
 
   return (
-    <div className={styles.container}>
-      <h2>Sign up</h2>
-      <div className={styles.form}>
-        <div className={styles.formElement}>
-          <label>Username</label>
-          <Input onChange={(e) => setUsername(e.target.value)} style={{ marginTop: 10 }} placeholder='Username' type='text' />
-        </div>
-        <div className={styles.formElement}>
-          <label>Password</label>
-          <Input onChange={(e) => setPassword(e.target.value)} style={{ marginTop: 10 }} placeholder='Password' type='password' />
-        </div>
-        <Button disabled={isDisabled} onClick={signUp}>Sign up</Button>
-      </div>
-    </div>
+    <>
+      <AuthForm clickHandler={signUp} title='Sign up'>
+        <span style={{ textAlign: 'right', width: '35%', marginTop: '15px' }}>
+          <Link style={{ color: '#fff', textDecoration: 'underline', fontSize: 13 }} to={'/signin'}>Do you already have an account?</Link>
+        </span>
+      </AuthForm>
+    </>  
   );
 };
 

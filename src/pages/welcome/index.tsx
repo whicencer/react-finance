@@ -15,13 +15,6 @@ import styles from './welcome.module.scss';
 const Welcome = () => {
   useDocumentTitle('React Finance - Welcome');
   const navigate = useNavigate();
-  // const [isAuthPopupActive, setIsAuthPopupActive] = useState(false);
-  // const signInWithGoogle = useSignInWithGoogle(setIsAuthPopupActive);
-
-  // const handleSignIn = () => {
-  //   setIsAuthPopupActive(true);
-  //   signInWithGoogle();
-  // };
 
   return (
     <Flex justifyContent="space-around" alignItems="center">
@@ -36,7 +29,6 @@ const Welcome = () => {
           <br />
           <span className={styles.welcomeTitleGradient}>React Finance</span>
         </h1>
-        {/* <Button disabled={isAuthPopupActive} className={styles.welcomeButton} onClick={handleSignIn}>Get started</Button> */}
         <Button className={styles.welcomeButton} onClick={() => navigate('/signup')}>Get started</Button>
       </Flex>
       <img className={styles.welcomeImage} src={welcomeImage} alt="shape" />

@@ -2,10 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUserState } from './user.typings';
 
 const initialState: IUserState = {
-  displayName: null,
-  email: null,
-  photoUrl: null,
-  uid: null,
+  token: null,
+  username: null,
 };
 
 const userSlice = createSlice({
@@ -13,16 +11,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IUserState>) => {
-      state.displayName = action.payload.displayName;
-      state.email = action.payload.email;
-      state.photoUrl = action.payload.photoUrl;
-      state.uid = action.payload.uid;
+      state.token = action.payload.token;
+      state.username = action.payload.username;
     },
     signOutUser: (state) => {
-      state.displayName = null;
-      state.email = null;
-      state.photoUrl = null;
-      state.uid = null;
+      state.token = null;
+      state.username = null;
     }
   }
 });
