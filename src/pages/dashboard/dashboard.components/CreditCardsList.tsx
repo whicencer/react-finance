@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
 import CreditCard from '../../../components/CreditCard';
@@ -16,14 +17,14 @@ const CreditCardsList = () => {
   return (
     <>
       {
-        cards?.map(({ cardName, balance, themeId, id }) => {
+        cards?.map(({ balance, cardName, themeId, card_id }) => {
           return (
             <CreditCard
               themeId={themeId}
-              id={id}
+              id={card_id}
               cardName={cardName}
               balance={balance}
-              key={id}
+              key={card_id}
             />
           );
         })

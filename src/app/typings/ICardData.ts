@@ -1,6 +1,7 @@
 export interface ICardData {
   balance: number;
   cardName: string;
-  id: string;
+  card_id: string;
   themeId: number;
+  user_id: number;
 }

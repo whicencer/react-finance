@@ -1,29 +1,32 @@
-import { doc, setDoc, getFirestore } from '@firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '@hooks/useTypedSelector';
-import { ICardData } from '@typings/ICardData';
+/* eslint-disable camelcase */
+import { MainApi } from '@services/mainApi';
 import { addCard } from '@store/slices/creditCards';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { IPayload, IResponse } from './addCardPopup.typings';
 
 export const useAddCard = () => {
   const dispatch = useDispatch();
-  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
-  const firestore = getFirestore();
-  const { currentUser } = getAuth();
 
   // eslint-disable-next-line no-unused-vars
-  return (data: ICardData, resolve: () => void, reject: (error: Error) => void) => {
-    const createCardFunction = async () => {
-      if (cards.find(card => card.cardName === data.cardName)) {
-        throw new Error(`Card with name ${data.cardName} already exists`);
-      } else {
-        dispatch(addCard(data));
-        await setDoc(doc(firestore, `user_${currentUser?.uid}`, `cards_${data.id}`), data);
-      }
-    };
+  return (data: IPayload) => {
+    const api = new MainApi();
+      api.createCard(data)
+        .then((response: IResponse) => {
+          if (response.ok) {
+            const { balance, card_id, cardName, themeId, user_id } = response.card;
 
-    createCardFunction()
-      .then(resolve)
-      .catch(reject);
+            dispatch(addCard({
+              balance,
+              card_id,
+              cardName,
+              themeId,
+              user_id,
+            }));
+            toast.success('Card was created');
+          } else {
+            toast.error(response.message);
+          }
+        });
   };
 };
