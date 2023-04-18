@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
 import { ICardContextMenuProps } from './cardContextMenu.types';
-// import { CardThemePopup } from '../../Popups/CardThemePopup';
-// import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
+import { CardThemePopup } from '../../Popups/CardThemePopup';
+import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
 import { useDeleteCard } from './cardContextMenu.hooks';
 
@@ -11,8 +11,8 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOp
   const deleteCardCallback = useDeleteCard(id);
   const navigate = useNavigate();
 
-  // const [isCardThemeActive, setCardThemeActive] = useState(false);
-  // const [isCardNameActive, setCardNameActive] = useState(false);
+  const [isCardThemeActive, setCardThemeActive] = useState(false);
+  const [isCardNameActive, setCardNameActive] = useState(false);
   const [isConfirmActive, setConfirmActive] = useState(false);
 
   return (
@@ -25,14 +25,14 @@ export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOp
       dropdownList={
         [
           { text: 'Delete card', onClick: () => setConfirmActive(true)},
-          // { text: 'Change theme', onClick: () => setCardThemeActive(true)},
+          { text: 'Change theme', onClick: () => setCardThemeActive(true)},
           { text: 'Add transaction', onClick: () => navigate('/transactions')},
-          // { text: 'Change name', onClick: () => setCardNameActive(true)},
+          { text: 'Change name', onClick: () => setCardNameActive(true)},
          ]
       }
       />
-      {/* <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={id} /> */}
-      {/* <ChangeCardNamePopup popupState={{ isActive: isCardNameActive, setActive: setCardNameActive }} id={id} /> */}
+      <CardThemePopup popupState={{ isActive: isCardThemeActive, setActive: setCardThemeActive }} id={id} />
+      <ChangeCardNamePopup popupState={{ isActive: isCardNameActive, setActive: setCardNameActive }} id={id} />
       <ConfirmationPopup isActive={isConfirmActive} setIsActive={setConfirmActive} confirmCallback={deleteCardCallback} confirmText='Are you sure you want to delete the card?' />
     </>
   );

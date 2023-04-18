@@ -100,4 +100,44 @@ export class MainApi {
       console.error(error);
     }
   }
+
+  async changeCardName ({ cardId, newName }: { cardId: string, newName: string }) {
+    const formDataBody = new FormData();
+    formDataBody.append('card_id', cardId);
+    formDataBody.append('card_name', newName);
+
+    try {
+      const response = await fetch(`${this.baseUrl}/me/cards/updateName`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.token}`
+        },
+        body: formDataBody,
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async changeCardTheme ({ cardId, newTheme }: { cardId: string, newTheme: number }) {
+    const formDataBody = new FormData();
+    formDataBody.append('card_id', cardId);
+    formDataBody.append('theme_id', String(newTheme));
+
+    try {
+      const response = await fetch(`${this.baseUrl}/me/cards/updateTheme`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${this.token}`
+        },
+        body: formDataBody
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

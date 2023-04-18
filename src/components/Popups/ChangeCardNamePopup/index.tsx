@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import { IPopupStates } from '@typings/IPopupStates';
 import Button from '@shared/ui/Button';
 import Input from '@shared/ui/Input';
@@ -12,13 +11,8 @@ export const ChangeCardNamePopup: React.FC<{popupState: IPopupStates, id: string
   const [newNameValue, setNewNameValue] = useState('');
 
   const changeNameHandler = () => {
-    const resolve = () => {
-      popupState.setActive(false);
-      toast.success('Card name successfully changed');
-    };
-    const reject = (err: any) => toast.error(err.message);
-
-    changeCardName(newNameValue, resolve, reject);
+    changeCardName(newNameValue);
+    popupState.setActive(false);
   };
 
   return (
