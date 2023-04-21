@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAwayClick } from '@hooks/useAwayClick';
 import { useTypedSelector } from '@hooks/useTypedSelector';
 import { ITransaction } from '@typings/ITransaction';
@@ -8,22 +8,26 @@ import { formatNumber } from '@utils/formatNumber';
 import { TransactionItemContextMenu } from './TransactionContextMenu';
 
 import styles from './TransactionItem.module.scss';
+import { ICardData } from '@typings/ICardData';
 
 export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ transaction }) => {
   const [contextOpen, setContextOpen] = useState(false);
   const [coords, setCoords] = useState({x: 0, y: 0});
+  const [cardById, setCardById] = useState<ICardData | null>(null);
+  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
+  useEffect(() => {
+    const card = cards.find(card => card.card_id == transaction.balance) || null;
+    setCardById(card);
+  }, []);
+  
   useAwayClick(() => setContextOpen(false));
 
-  const { items: cards } = useTypedSelector(state => state.creditCards.cards);
-  const cardById = cards.find(card => card.id === transaction.balance);
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   
   const transactionIcon = transaction?.category?.toLowerCase() || 'income';
   const transactionSum = transaction?.status === 'expense'
     ? `- ${currency}${formatNumber(transaction?.sum)}`
     : `+ ${currency}${formatNumber(transaction?.sum)}`;
-  
-  if (!cardById) throw new Error();
   
   return (
     <div className={styles.transaction} onClick={e => {
@@ -46,7 +50,7 @@ export const TransactionItem: React.FC<{ transaction: ITransaction }> = ({ trans
         isOpen={contextOpen}
         setIsOpen={setContextOpen}
         x={coords.x}
-        currentBalance={cardById?.balance}
+        currentBalance={Number(cardById?.balance)}
         y={coords.y}
         transaction={transaction}
       />

@@ -12,18 +12,19 @@ interface Props {
 
 const TransactionsList: React.FC<Props> = ({ year, month }) => {
   const [currentFilterCard, setCurrentFilterCard] = useState('');
-
-  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
+  
+  const { items } = useTypedSelector(state => state.creditCards.transactions);
+  const transactions = items.map(transaction => ({...transaction, CreatedAt: new Date(transaction.CreatedAt)}));
   
   // Filter by card name
-  const filteredTransactions = transactions.filter(transaction => !currentFilterCard.length ? true : transaction.balance === currentFilterCard);
-
+  const filteredTransactions = transactions.filter(transaction => !currentFilterCard.length ? true : transaction.balanceId === currentFilterCard);
+  
   // Sort by date
   const listOfAllDates = filteredTransactions
-    .filter(transaction => transaction.date.getMonth() === month)
-    .map(transaction => transaction.date).sort((a,b) => {
-      const aToTimestamp = Math.floor(a.getTime()/1000);
-      const bToTimestamp = Math.floor(b.getTime()/1000);
+  .filter(transaction => transaction.CreatedAt.getMonth() === month)
+  .map(transaction => transaction.CreatedAt).sort((a,b) => {
+    const aToTimestamp = Math.floor(a.getTime()/1000);
+    const bToTimestamp = Math.floor(b.getTime()/1000);
 
       return bToTimestamp - aToTimestamp;
     })
@@ -33,7 +34,7 @@ const TransactionsList: React.FC<Props> = ({ year, month }) => {
   const filteredDatesList = listOfAllDates.filter((date, pos) => listOfAllDates.indexOf(date) === pos);
   
   const transactionsByDate = transactions.filter(transaction => {
-    return transaction.date.getFullYear() === year && transaction.date.getMonth() === month;
+    return transaction.CreatedAt.getFullYear() === year && transaction.CreatedAt.getMonth() === month;
   });
 
   if (!transactionsByDate.length && !transactions.length) {
@@ -52,7 +53,7 @@ const TransactionsList: React.FC<Props> = ({ year, month }) => {
             <div key={key}>
               <h4>{date}</h4>
               {
-                filteredTransactions.filter(transaction => getNormalDate(transaction.date) === date).map(transaction => {
+                filteredTransactions.filter(transaction => getNormalDate(transaction.CreatedAt) === date).map(transaction => {
                   return (
                     <TransactionItem key={transaction.id} transaction={transaction} />
                   );

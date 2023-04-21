@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { useTypedSelector } from '@hooks/useTypedSelector';
 import Button from '@shared/ui/Button';
 import { CustomSelect } from '@shared/ui/CustomSelect';
 import Input from '@shared/ui/Input';
-import { generateObjectId } from '@utils/generateObjectId';
-import { getRandomEmoji } from '@utils/getRandomEmoji';
 import { numberFieldFormat } from '@utils/numberFieldFormat';
 import { validateFields } from './addTransactionsPopup.utils';
 import { categoriesIncomeSelect, categoriesSelect, statusSelect } from './addTransaction.constants';
 import { useAddTransaction } from './addTransactionPopup.hooks';
 import { AddTransactionInput } from './AddTransactionInput';
+import { Category, IPayload } from './AddTransactionsPopup.typings';
 
 export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setActive }) => {
   const createTransaction = useAddTransaction();
@@ -22,36 +20,27 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
 
   const currency = useTypedSelector(state => state.currencies.currentCurrency.symbol);
   const allCards = cards.map(card => {
-    return {value: card.id, label: `${card.cardName} (${currency} ${card.balance})`};
+    return {value: card.card_id, label: `${card.cardName} (${currency} ${card.balance})`};
   });
-  const [formData, setFormData] = useState<{ status: 'income' | 'expense', balance: string, sum: string, category: string, note: string }>({
+  const [formData, setFormData] = useState<IPayload>({
     status: 'expense',
-    balance: allCards[0].value,
-    sum: '',
+    balanceId: allCards[0].value,
+    sum: 0,
     category: 'entertainments',
     note: ''
   });
-  const { status, balance, category, note, sum } = formData;
+  const { status, balanceId, category, note, sum } = formData;
   useEffect(() => status === 'expense' ? setCategory('entertainments') : setCategory('income'), [status]);
 
   const addTransactionHandler = () => {
-    const transaction = {
-      status,
-      balance,
-      sum: +sum || 0,
+    createTransaction({
+      balanceId,
       category,
       note,
-      date: new Date(),
-      id: `transaction_${generateObjectId()}`
-    };
-    const currentBalance = cards[cards.findIndex(card => card.id === transaction.balance)].balance;
-    const resolve = () => {
-      toast.success(`${getRandomEmoji()} Transaction was successfully added`);
-      setActive(false);
-    };
-    const reject = (error: Error) => toast.error(error.message);
-
-    createTransaction(transaction, currentBalance, resolve, reject);
+      status,
+      sum
+    });
+    setActive(false);
   };
 
   const categoryLabel = status === 'expense'
@@ -59,9 +48,9 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
     : categoriesSelect.find(el => el.label === category)?.value;
 
   const handleSumChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setFormData({...formData, sum: numberFieldFormat(e.currentTarget.value)});
+    setFormData({...formData, sum: Number(numberFieldFormat(e.currentTarget.value))});
   };
-  const setCategory = (category: string) => setFormData({...formData, category});
+  const setCategory = (category: Category) => setFormData({...formData, category});
   const setNote = (e: React.FormEvent<HTMLInputElement>) => setFormData({...formData, note: e.currentTarget.value});
 
   return (
@@ -71,7 +60,7 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       </AddTransactionInput>
 
       <AddTransactionInput label='Sum'>
-        <Input pattern='[0-9]+([\.][0-9]+)?' value={sum} onChange={handleSumChange} placeholder='Sum' type={'text'} />
+        <Input pattern='[0-9]+([\.][0-9]+)?' value={String(sum)} onChange={handleSumChange} placeholder='Sum' type={'text'} />
       </AddTransactionInput>
 
       <AddTransactionInput label='Note'>
@@ -79,14 +68,14 @@ export const AddTransactionForm: React.FC<{ setActive: React.Dispatch<React.SetS
       </AddTransactionInput>
 
       <AddTransactionInput label='Balance'>
-        <CustomSelect value={balance} setAction={(value) => setFormData({...formData, balance: value})} options={allCards} />
+        <CustomSelect value={balanceId} setAction={(value) => setFormData({...formData, balanceId: value})} options={allCards} />
       </AddTransactionInput>
 
       <AddTransactionInput label='Category'>
         <CustomSelect value={categoryLabel} setAction={setCategory} options={status === 'expense' ? categoriesSelect : categoriesIncomeSelect} />
       </AddTransactionInput>
 
-      <Button onClick={() => validateFields(addTransactionHandler, sum, note, balance, category, status)}>Add transaction</Button>
+      <Button onClick={() => validateFields(addTransactionHandler, sum, note, balanceId, category, status)}>Add transaction</Button>
     </div>
   );
 };

@@ -9,7 +9,7 @@ export const FilterByCardName: React.FC<{setCurrentCard: React.Dispatch<string>}
 
   const options = [
     { value: '', label: 'All cards' },
-    ...cards.map(card => ({ value: card.id, label: card.cardName }))
+    ...cards.map(card => ({ value: card.card_id, label: card.cardName }))
   ];
 
   return (

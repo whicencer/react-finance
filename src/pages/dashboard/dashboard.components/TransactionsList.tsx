@@ -5,7 +5,7 @@ import { TransactionsSkeletons } from './TransactionsSkeletons';
 
 const TransactionsList = () => {
   const { items: transactions, isLoading } = useTypedSelector(state => state.creditCards.transactions);
-  
+
   if (isLoading) {
     return <TransactionsSkeletons />;
   }
