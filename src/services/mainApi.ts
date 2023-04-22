@@ -16,7 +16,13 @@ export class MainApi {
         },
       });
       const data = await reponse.text();
-      data === 'True' ? true : false;
+      if (data === 'True') {
+        return true;
+      } else {
+        localStorage.setItem('user', JSON.stringify(null));
+        location.reload();
+        return false;
+      }
     } catch (error) {
       console.error(error);
     }
