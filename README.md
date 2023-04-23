@@ -1,10 +1,6 @@
 # React Finance
 ![Banner](https://github.com/whicencer/react-finance/blob/master/screens/react-finance.svg)
 
-## Demo
-#### View live version:
-https://react-finance.vercel.app  
-
 ## Stack
 ### Front-end
 - React (Vite)
@@ -18,6 +14,10 @@ https://react-finance.vercel.app
 - Gorm
 - Postgres
 - JWT
+
+## Demo
+#### View live version:
+https://react-finance.vercel.app  
 
 ## Todo
 #### Cards
