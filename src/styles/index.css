@@ -25,6 +25,11 @@ html, body {
   color: #fff;
 }
 
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

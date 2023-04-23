@@ -4,6 +4,7 @@ import { MainApi } from '@services/mainApi';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@store/slices/user';
+import { Link } from 'react-router-dom';
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,11 @@ const Signin = () => {
   };
 
   return (
-    <AuthForm clickHandler={signIn} title='Sign in' />
+    <AuthForm clickHandler={signIn} title='Sign in'>
+      <span style={{ textAlign: 'right', marginTop: 15, width: '35%', fontSize: 13 }}>
+        <Link to='/signup'>Do you not have an account yet?</Link>
+      </span>
+    </AuthForm>
   );
 };
 
