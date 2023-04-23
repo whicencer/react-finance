@@ -5,6 +5,20 @@
 #### View live version:
 https://react-finance.vercel.app  
 
+## Stack
+### Front-end
+- React (Vite)
+- TypeScript
+- Redux Toolkit
+- SCSS
+- styled-components
+### Back-end
+- Golang
+- Fiber
+- Gorm
+- Postgres
+- JWT
+
 ## Todo
 #### Cards
 - [x] - Validating input on adding cards  
