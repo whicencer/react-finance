@@ -1,9 +1,9 @@
 export interface ITransaction {
+  CreatedAt: Date,
   status: string,
   sum: number,
-  balance: string,
+  balanceId: string,
   category: string,
   note: string,
-  date: Date,
   id: string
 }

@@ -4,7 +4,7 @@ export const useAuth = () => {
   const user = useTypedSelector(state => state.user);
 
   return {
-    isAuth: !!user.email,
+    isAuth: !!user.token,
     user
   };
 };

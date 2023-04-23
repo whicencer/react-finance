@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
-import { ITransactionContextMenuProps } from './transactionContextMenu.types';
+import { ITransactionContextMenuProps } from './transactionContextMenu.typings';
 import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
 import { useDispatch } from 'react-redux';
-import { deleteDoc, doc, setDoc } from 'firebase/firestore';
-import { useAuth } from '../../../app/hooks/useAuth';
-import { db } from '../../../app/config/firebase';
 import { deleteTransaction } from '../../../store/slices/creditCards';
+import { MainApi } from '@services/mainApi';
 import { toast } from 'react-toastify';
-import { getRandomEmoji } from '../../../utils/getRandomEmoji';
 
-export const TransactionItemContextMenu: React.FC<ITransactionContextMenuProps> = ({x, y, transaction, currentBalance, isOpen, setIsOpen}) => {
+export const TransactionItemContextMenu: React.FC<ITransactionContextMenuProps> = ({x, y, transaction, isOpen, setIsOpen}) => {
   const [isConfirmActive, setIsConfirmActive] = useState(false);
   const dispatch = useDispatch();
-  const { user } = useAuth();
 
   const deleteTransactionHandler = async () => {
-    const resultSum = transaction.status === 'income' ? currentBalance - transaction.sum : currentBalance + transaction.sum;
+    const api = new MainApi();
 
-    dispatch(deleteTransaction(transaction));
-    deleteDoc(doc(db, `user_${user.uid}`, `transactions_${transaction.id}`));
-    setDoc(doc(db, `user_${user.uid}`, `cards_${transaction.balance}`), { balance: resultSum }, { merge: true });
-
-    toast.success(`${getRandomEmoji()} Transaction was successfully deleted`);
+    api.deleteTransaction(transaction.id)
+      .then(response => {
+        if (!response.ok) {
+          toast.error(response.message);
+        } else {
+          dispatch(deleteTransaction(transaction));
+          toast.success(response.message);
+        }
+      });
   };
 
   return (

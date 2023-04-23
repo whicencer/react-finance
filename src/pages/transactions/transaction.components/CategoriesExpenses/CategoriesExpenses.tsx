@@ -15,7 +15,9 @@ import { ICategoriesExpenses } from './CategoriesExpenses.types';
 
 export const CategoriesExpenses: React.FC<{ currentDate: { month: number, year: number } }> = ({ currentDate }) => {
   const { month, year } = currentDate;
-  const { items: transactions } = useTypedSelector(state => state.creditCards.transactions);
+  const { items } = useTypedSelector(state => state.creditCards.transactions);
+  const transactions = items.map(transaction => ({...transaction, CreatedAt: new Date(transaction.CreatedAt)}));
+  
   const { symbol } = useTypedSelector(state => state.currencies.currentCurrency);
   
   const [categoryTransactions, setCategoryTransactions] = useState<ITransaction[]>([]);
@@ -32,8 +34,8 @@ export const CategoriesExpenses: React.FC<{ currentDate: { month: number, year: 
   allExpenseCategories.forEach(category => {
     const transactionsByCategory = transactions.filter(transaction => {
       return transaction.category === category
-        && transaction.date.getFullYear() === year
-        && transaction.date.getMonth() === month;
+        && transaction.CreatedAt.getFullYear() === year
+        && transaction.CreatedAt.getMonth() === month;
     });
 
     allTransactionsByCategory[category] = transactionsByCategory;

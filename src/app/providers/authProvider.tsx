@@ -1,23 +1,21 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '@store/slices/user';
-import { auth } from '@config/firebase';
 
 // eslint-disable-next-line react/display-name
 const AuthProvider = (Component: FC) => () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      if(user?.email) {
-        dispatch(setUser({
-          displayName: user.displayName,
-          email: user.email,
-          photoUrl: user.photoURL,
-          uid: user.uid
-        }));
-      }
-    });
+    const user = localStorage.getItem('user');
+    const userObject = JSON.parse(user ?? 'null');
+
+    if (userObject != null) {
+      dispatch(setUser({
+        token: userObject.token,
+        username: userObject.username,
+      }));
+    }
   }, []);
 
   return <Component />;

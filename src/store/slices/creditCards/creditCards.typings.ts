@@ -1,5 +1,5 @@
-import { ICardData } from "../../../app/typings/ICardData";
-import { ITransaction } from "../../../app/typings/ITransaction";
+import { ICardData } from '@typings/ICardData';
+import { ITransaction } from '@typings/ITransaction';
 
 export interface ICardsState {
   cards: {

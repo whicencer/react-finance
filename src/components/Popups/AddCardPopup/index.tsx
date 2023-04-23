@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import { useAddCard } from './addCardPopup.hooks';
@@ -7,32 +8,25 @@ import Button from '@shared/ui/Button';
 import Input from '@shared/ui/Input';
 import Popup from '@shared/ui/Popup';
 import { IPopupStates } from '@typings/IPopupStates';
-import { generateObjectId } from '@utils/generateObjectId';
 import { validateFields } from './addCardPopup.utils';
 
 import { toast } from 'react-toastify';
-import { getRandomEmoji } from '@utils/getRandomEmoji';
 import { numberFieldFormat } from '@utils/numberFieldFormat';
 
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
-  const id = `card_${generateObjectId()}`;
 
   const [cardName, setCardName] = useState('');
   const [balance, setBalance] = useState('');
   
   const addNewCard = useAddCard();
   const numberedBalance = Number(balance);
-  
-  const data = { balance: numberedBalance, cardName, id, themeId: 2 };
 
   const addCard = () => {
-    const resolve = () => {
-      setActive(false);
-      toast.success(`${getRandomEmoji()} Card was successfully added`);
-    };
-    const reject = (error: Error) => toast.error(error.message);
-
-    addNewCard(data, resolve, reject);
+    addNewCard({
+      balance: numberedBalance,
+      cardName,
+      themeId: 1,
+    });
   };
   const handleBalanceChange = (e: React.FormEvent<HTMLInputElement>) => {
     setBalance(numberFieldFormat(e.currentTarget.value));

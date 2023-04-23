@@ -5,11 +5,11 @@ import AddCardPopup from '../../components/Popups/AddCardPopup';
 import { useDispatch } from 'react-redux';
 import { PageButton } from '../../shared/ui/PageButton';
 import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { fetchCards } from '../../store/slices/creditCards/creditCards.actions/fetchCards';
 import { fetchTransactions } from '../../store/slices/creditCards/creditCards.actions/fetchTransactions';
 import { AppThunkDispatch } from '../../app/typings/AppThunkDispatch';
 import CreditCardsList from './dashboard.components/CreditCardsList';
 import TransactionsList from './dashboard.components/TransactionsList';
+import { fetchCards } from '@store/slices/creditCards/creditCards.actions/fetchCards';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');

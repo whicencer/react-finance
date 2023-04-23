@@ -3,7 +3,7 @@ import { ITransaction } from "../../../../../app/typings/ITransaction";
 import { ICardsState } from "../../creditCards.typings";
 
 export const addTransactionReducer = (state: ICardsState, action: PayloadAction<ITransaction>) => {
-  const card = state.cards.items.find((card) => card.id === action.payload.balance);
+  const card = state.cards.items.find((card) => card.card_id === action.payload.balanceId);
 
   state.transactions.items.unshift(action.payload);
   

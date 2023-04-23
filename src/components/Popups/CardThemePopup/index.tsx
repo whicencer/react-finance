@@ -5,20 +5,16 @@ import { InvisibleButton, Preview, Image } from './cardThemePopup.styles';
 import Popup from '@shared/ui/Popup';
 import Button from '@shared/ui/Button';
 
-import { useDispatch } from 'react-redux';
-import { changeCardTheme } from '@store/slices/creditCards';
-import { changeTheme } from './cardThemePopup.service';
-
-import { toast } from 'react-toastify';
-import { getRandomEmoji } from '@utils/getRandomEmoji';
-
 import theme1 from '@assets/card_theme_1.png';
 import theme2 from '@assets/card_theme_2.png';
 import theme3 from '@assets/card_theme_3.png';
+import { useChangeCardTheme } from './cardThemePopup.hooks';
 
 export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = ({ popupState, id }) => {
   const [themeId, setThemeId] = useState(1);
-  const [themeImage, setThemeImage] = useState(null);
+  const [themeImage, setThemeImage] = useState();
+
+  const changeTheme = useChangeCardTheme(id);
 
   useEffect(() => {
     import(`../../../assets/card_theme_${themeId}.png`).then(image => {
@@ -27,14 +23,8 @@ export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = 
   }, [themeId]);
   useEffect(() => { return; }, [themeId]);
 
-  const dispatch = useDispatch();
-
   const changeThemeHandler = () => {
-    changeTheme(id, themeId).then(() => {
-      dispatch(changeCardTheme({ id, themeId }));
-      popupState.setActive(false);
-      toast.success(`${getRandomEmoji()} Theme was successfully changed!`);
-    });
+    changeTheme(themeId);
   };
 
   return (
