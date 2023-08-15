@@ -3,7 +3,7 @@ import { IAuthPayload } from "./types/ISignupPayload";
 import { ITransactionPayload } from "./types/ITransactionPayload";
 
 export class MainApi {
-  private readonly baseUrl = 'https://react-finance-backend-production.up.railway.app';
+  private readonly baseUrl = 'https://react-finance-api.onrender.com';
   private readonly user = localStorage.getItem('user');
   private readonly token = JSON.parse(this.user ?? 'null')?.token;
 
