@@ -18,6 +18,7 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@widgets/*": ["widgets/*"],
+      "@layout/*": ["layout/*"],
     },
     "allowJs": false,
     "skipLibCheck": false,

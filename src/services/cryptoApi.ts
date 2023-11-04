@@ -1,7 +1,7 @@
 import { ICoinData } from './types/ICoinData';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICryptoData } from './types/ICryptoData';
-import { ICryptoMarket } from '../app/typings/ICryptoMarket';
+import { ICryptoMarket } from 'app/typings/ICryptoMarket';
 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',

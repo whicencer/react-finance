@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './slices/user';
 import creditCards from './slices/creditCards';
 import currencies from './slices/currencies';
-import { cryptoApi } from '../services/cryptoApi';
+import { cryptoApi } from '@services/cryptoApi';
 
 export const store = configureStore({
   reducer: {

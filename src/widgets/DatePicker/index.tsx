@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { useAwayClick } from '../../app/hooks/useAwayClick';
-import Flex from '../../shared/ui/Flex';
+import { useAwayClick } from 'app/hooks/useAwayClick';
+import Flex from 'shared/ui/Flex';
 import styles from './DatePicker.module.scss';
 
 interface IDatePickerProps {
