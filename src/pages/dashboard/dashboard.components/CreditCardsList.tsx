@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { useTypedSelector } from '../../../app/hooks/useTypedSelector';
-import CreditCard from '../../../components/CreditCard';
+import { useTypedSelector } from '@hooks/useTypedSelector';
+import CreditCard from '@components/CreditCard';
 import { CreditCardSkeletons } from './CreditCardSkeletons';
 
 const CreditCardsList = () => {

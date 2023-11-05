@@ -8,10 +8,10 @@ import { deleteTransactionReducer } from './creditCards.reducers/transactions/de
 import { setTransactionsReducer } from './creditCards.reducers/transactions/setTransactions';
 import { addTransactionReducer } from './creditCards.reducers/transactions/addTransaction';
 import { setTransactionsLoadingReducer } from './creditCards.reducers/transactions/setTransactionsLoading';
-import { fetchCards } from './creditCards.actions/fetchCards';
+import { fetchCards } from '@store/slices/creditCards/thunk/fetchCards';
 import { ICardData } from '../../../app/typings/ICardData';
 import { ITransaction } from '../../../app/typings/ITransaction';
-import { fetchTransactions } from './creditCards.actions/fetchTransactions';
+import { fetchTransactions } from '@store/slices/creditCards/thunk/fetchTransactions';
 
 const initialState: ICardsState  = {
   cards: {

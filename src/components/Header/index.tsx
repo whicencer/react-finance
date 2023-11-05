@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useLogout } from '@hooks/useLogout';
 import LogoLink from './LogoLink';
@@ -7,16 +7,20 @@ import { dropdownButtonStyles, HeaderComponent } from './header.styles';
 import MobileMenu from '../MobileMenu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { useAwayClick } from '../../app/hooks/useAwayClick';
-import Droplist from '../../shared/ui/Dropdown/Droplist';
+import { useAwayClick } from '@hooks/useAwayClick';
+import DropList from '@shared/ui/Dropdown/Droplist';
 import { ChangeCurrency } from '../ChangeCurrency';
 
 const Header = () => {
   // Dropdown
+  const [isBurgerOpen, setBurgerOpen] = useState(false);
   const [ isDropdownOpen, setDropdownOpen ] = useState(false);
   useAwayClick(() => setDropdownOpen(false));
 
-  const [isBurgerOpen, setBurgerOpen] = useState(false);
+  const usernameClickHandler = (event: React.MouseEvent<HTMLParagraphElement>) => {
+    event.stopPropagation();
+    setDropdownOpen(prev=>!prev);
+  };
 
   const { user } = useAuth();
   const [ logout ] = useLogout();
@@ -26,23 +30,14 @@ const Header = () => {
       <LogoLink to={'/dashboard'}>REACT FINANCE</LogoLink>
       <nav>
         <StyledLink to={'/dashboard'}>Dashboard</StyledLink>
-        <StyledLink to={'/investments'}>Investments</StyledLink>
         <StyledLink to={'/transactions'}>Transactions</StyledLink>
       </nav>
       <div style={{ display: 'flex', position: 'relative' }}>
-        <p onClick={(e) => {
-          e.stopPropagation();
-          setDropdownOpen(prev=>!prev);
-        }} style={dropdownButtonStyles}>{user.username}</p>
+        <p onClick={usernameClickHandler} style={dropdownButtonStyles}>{user.username}</p>
 
-        <Droplist
-          dropdownList={
-            [
-              { text: 'Logout', onClick: logout }
-            ]
-          }
-          isActive={isDropdownOpen}
-        />
+        <DropList dropdownList={[
+          { text: 'Logout', onClick: logout }
+        ]} isActive={isDropdownOpen} />
         <ChangeCurrency />
       </div>
       <button onClick={(e) => {

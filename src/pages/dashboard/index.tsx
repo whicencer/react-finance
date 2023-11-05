@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Flex from '../../shared/ui/Flex';
 import AddCardPopup from '../../components/Popups/AddCardPopup';
 import { useDispatch } from 'react-redux';
-import { PageButton } from '../../shared/ui/PageButton';
-import { useDocumentTitle } from '../../app/hooks/useDocumentTitle';
-import { fetchTransactions } from '../../store/slices/creditCards/creditCards.actions/fetchTransactions';
-import { AppThunkDispatch } from '../../app/typings/AppThunkDispatch';
+import { PageButton } from '@shared/ui/PageButton';
+import { useDocumentTitle } from '@hooks/useDocumentTitle';
+import { fetchTransactions } from '@store/slices/creditCards/thunk/fetchTransactions';
+import { AppThunkDispatch } from '@typings/AppThunkDispatch';
 import CreditCardsList from './dashboard.components/CreditCardsList';
 import TransactionsList from './dashboard.components/TransactionsList';
-import { fetchCards } from '@store/slices/creditCards/creditCards.actions/fetchCards';
+import { fetchCards } from '@store/slices/creditCards/thunk/fetchCards';
 
 const Dashboard = () => {
   useDocumentTitle('React Finance - Dashboard');

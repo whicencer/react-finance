@@ -37,9 +37,4 @@ export const privateRoutes: RouteComponent[] = [
     component: Transactions,
     key: 'transactions',
   },
-  {
-    path: '/investments',
-    component: Investments,
-    key: 'investments'
-  }
 ];

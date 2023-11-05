@@ -1,6 +1,6 @@
 import React from 'react';
-import Flex from '../../../shared/ui/Flex';
-import { TransactionSkeleton } from '../../../shared/ui/Skeletons/TransactionSkeleton';
+import Flex from '@shared/ui/Flex';
+import { TransactionSkeleton } from '@shared/ui/Skeletons/TransactionSkeleton';
 
 export const TransactionsSkeletons = () => {
   return (
