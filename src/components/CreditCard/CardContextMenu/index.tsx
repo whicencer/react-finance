@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import ContextMenu from '../../../shared/ui/Dropdown/ContextMenu';
+import ContextMenu from '@shared/ui/Dropdown/ContextMenu';
 import { ICardContextMenuProps } from './cardContextMenu.types';
 import { CardThemePopup } from '../../Popups/CardThemePopup';
 import { ChangeCardNamePopup } from '../../Popups/ChangeCardNamePopup';
-import { ConfirmationPopup } from '../../../shared/ui/ConfirmationPopup';
+import { ConfirmationPopup } from '@shared/ui/ConfirmationPopup';
 import { useDeleteCard } from './cardContextMenu.hooks';
 
 export const CardContextMenu: React.FC<ICardContextMenuProps> = ({id, x, y, isOpen, setIsOpen}) => {

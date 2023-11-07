@@ -15,7 +15,7 @@ export const useOnline = () => {
     // Listen to the offline status
     window.addEventListener('offline', handleStatusChange);
 
-    // Specify how to clean up after this effect for performance improvment
+    // Specify how to clean up after this effect for performance improvement
     return () => {
       window.removeEventListener('online', handleStatusChange);
       window.removeEventListener('offline', handleStatusChange);

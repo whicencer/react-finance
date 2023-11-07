@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { addTransaction } from '@store/slices/creditCards';
 import { MainApi } from '@services/mainApi';
-import { IPayload, Response } from './AddTransactionsPopup.typings';
+import { FormDataState, Response } from './AddTransactionsPopup.typings';
 import { toast } from 'react-toastify';
 
 export const useAddTransaction = () => {
   const dispatch = useDispatch();
   // eslint-disable-next-line no-unused-vars
-  return (data: IPayload) => {
+  return (data: FormDataState) => {
     const api = new MainApi();
 
     api.addTransaction(data)
@@ -24,7 +24,7 @@ export const useAddTransaction = () => {
             status,
             sum
           }));
-          toast.success('Card was created');
+          toast.success('Transaction was created');
         } else {
           toast.error(response.message);
         }

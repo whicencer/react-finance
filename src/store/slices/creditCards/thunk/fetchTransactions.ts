@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ITransaction } from '@typings/ITransaction';
-import { mainApi } from '@services/index';
+import { MainApi } from '@services/mainApi';
 
 interface IResponse {
   ok: boolean;
@@ -11,7 +11,8 @@ interface IResponse {
 export const fetchTransactions = createAsyncThunk(
   'creditCards/fetchTransactions',
   async () => {
-    const response: IResponse = await mainApi.getTransactions();
+    const api = new MainApi();
+    const response: IResponse = await api.getTransactions();
 
     if (!response.ok) {
       throw new Error(response.message);

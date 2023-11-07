@@ -1,5 +1,5 @@
-import styles from '@components/AuthForm/styles.module.scss';
-import { FormEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import styles from '@layout/AuthLayout/styles.module.scss';
 
 interface AuthLayoutProps {
   title: string;

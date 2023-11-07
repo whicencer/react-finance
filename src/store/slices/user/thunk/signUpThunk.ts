@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { mainApi } from '@services/index';
 import { AuthResponse } from '@store/slices/user/user.typings';
 import { toast } from 'react-toastify';
+import { MainApi } from '@services/mainApi';
 
 interface SignupPayload {
   username: string;
@@ -11,7 +11,9 @@ interface SignupPayload {
 export const signUpThunk = createAsyncThunk(
   'user/signUpThunk',
   async ({ username, password, navigate }: SignupPayload) => {
-    return await mainApi.signup({ username, password })
+    const api = new MainApi();
+
+    return await api.signup({ username, password })
       .then((response: AuthResponse) => {
         if (response.ok) {
           toast.success(response.message);

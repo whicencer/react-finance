@@ -9,8 +9,8 @@ import { setTransactionsReducer } from './creditCards.reducers/transactions/setT
 import { addTransactionReducer } from './creditCards.reducers/transactions/addTransaction';
 import { setTransactionsLoadingReducer } from './creditCards.reducers/transactions/setTransactionsLoading';
 import { fetchCards } from '@store/slices/creditCards/thunk/fetchCards';
-import { ICardData } from '../../../app/typings/ICardData';
-import { ITransaction } from '../../../app/typings/ITransaction';
+import { ICardData } from '@typings/ICardData';
+import { ITransaction } from '@typings/ITransaction';
 import { fetchTransactions } from '@store/slices/creditCards/thunk/fetchTransactions';
 
 const initialState: ICardsState  = {
@@ -50,17 +50,15 @@ const creditCardsSlice = createSlice({
       .addCase(fetchCards.rejected, (state, action) => {
         state.cards.isLoading = false;
         state.cards.error = action.error.message;
-      })
+      });
+
+    builder
       .addCase(fetchTransactions.pending, state => {
         state.transactions.isLoading = true;
       })
-      .addCase(fetchTransactions.fulfilled, (state, action: PayloadAction<ITransaction[]>) => {
-        state.transactions.items = action.payload;
+      .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.transactions.isLoading = false;
-      })
-      .addCase(fetchTransactions.rejected, (state, action) => {
-        state.transactions.isLoading = false;
-        state.transactions.error = action.error.message;
+        state.transactions.items = action.payload as ITransaction[];
       });
   }
 });

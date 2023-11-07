@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import styles from './signin.module.scss';
 import { AuthLayout } from '@layout/AuthLayout/AuthLayout';
 import { useTypedSelector } from '@hooks/useTypedSelector';
 import { signInThunk } from '@store/slices/user/thunk/signInThunk';
@@ -19,7 +21,7 @@ const Signin = () => {
   };
 
   const additionalText = (
-    <span style={{ textAlign: 'right', marginTop: 15, width: '35%', fontSize: 13 }}>
+    <span className={styles.additionalText}>
       <Link to='/signup'>Do you not have an account yet?</Link>
     </span>
   );
@@ -29,23 +31,23 @@ const Signin = () => {
       <div>
         <label>Username</label>
         <Input
+          className={styles.input}
           value={username}
           placeholder='Username'
           onChange={(e) => setUsername(e.target.value)}
-          style={{ marginTop: 7 }}
         />
       </div>
       <div style={{ marginTop: 12 }}>
         <label>Password</label>
         <Input
+          className={styles.input}
           value={password}
           placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
-          style={{ marginTop: 7 }}
           type='password'
         />
       </div>
-      <Button style={{ marginTop: 15 }} onClick={signIn} disabled={isLoading}>{ isLoading ? 'Loading...' : 'Sign in' }</Button>
+      <Button className={styles.button} onClick={signIn} disabled={isLoading}>{ isLoading ? 'Loading...' : 'Sign in' }</Button>
     </AuthLayout>
   );
 };

@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { MainApi } from '@services/mainApi';
 import { changeCardTheme } from '@store/slices/creditCards';
 import { getRandomEmoji } from '@utils/getRandomEmoji';
+import { ThemesId } from '@typings/ThemesIdEnum';
 
 interface IResponse {
   message: string;
@@ -13,7 +14,7 @@ export const useChangeCardTheme = (id: string) => {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
-  return (themeId: number) => {
+  return (themeId: ThemesId) => {
     const api = new MainApi();
       api.changeCardTheme({ cardId: id, newTheme: themeId })
         .then((response: IResponse) => {

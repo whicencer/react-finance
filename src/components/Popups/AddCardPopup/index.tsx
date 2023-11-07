@@ -12,6 +12,7 @@ import { validateFields } from './addCardPopup.utils';
 
 import { toast } from 'react-toastify';
 import { numberFieldFormat } from '@utils/numberFieldFormat';
+import { ThemesId } from '@typings/ThemesIdEnum';
 
 const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
 
@@ -25,7 +26,7 @@ const AddCardPopup: React.FC<IPopupStates> = ({ isActive, setActive }) => {
     addNewCard({
       balance: numberedBalance,
       cardName,
-      themeId: 1,
+      themeId: ThemesId.ONE,
     });
   };
   const handleBalanceChange = (e: React.FormEvent<HTMLInputElement>) => {

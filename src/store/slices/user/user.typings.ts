@@ -1,7 +1,7 @@
 export interface IUserState {
   username: string | null;
   token: string | null;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export interface AuthResponse {

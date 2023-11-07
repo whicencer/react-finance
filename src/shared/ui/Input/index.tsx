@@ -12,13 +12,13 @@ interface IInputProps {
   type?: string;
   style?: any;
   pattern?: string;
-  theme?: 'dark' | 'light';
+  className?: string;
 }
 
-const Input: React.FC<IInputProps> = ({ onChange, pattern, placeholder, value, type, onBlur, style, theme = 'dark', onKeyDown }) => {
+const Input: React.FC<IInputProps> = ({ className, onChange, pattern, placeholder, value, type, onBlur, style, onKeyDown }) => {
   return (
     <input
-      className={theme === 'dark' ? styles.input+' '+styles.dark : styles.input}
+      className={`${styles.input} ${className}`}
       type={type || 'text'}
       value={value}
       pattern={pattern}

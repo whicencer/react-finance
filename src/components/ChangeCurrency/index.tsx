@@ -5,6 +5,7 @@ import { useTypedSelector } from '@hooks/useTypedSelector';
 import { setCurrency } from "@store/slices/currencies";
 import { getRandomEmoji } from "@utils/getRandomEmoji";
 import styles from './ChangeCurrency.module.scss';
+import { currencies } from './ChangeCurrency.constants';
 
 export const ChangeCurrency = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,11 @@ export const ChangeCurrency = () => {
 
   return (
     <select className={styles.select} value={currentCurrency} onChange={changeCurrency}>
-      <option value="uah">UAH</option>
-      <option value="usd">USD</option>
-      <option value="eur">EUR</option>
+      {
+        currencies.map(currency => {
+          return <option key={currency.value} value={currency.value}>{ currency.displayText }</option>
+        })
+      }
     </select>
   );
 };

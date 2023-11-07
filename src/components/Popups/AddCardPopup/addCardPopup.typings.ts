@@ -1,7 +1,9 @@
+import { ThemesId } from '@typings/ThemesIdEnum';
+
 export interface IPayload {
   balance: number;
   cardName: string;
-  themeId: number;
+  themeId: ThemesId;
 }
 
 export interface IResponse {
@@ -18,6 +20,6 @@ export interface ICard {
   card_id:   string;
   balance:   number;
   cardName:  string;
-  themeId:   number;
+  themeId:   ThemesId;
   user_id:   number;
 }

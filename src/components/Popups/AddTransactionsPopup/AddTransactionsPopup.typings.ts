@@ -1,4 +1,4 @@
-export interface IPayload {
+export interface FormDataState {
   status: 'income' | 'expense';
   sum: number;
   note: string;
@@ -26,15 +26,15 @@ export interface Transaction {
   user_id:   number;
 }
 
-export type Category = 'entertainments' |
-    'beauty' |
-    'health' |
-    'food' |
-    'health' |
-    'tech' |
-    'education' |
-    'investments' |
-    'traveling' |
-    'transaport' |
-    'income'|
-    'other';
+export enum Category {
+  ENTERTAINMENTS = 'entertainments',
+  BEAUTY = 'beauty',
+  HEALTH = 'health',
+  FOOD = 'food',
+  TECH = 'tech',
+  EDUCATION = 'education',
+  INVESTMENTS = 'investments',
+  TRAVELING = 'traveling',
+  INCOME = 'income',
+  OTHER = 'other'
+}

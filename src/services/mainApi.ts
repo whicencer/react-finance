@@ -1,6 +1,7 @@
 import { ICardPayload } from "./types/ICardPayload";
 import { IAuthPayload } from "./types/ISignupPayload";
 import { ITransactionPayload } from "./types/ITransactionPayload";
+import { ThemesId } from '@typings/ThemesIdEnum';
 
 export class MainApi {
   private readonly baseUrl = 'https://react-finance-api.onrender.com';
@@ -9,13 +10,13 @@ export class MainApi {
 
   async checkToken () {
     try {
-      const reponse = await fetch(`${this.baseUrl}/auth/check`, {
+      const response = await fetch(`${this.baseUrl}/auth/check`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${this.token}`
         },
       });
-      const data = await reponse.text();
+      const data = await response.text();
       if (data === 'True') {
         return true;
       } else {
@@ -36,14 +37,14 @@ export class MainApi {
         password: payload.password
       };
 
-      const reponse = await fetch(`${this.baseUrl}/auth/signup`, {
+      const response = await fetch(`${this.baseUrl}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       });
-      const data = await reponse.json();
+      const data = await response.json();
       return data;
     } catch (error) {
       console.error(error);
@@ -162,7 +163,7 @@ export class MainApi {
     }
   }
 
-  async changeCardTheme ({ cardId, newTheme }: { cardId: string, newTheme: number }) {
+  async changeCardTheme ({ cardId, newTheme }: { cardId: string, newTheme: ThemesId }) {
     const isTokenValid = this.checkToken();
     if (!isTokenValid) {
       localStorage.setItem('user', 'null');
@@ -208,7 +209,6 @@ export class MainApi {
   }
 
   async addTransaction (payload: ITransactionPayload) {
-    console.log(payload);
     const isTokenValid = this.checkToken();
     if (!isTokenValid)
       localStorage.setItem('user', 'null');

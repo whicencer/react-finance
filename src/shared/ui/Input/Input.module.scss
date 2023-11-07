@@ -1,9 +1,11 @@
 .input {
   display: block;
-  border: 1px solid #d0d0d0;
   padding: 10px;
   border-radius: 5px;
   width: 95%;
+  border: 1px solid #535353;
+  background-color: rgb(32, 32, 32);
+  color: #fff;
 
   &::placeholder {
     font-size: 16px;
@@ -18,10 +20,4 @@
   &:invalid {
     border: 2px solid red;
   }
-}
-
-.input.dark {
-  border: 1px solid #535353;
-  background-color: rgb(32, 32, 32);
-  color: #fff;
 }

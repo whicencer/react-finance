@@ -23,6 +23,7 @@ html, body {
   background-color: #000;
   overflow-x: hidden;
   color: #fff;
+  height: 100%;
 }
 
 a {

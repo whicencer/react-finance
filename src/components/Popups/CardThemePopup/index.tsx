@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IPopupStates } from '@typings/IPopupStates';
 import Flex from '@shared/ui/Flex';
-import { InvisibleButton, Preview, Image } from './cardThemePopup.styles';
+import { Image, InvisibleButton, Preview } from './cardThemePopup.styles';
 import Popup from '@shared/ui/Popup';
 import Button from '@shared/ui/Button';
 
@@ -9,9 +9,10 @@ import theme1 from '@assets/card_theme_1.png';
 import theme2 from '@assets/card_theme_2.png';
 import theme3 from '@assets/card_theme_3.png';
 import { useChangeCardTheme } from './cardThemePopup.hooks';
+import { ThemesId } from '@typings/ThemesIdEnum';
 
 export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = ({ popupState, id }) => {
-  const [themeId, setThemeId] = useState(1);
+  const [themeId, setThemeId] = useState(ThemesId.ONE);
   const [themeImage, setThemeImage] = useState();
 
   const changeTheme = useChangeCardTheme(id);
@@ -33,13 +34,13 @@ export const CardThemePopup: React.FC<{popupState: IPopupStates, id: string}> = 
         <h2 style={{ marginBottom: '20px' }}>Choose your card theme</h2>
         <Preview src={themeImage} alt="current-theme" />
         <Flex style={{ margin: '20px', overflowX: 'auto', width: '100%' }} alignItems='center'>
-          <InvisibleButton onClick={() => setThemeId(1)}>
+          <InvisibleButton onClick={() => setThemeId(ThemesId.ONE)}>
             <Image src={theme1} alt="theme_1" />
           </InvisibleButton>
-          <InvisibleButton onClick={() => setThemeId(2)}>
+          <InvisibleButton onClick={() => setThemeId(ThemesId.TWO)}>
             <Image src={theme2} alt="theme_2" />
           </InvisibleButton>
-          <InvisibleButton onClick={() => setThemeId(3)}>
+          <InvisibleButton onClick={() => setThemeId(ThemesId.THREE)}>
             <Image src={theme3} alt="theme_3" />
           </InvisibleButton>
         </Flex>
